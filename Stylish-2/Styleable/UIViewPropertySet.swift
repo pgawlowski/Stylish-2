@@ -25,7 +25,9 @@ extension StyleClass {
             (style:StyleClass, target:Any) in
             if let view = target as? UIView {
                 for (key, value) in style.UIView.propertySet {
-                    view.setStyleProperties(value: value, key: key)
+                    if !(value is NSNull) {
+                        view.setStyleProperties(value: value, key: key)
+                    }
                 }
             }
         }]

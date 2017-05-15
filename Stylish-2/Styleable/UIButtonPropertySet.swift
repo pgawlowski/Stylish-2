@@ -25,7 +25,9 @@ extension StyleClass {
             (style:StyleClass, target:Any) in
             if let button = target as? UIButton {
                 for (key, value) in style.UIButton.propertySet {
-                    button.setStyleProperties(value: value, key: key)
+                    if !(value is NSNull) {
+                        button.setStyleProperties(value: value, key: key)
+                    }
                 }
             }
         }]

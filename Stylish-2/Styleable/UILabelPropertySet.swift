@@ -26,27 +26,31 @@ extension StyleClass {
             switch target {
             case let label as UILabel:
                 for (key, value) in style.UILabel.propertySet {
-                    switch key {
-                    case "font" where !(value is NSNull):
-                        fontStyleApplicator(target: label, value: value as? UIFont.SimplifiedFont)
-                        break
-                    default:
-                        label.setStyleProperties(value: value, key: key)
+                    if !(value is NSNull) {
+                        switch key {
+                        case "font" where !(value is NSNull):
+                            fontStyleApplicator(target: label, value: value as? UIFont.SimplifiedFont)
+                            break
+                        default:
+                            label.setStyleProperties(value: value, key: key)
+                        }
                     }
                 }
                 break
             case let button as UIButton:
                 for (key, value) in style.UILabel.propertySet {
-                    switch key as NSString {
-                    case "textColor" where !(value is NSNull):
-                        button.setTitleColor(value as? UIColor, for: .normal)
-                        break
-                    case "font" where !(value is NSNull):
-                        fontStyleApplicator(target: button.titleLabel!, value: value as? UIFont.SimplifiedFont)
-                        break
-                    default:
-                        button.titleLabel?.setStyleProperties(value: value, key: key)
-                        break
+                    if !(value is NSNull) {
+                        switch key as NSString {
+                        case "textColor" where !(value is NSNull):
+                            button.setTitleColor(value as? UIColor, for: .normal)
+                            break
+                        case "font" where !(value is NSNull):
+                            fontStyleApplicator(target: button.titleLabel!, value: value as? UIFont.SimplifiedFont)
+                            break
+                        default:
+                            button.titleLabel?.setStyleProperties(value: value, key: key)
+                            break
+                        }
                     }
                 }
                 break
