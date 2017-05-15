@@ -71,7 +71,7 @@ class JSONStylesheet : Stylesheet {
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let savedDirectory = paths[0]
         let filename = savedDirectory.appending("/stylesheet.json")
-        let bundle = Bundle.main
+        let bundle = BundleMarker()
         let fileManager = FileManager.default
         
         
