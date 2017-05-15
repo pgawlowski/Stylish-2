@@ -11,10 +11,10 @@
 		762CA89E1EC5BA3100F206EC /* Stylish_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA89D1EC5BA3100F206EC /* Stylish_2Tests.swift */; };
 		762CA8A01EC5BA3100F206EC /* Stylish-2.h in Headers */ = {isa = PBXBuildFile; fileRef = 762CA8921EC5BA3100F206EC /* Stylish-2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		762CA8AF1EC5BA4A00F206EC /* StylishExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AA1EC5BA4A00F206EC /* StylishExtensions.swift */; };
-		762CA8B01EC5BA4A00F206EC /* UIButtonPropertySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AB1EC5BA4A00F206EC /* UIButtonPropertySet.swift */; };
-		762CA8B11EC5BA4A00F206EC /* UIImagePropertySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AC1EC5BA4A00F206EC /* UIImagePropertySet.swift */; };
-		762CA8B21EC5BA4A00F206EC /* UILabelPropertySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AD1EC5BA4A00F206EC /* UILabelPropertySet.swift */; };
-		762CA8B31EC5BA4A00F206EC /* UIViewPropertySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AE1EC5BA4A00F206EC /* UIViewPropertySet.swift */; };
+		762CA8B01EC5BA4A00F206EC /* StyleableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AB1EC5BA4A00F206EC /* StyleableUIButton.swift */; };
+		762CA8B11EC5BA4A00F206EC /* StyleableUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AC1EC5BA4A00F206EC /* StyleableUIImageView.swift */; };
+		762CA8B21EC5BA4A00F206EC /* StyleableUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AD1EC5BA4A00F206EC /* StyleableUILabel.swift */; };
+		762CA8B31EC5BA4A00F206EC /* StyleableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AE1EC5BA4A00F206EC /* StyleableUIView.swift */; };
 		762CA8BA1EC5BA6000F206EC /* JSONStyleProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B41EC5BA6000F206EC /* JSONStyleProperty.swift */; };
 		762CA8BB1EC5BA6000F206EC /* StyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B51EC5BA6000F206EC /* StyleClass.swift */; };
 		762CA8BC1EC5BA6000F206EC /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B61EC5BA6000F206EC /* Styleable.swift */; };
@@ -40,17 +40,17 @@
 		762CA8981EC5BA3100F206EC /* Stylish-2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stylish-2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		762CA89D1EC5BA3100F206EC /* Stylish_2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylish_2Tests.swift; sourceTree = "<group>"; };
 		762CA89F1EC5BA3100F206EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		762CA8AA1EC5BA4A00F206EC /* StylishExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StylishExtensions.swift; path = StylishExtensions.swift; sourceTree = "<group>"; };
-		762CA8AB1EC5BA4A00F206EC /* UIButtonPropertySet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonPropertySet.swift; sourceTree = "<group>"; };
-		762CA8AC1EC5BA4A00F206EC /* UIImagePropertySet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePropertySet.swift; sourceTree = "<group>"; };
-		762CA8AD1EC5BA4A00F206EC /* UILabelPropertySet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelPropertySet.swift; sourceTree = "<group>"; };
-		762CA8AE1EC5BA4A00F206EC /* UIViewPropertySet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewPropertySet.swift; sourceTree = "<group>"; };
-		762CA8B41EC5BA6000F206EC /* JSONStyleProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONStyleProperty.swift; path = JSONStyleProperty.swift; sourceTree = "<group>"; };
-		762CA8B51EC5BA6000F206EC /* StyleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleClass.swift; path = StyleClass.swift; sourceTree = "<group>"; };
+		762CA8AA1EC5BA4A00F206EC /* StylishExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StylishExtensions.swift; sourceTree = "<group>"; };
+		762CA8AB1EC5BA4A00F206EC /* StyleableUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUIButton.swift; sourceTree = "<group>"; };
+		762CA8AC1EC5BA4A00F206EC /* StyleableUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUIImageView.swift; sourceTree = "<group>"; };
+		762CA8AD1EC5BA4A00F206EC /* StyleableUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUILabel.swift; sourceTree = "<group>"; };
+		762CA8AE1EC5BA4A00F206EC /* StyleableUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUIView.swift; sourceTree = "<group>"; };
+		762CA8B41EC5BA6000F206EC /* JSONStyleProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStyleProperty.swift; sourceTree = "<group>"; };
+		762CA8B51EC5BA6000F206EC /* StyleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleClass.swift; sourceTree = "<group>"; };
 		762CA8B61EC5BA6000F206EC /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
-		762CA8B71EC5BA6000F206EC /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stylesheet.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
-		762CA8B81EC5BA6000F206EC /* Stylish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stylish.swift; path = Stylish.swift; sourceTree = "<group>"; };
-		762CA8B91EC5BA6000F206EC /* StylishJSONStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StylishJSONStylesheet.swift; path = StylishJSONStylesheet.swift; sourceTree = "<group>"; };
+		762CA8B71EC5BA6000F206EC /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
+		762CA8B81EC5BA6000F206EC /* Stylish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylish.swift; sourceTree = "<group>"; };
+		762CA8B91EC5BA6000F206EC /* StylishJSONStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StylishJSONStylesheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				762CA8B61EC5BA6000F206EC /* Styleable.swift */,
-				762CA8AB1EC5BA4A00F206EC /* UIButtonPropertySet.swift */,
-				762CA8AC1EC5BA4A00F206EC /* UIImagePropertySet.swift */,
-				762CA8AD1EC5BA4A00F206EC /* UILabelPropertySet.swift */,
-				762CA8AE1EC5BA4A00F206EC /* UIViewPropertySet.swift */,
+				762CA8AB1EC5BA4A00F206EC /* StyleableUIButton.swift */,
+				762CA8AC1EC5BA4A00F206EC /* StyleableUIImageView.swift */,
+				762CA8AD1EC5BA4A00F206EC /* StyleableUILabel.swift */,
+				762CA8AE1EC5BA4A00F206EC /* StyleableUIView.swift */,
 			);
 			path = Styleable;
 			sourceTree = "<group>";
@@ -240,12 +240,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				762CA8AF1EC5BA4A00F206EC /* StylishExtensions.swift in Sources */,
-				762CA8B31EC5BA4A00F206EC /* UIViewPropertySet.swift in Sources */,
+				762CA8B31EC5BA4A00F206EC /* StyleableUIView.swift in Sources */,
 				762CA8BB1EC5BA6000F206EC /* StyleClass.swift in Sources */,
 				762CA8BA1EC5BA6000F206EC /* JSONStyleProperty.swift in Sources */,
-				762CA8B01EC5BA4A00F206EC /* UIButtonPropertySet.swift in Sources */,
-				762CA8B21EC5BA4A00F206EC /* UILabelPropertySet.swift in Sources */,
-				762CA8B11EC5BA4A00F206EC /* UIImagePropertySet.swift in Sources */,
+				762CA8B01EC5BA4A00F206EC /* StyleableUIButton.swift in Sources */,
+				762CA8B21EC5BA4A00F206EC /* StyleableUILabel.swift in Sources */,
+				762CA8B11EC5BA4A00F206EC /* StyleableUIImageView.swift in Sources */,
 				762CA8BF1EC5BA6000F206EC /* StylishJSONStylesheet.swift in Sources */,
 				762CA8BC1EC5BA6000F206EC /* Styleable.swift in Sources */,
 				762CA8BE1EC5BA6000F206EC /* Stylish.swift in Sources */,
