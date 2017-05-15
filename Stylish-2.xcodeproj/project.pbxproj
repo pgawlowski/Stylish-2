@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		762CA8991EC5BA3100F206EC /* Stylish-2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762CA88F1EC5BA3100F206EC /* Stylish-2.framework */; };
+		762CA8991EC5BA3100F206EC /* Stylish2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762CA88F1EC5BA3100F206EC /* Stylish2.framework */; };
 		762CA89E1EC5BA3100F206EC /* Stylish_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA89D1EC5BA3100F206EC /* Stylish_2Tests.swift */; };
 		762CA8A01EC5BA3100F206EC /* Stylish-2.h in Headers */ = {isa = PBXBuildFile; fileRef = 762CA8921EC5BA3100F206EC /* Stylish-2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		762CA8AF1EC5BA4A00F206EC /* StylishExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AA1EC5BA4A00F206EC /* StylishExtensions.swift */; };
@@ -34,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		762CA88F1EC5BA3100F206EC /* Stylish-2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Stylish-2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		762CA88F1EC5BA3100F206EC /* Stylish2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stylish2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762CA8921EC5BA3100F206EC /* Stylish-2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylish-2.h"; sourceTree = "<group>"; };
 		762CA8931EC5BA3100F206EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		762CA8981EC5BA3100F206EC /* Stylish-2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stylish-2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				762CA8991EC5BA3100F206EC /* Stylish-2.framework in Frameworks */,
+				762CA8991EC5BA3100F206EC /* Stylish2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 		762CA8901EC5BA3100F206EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				762CA88F1EC5BA3100F206EC /* Stylish-2.framework */,
+				762CA88F1EC5BA3100F206EC /* Stylish2.framework */,
 				762CA8981EC5BA3100F206EC /* Stylish-2Tests.xctest */,
 			);
 			name = Products;
@@ -141,9 +141,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		762CA88E1EC5BA3100F206EC /* Stylish-2 */ = {
+		762CA88E1EC5BA3100F206EC /* Stylish2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 762CA8A31EC5BA3100F206EC /* Build configuration list for PBXNativeTarget "Stylish-2" */;
+			buildConfigurationList = 762CA8A31EC5BA3100F206EC /* Build configuration list for PBXNativeTarget "Stylish2" */;
 			buildPhases = (
 				762CA88A1EC5BA3100F206EC /* Sources */,
 				762CA88B1EC5BA3100F206EC /* Frameworks */,
@@ -154,9 +154,9 @@
 			);
 			dependencies = (
 			);
-			name = "Stylish-2";
+			name = Stylish2;
 			productName = "Stylish-2";
-			productReference = 762CA88F1EC5BA3100F206EC /* Stylish-2.framework */;
+			productReference = 762CA88F1EC5BA3100F206EC /* Stylish2.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		762CA8971EC5BA3100F206EC /* Stylish-2Tests */ = {
@@ -211,7 +211,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				762CA88E1EC5BA3100F206EC /* Stylish-2 */,
+				762CA88E1EC5BA3100F206EC /* Stylish2 */,
 				762CA8971EC5BA3100F206EC /* Stylish-2Tests */,
 			);
 		};
@@ -266,7 +266,7 @@
 /* Begin PBXTargetDependency section */
 		762CA89B1EC5BA3100F206EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 762CA88E1EC5BA3100F206EC /* Stylish-2 */;
+			target = 762CA88E1EC5BA3100F206EC /* Stylish2 */;
 			targetProxy = 762CA89A1EC5BA3100F206EC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -449,13 +449,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		762CA8A31EC5BA3100F206EC /* Build configuration list for PBXNativeTarget "Stylish-2" */ = {
+		762CA8A31EC5BA3100F206EC /* Build configuration list for PBXNativeTarget "Stylish2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				762CA8A41EC5BA3100F206EC /* Debug */,
 				762CA8A51EC5BA3100F206EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		762CA8A61EC5BA3100F206EC /* Build configuration list for PBXNativeTarget "Stylish-2Tests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +465,7 @@
 				762CA8A81EC5BA3100F206EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

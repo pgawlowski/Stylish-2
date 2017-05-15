@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+private class BundleMarker {}
+
 //Mark Styleable
 typealias StyleApplicator = (StyleClass, Any)->()
 
@@ -35,7 +37,7 @@ extension Styleable where Self:UIView {
     func parseAndApply(styles:String, usingStylesheet stylesheetName:String) {
         let components = styles.replacingOccurrences(of: ", ", with: ",").replacingOccurrences(of: " ,", with: ",").components(separatedBy:",")
         
-        if let moduleName = String(describing:Bundle.main).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
             let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
             for string in components where string != "" {
                 if let style = stylesheet[string] {
@@ -52,7 +54,7 @@ extension Styleable where Self:UIView {
             }
         }
         else {
-            if let info = Bundle.main.infoDictionary, let moduleName = String(describing:Bundle.main).components(separatedBy:".").first, let stylesheetName = info["Stylesheet"] as? String, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+            if let info = Bundle.main.infoDictionary, let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetName = info["Stylesheet"] as? String, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
                 let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
                 for string in components where string != "" {
                     if let style = stylesheet[string] {
@@ -85,7 +87,7 @@ extension Styleable where Self:UIView {
             }
         }
         
-        if let moduleName = String(describing:Bundle.main).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
             let stylesheet = stylesheetType.init()
             for string in components where string != "" {
                 if stylesheet[string] == nil {
@@ -102,7 +104,7 @@ extension Styleable where Self:UIView {
             }
         }
         else {
-            if let info = Bundle.main.infoDictionary, let moduleName = String(describing:Bundle.main).components(separatedBy:".").first, let stylesheetName = info["Stylesheet"] as? String, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+            if let info = Bundle.main.infoDictionary, let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetName = info["Stylesheet"] as? String, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
                 let stylesheet = stylesheetType.init()
                 for string in components where string != "" {
                     if stylesheet[string] == nil {
