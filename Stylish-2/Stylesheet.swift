@@ -91,11 +91,11 @@ class JSONStylesheet : Stylesheet {
         #endif
 
         // Compare the file modification date of the downloaded / copied version of stylesheet.json in the Documents directory, and the original version of stylesheet.json included in the app bundle. If the Documents version is more recent, load and parse that version.  Otherwise, use the bundle version and then copy it to the Documents directory.        
-        if let savedAttributes = try? fileManager.attributesOfItem(atPath: filename), let savedDate = savedAttributes[FileAttributeKey.modificationDate] as? NSDate, let path = bundle.path(forResource: "stylesheet", ofType: "json"), let bundledAttributes = try? fileManager.attributesOfItem(atPath: path), let bundledDate = bundledAttributes[FileAttributeKey.modificationDate] as? NSDate  {
+        if let savedAttributes = try? fileManager.attributesOfItem(atPath: filename), let savedDate = savedAttributes[FileAttributeKey.modificationDate] as? NSDate, let path = jsonPath, let bundledAttributes = try? fileManager.attributesOfItem(atPath: path), let bundledDate = bundledAttributes[FileAttributeKey.modificationDate] as? NSDate  {
             
             if let data = NSData(contentsOfFile:filename), let json = (try? JSONSerialization.jsonObject(with: data as Data, options:[])) as? [[String : AnyObject]], savedDate.timeIntervalSinceReferenceDate >= bundledDate.timeIntervalSinceReferenceDate {
                 parse(json: json)
-            } else if let path = bundle.path(forResource: "stylesheet", ofType: "json"), let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
+            } else if let path = jsonPath, let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
                 if let stringJSON = String(data:data as Data, encoding: String.Encoding.utf8) {
                     do {
                         try stringJSON.write(toFile: filename, atomically: true, encoding: String.Encoding.utf8)
@@ -106,7 +106,7 @@ class JSONStylesheet : Stylesheet {
                 parse(json: json)
             }
         }
-        else if let path = bundle.path(forResource: "stylesheet", ofType: "json"), let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
+        else if let path = jsonPath, let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
             if let stringJSON = String(data:data as Data, encoding: String.Encoding.utf8) {
                 do {
                     try stringJSON.write(toFile: filename, atomically: true, encoding: String.Encoding.utf8)
