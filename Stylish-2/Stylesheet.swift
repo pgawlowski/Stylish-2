@@ -68,13 +68,28 @@ class JSONStylesheet : Stylesheet {
     var dynamicPropertySets:[StylePropertySet.Type] { get { return [UIViewPropertySet.self, UILabelPropertySet.self, UIButtonPropertySet.self, UIImageViewPropertySet.self] } }
     
     required init() {
+        var jsonPath: String?
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let savedDirectory = paths[0]
         let filename = savedDirectory.appending("/stylesheet.json")
+        
         let bundle = Bundle.main
         let fileManager = FileManager.default
-        
-        
+        #if TARGET_INTERFACE_BUILDER
+            let processInfo = ProcessInfo.processInfo
+            let environment = processInfo.environment
+            let projectSourceDirectories = environment["IB_PROJECT_SOURCE_DIRECTORIES"]! as NSString
+            let directories = projectSourceDirectories.components(separatedBy: ":")
+            
+            if directories.count != 0 {
+                var firstPath = directories[0] as NSString
+                firstPath = firstPath.deletingLastPathComponent as NSString
+                jsonPath = firstPath.appendingPathComponent("stylesheet.json")
+            }
+        #else
+            jsonPath = bundle.path(forResource: "stylesheet", ofType: "json")
+        #endif
+
         // Compare the file modification date of the downloaded / copied version of stylesheet.json in the Documents directory, and the original version of stylesheet.json included in the app bundle. If the Documents version is more recent, load and parse that version.  Otherwise, use the bundle version and then copy it to the Documents directory.        
         if let savedAttributes = try? fileManager.attributesOfItem(atPath: filename), let savedDate = savedAttributes[FileAttributeKey.modificationDate] as? NSDate, let path = bundle.path(forResource: "stylesheet", ofType: "json"), let bundledAttributes = try? fileManager.attributesOfItem(atPath: path), let bundledDate = bundledAttributes[FileAttributeKey.modificationDate] as? NSDate  {
             
