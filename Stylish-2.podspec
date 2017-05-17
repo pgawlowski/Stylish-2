@@ -29,4 +29,10 @@ s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s
 # 7
 s.source_files = "Stylish-2/**/*.{swift}"
 
+s.resource_bundles = {
+'Stylish-2' => [
+'Pod/**/*.json'
+]
+}
+
 end
