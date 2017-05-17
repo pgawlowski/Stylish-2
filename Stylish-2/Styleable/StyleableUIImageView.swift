@@ -28,8 +28,8 @@ extension StyleClass {
     var UIImageView:UIImageViewPropertySet { get { return self.retrieve(propertySet: UIImageViewPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
+#if (TARGET_INTERFACE_BUILDER && !DISABLE_DESIGNABLES) || !TARGET_INTERFACE_BUILDER
 @IBDesignable class StyleableUIImageView : UIImageView, Styleable {
-    
     class var StyleApplicators: [StyleApplicator] {
         return StyleableUIView.StyleApplicators + [{
             (style:StyleClass, target:Any) in
@@ -56,3 +56,4 @@ extension StyleClass {
         showErrorIfInvalidStyles()
     }
 }
+#endif
