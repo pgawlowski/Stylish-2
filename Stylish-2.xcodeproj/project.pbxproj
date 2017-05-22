@@ -21,6 +21,7 @@
 		762CA8BD1EC5BA6000F206EC /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B71EC5BA6000F206EC /* Stylesheet.swift */; };
 		762CA8BE1EC5BA6000F206EC /* Stylish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B81EC5BA6000F206EC /* Stylish.swift */; };
 		762CA8BF1EC5BA6000F206EC /* StylishJSONStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B91EC5BA6000F206EC /* StylishJSONStylesheet.swift */; };
+		768293501ED2C80E00542550 /* StyleableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7682934F1ED2C80E00542550 /* StyleableUITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		762CA8B71EC5BA6000F206EC /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		762CA8B81EC5BA6000F206EC /* Stylish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylish.swift; sourceTree = "<group>"; };
 		762CA8B91EC5BA6000F206EC /* StylishJSONStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StylishJSONStylesheet.swift; sourceTree = "<group>"; };
+		7682934F1ED2C80E00542550 /* StyleableUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUITextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				762CA8AC1EC5BA4A00F206EC /* StyleableUIImageView.swift */,
 				762CA8AD1EC5BA4A00F206EC /* StyleableUILabel.swift */,
 				762CA8AE1EC5BA4A00F206EC /* StyleableUIView.swift */,
+				7682934F1ED2C80E00542550 /* StyleableUITextField.swift */,
 			);
 			path = Styleable;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				762CA8AF1EC5BA4A00F206EC /* StylishExtensions.swift in Sources */,
+				768293501ED2C80E00542550 /* StyleableUITextField.swift in Sources */,
 				762CA8B31EC5BA4A00F206EC /* StyleableUIView.swift in Sources */,
 				762CA8BB1EC5BA6000F206EC /* StyleClass.swift in Sources */,
 				762CA8BA1EC5BA6000F206EC /* JSONStyleProperty.swift in Sources */,

@@ -17,7 +17,6 @@ extension StyleClass {
     var UIView:UIViewPropertySet { get { return self.retrieve(propertySet: UIViewPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-#if (TARGET_INTERFACE_BUILDER && !DISABLE_DESIGNABLES) || !TARGET_INTERFACE_BUILDER
 @IBDesignable class StyleableUIView : UIView, Styleable {
     class var StyleApplicators:[StyleApplicator] {
         return [{
@@ -48,4 +47,4 @@ extension StyleClass {
         showErrorIfInvalidStyles()
     }
 }
-#endif
+

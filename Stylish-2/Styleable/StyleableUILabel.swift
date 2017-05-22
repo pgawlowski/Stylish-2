@@ -17,7 +17,6 @@ extension StyleClass {
     var UILabel:UILabelPropertySet { get { return self.retrieve(propertySet: UILabelPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-#if (TARGET_INTERFACE_BUILDER && !DISABLE_DESIGNABLES) || !TARGET_INTERFACE_BUILDER
 @IBDesignable class StyleableUILabel : UILabel, Styleable {
     class var StyleApplicators: [StyleApplicator] {
         return StyleableUIView.StyleApplicators + [{
@@ -97,4 +96,3 @@ extension StyleClass {
         NotificationCenter.default.removeObserver(self)
     }
 }
-#endif
