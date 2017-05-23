@@ -17,6 +17,7 @@ enum JSONStyleProperty {
     case BoolProperty(value:Bool)
     case UIEdgeInsetsProperty(value:UIEdgeInsets)
     case NSTextAlignmentProperty(value:NSTextAlignment)
+    case UITextBorderStyleProperty(value:UITextBorderStyle)
     case StringProperty(value:String)
     case UIColorProperty(value:UIColor)
     case CGColorProperty(value:CGColor)
@@ -82,6 +83,19 @@ enum JSONStyleProperty {
                 self = tuple.1!
             }
             break
+            
+        case _ where type.isVariant(of: "UI Edge Insets") || type.isVariant(of: "Edge Insets"):
+            guard let top = (value?["top"] as? NSNumber)?.floatValue,
+                let left = (value?["left"] as? NSNumber)?.floatValue,
+                let bottom = (value?["bottom"] as? NSNumber)?.floatValue,
+                let right = (value?["right"] as? NSNumber)?.floatValue else {
+                    self = .InvalidProperty(errorMessage: "'propertyValue' in JSON was missing or or did not contain values for 'top', 'left', 'bottom', and 'right' that could be converted to Floats")
+                    return true
+            }
+            let tuple = checkClosure(UIEdgeInsets(top: CGFloat(top), left: CGFloat(left), bottom: CGFloat(bottom), right: CGFloat(right)) as UIEdgeInsets, type)
+            self = (tuple.0 != nil) ? .UIEdgeInsetsProperty(value: tuple.0 as! UIEdgeInsets) : tuple.1!
+            break
+
         default:
             return false;
         }
@@ -156,6 +170,23 @@ enum JSONStyleProperty {
                 self = .InvalidProperty(errorMessage: "'propertyValue' in JSON was not a String that matched valid values for an NSTextAlignment property, i.e. 'Left', 'Center', 'Right', 'Justified', 'Natural'")
             }
             break
+            
+        case _ where type.isVariant(of: "UITextBorderStyle") || type.isVariant(of: "Text Border Style"):
+            let tuple = checkClosure(value as? String, type)
+            let value: String = (tuple.0 != nil) ? tuple.0 as! String : ""
+
+            switch value {
+            case _ where value.isVariant(of: "bezel"):
+                self = .UITextBorderStyleProperty(value: .bezel)
+            case _ where value.isVariant(of: "line"):
+                self = .UITextBorderStyleProperty(value: .line)
+            case _ where value.isVariant(of: "none"):
+                self = .UITextBorderStyleProperty(value: .none)
+            case _ where value.isVariant(of: "roundedRect"):
+                self = .UITextBorderStyleProperty(value: .roundedRect)
+            }
+            break
+            
         case _ where type.isVariant(of: "UI View Content Mode") || type.isVariant(of: "View Content Mode") || type.isVariant(of: "Content Mode") :
             let tuple = checkClosure(value as? String, type)
             let value: String = (tuple.0 != nil) ? tuple.0 as! String : ""
@@ -191,17 +222,6 @@ enum JSONStyleProperty {
                 self = .InvalidProperty(errorMessage: "'propertyValue' in JSON was not a String that matched valid values for a UIViewContentMode property, e.g. 'scaleToFill', 'scaleAspectFit', 'Center', 'topRight', etc.")
             }
             break
-        case _ where type.isVariant(of: "UI Edge Insets") || type.isVariant(of: "Edge Insets"):
-            guard let top = (value?["top"] as? NSNumber)?.floatValue,
-                let left = (value?["left"] as? NSNumber)?.floatValue,
-                let bottom = (value?["bottom"] as? NSNumber)?.floatValue,
-                let right = (value?["right"] as? NSNumber)?.floatValue else {
-                    self = .InvalidProperty(errorMessage: "'propertyValue' in JSON was missing or or did not contain values for 'top', 'left', 'bottom', and 'right' that could be converted to Floats")
-                    return true
-            }
-            let tuple = checkClosure(UIEdgeInsets(top: CGFloat(top), left: CGFloat(left), bottom: CGFloat(bottom), right: CGFloat(right)) as UIEdgeInsets, type)
-            self = (tuple.0 != nil) ? .UIEdgeInsetsProperty(value: tuple.0 as! UIEdgeInsets) : tuple.1!
-            break
         default:
             return false
         }
@@ -211,35 +231,37 @@ enum JSONStyleProperty {
 
     var value:Any {
         switch self {
-        case .CGFloatProperty(let value) :
+        case .CGFloatProperty(let value):
             return value
-        case .FloatProperty(let value) :
+        case .FloatProperty(let value):
             return value
-        case .DoubleProperty(let value) :
+        case .DoubleProperty(let value):
             return value
-        case .IntProperty(let value) :
+        case .IntProperty(let value):
             return value
-        case .BoolProperty(let value) :
+        case .BoolProperty(let value):
             return value
-        case .UIEdgeInsetsProperty(let value) :
+        case .UIEdgeInsetsProperty(let value):
             return value
-        case .NSTextAlignmentProperty(let value) :
+        case .NSTextAlignmentProperty(let value):
             return value.rawValue
-        case .StringProperty(let value) :
-            return value
-        case .UIColorProperty(let value) :
-            return value
-        case .CGColorProperty(let value) :
-            return value
-        case .UIImageProperty(let value) :
-            return value
-        case .UIViewContentModeProperty(let value) :
+        case .UITextBorderStyleProperty(value: value):
             return value.rawValue
-        case .UIFontProperty(let value) :
+        case .StringProperty(let value):
             return value
-        case .InvalidProperty(let value) :
+        case .UIColorProperty(let value):
             return value
-        case .PropertyType(let value) :
+        case .CGColorProperty(let value):
+            return value
+        case .UIImageProperty(let value):
+            return value
+        case .UIViewContentModeProperty(let value):
+            return value.rawValue
+        case .UIFontProperty(let value):
+            return value
+        case .InvalidProperty(let value):
+            return value
+        case .PropertyType(let value):
             return value
         }
     }
