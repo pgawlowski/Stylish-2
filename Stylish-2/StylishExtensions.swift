@@ -99,21 +99,22 @@ extension UIFont {
         var fontSize: CGFloat?
         
         init(name:String?, weight: String?, size: Float?) {
-            self.fontWeight = weight
             self.fontName = name
-            
-            if self.fontWeight != nil {
-                if let dashRange = self.fontName?.range(of: "-") {
-                    self.fontName?.removeSubrange(dashRange.lowerBound..<(self.fontName?.endIndex)!)
-                }
-            }
+            self.fontWeight = weight
             
             self.fontSize = size != nil ? CGFloat(size!) : 0
         }
         
         func createFont(_ baseFont: UIFont) -> UIFont {
             let currentFont = baseFont
+            
             var fontName = ((self.fontName) != nil) ? self.fontName : currentFont.fontName
+            if let _ = self.fontWeight {
+                if let dashRange = fontName?.range(of: "-") {
+                    fontName?.removeSubrange(dashRange.lowerBound..<(fontName?.endIndex)!)
+                }
+            }
+            
             fontName = (self.fontWeight != nil && fontName?.range(of: fontWeight!) == nil) ? fontName! + "-" + self.fontWeight! : fontName
             let fontSize = (self.fontSize != 0) ? self.fontSize : currentFont.pointSize
             
