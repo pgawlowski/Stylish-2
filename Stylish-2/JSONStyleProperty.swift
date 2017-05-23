@@ -184,6 +184,8 @@ enum JSONStyleProperty {
                 self = .UITextBorderStyleProperty(value: .none)
             case _ where value.isVariant(of: "roundedRect"):
                 self = .UITextBorderStyleProperty(value: .roundedRect)
+            default :
+                self = .InvalidProperty(errorMessage: "'propertyValue' in JSON was not a String that matched valid values for an UITextBorderStyle property, i.e. 'bezel', 'line', 'none', 'roundedRect'")
             }
             break
             
@@ -245,7 +247,7 @@ enum JSONStyleProperty {
             return value
         case .NSTextAlignmentProperty(let value):
             return value.rawValue
-        case .UITextBorderStyleProperty(value: value):
+        case .UITextBorderStyleProperty(let value):
             return value.rawValue
         case .StringProperty(let value):
             return value
