@@ -18,16 +18,29 @@ extension StyleClass {
 
 @IBDesignable class StyleableUITextField: UITextField, Styleable {
     class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + StyleableUITextField.StyleApplicators + [{
+        return StyleableUIView.StyleApplicators + [{
             (style:StyleClass, target:Any) in
             if let textField = target as? UITextField {
                 for (key, value) in style.UITextField.propertySet {
                     if !(value is NSNull) {
-                        textField.setStyleProperties(value: value, key: key)
+                        switch key {
+                        case "font":
+                            fontStyleApplicator(target: textField, value: value as? UIFont.SimplifiedFont)
+                        default:
+                            textField.setStyleProperties(value: value, key: key)
+                        }
                     }
                 }
             }
             }]
+    }
+    
+    class func fontStyleApplicator(target: UITextField, value: UIFont.SimplifiedFont?) {
+        var font: UIFont = target.font!
+        if let fontValue = value {
+            font = fontValue.createFont(font)
+        }
+        target.font = font
     }
     
     @IBInspectable var styles:String = "" {

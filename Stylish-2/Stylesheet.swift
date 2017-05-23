@@ -65,7 +65,7 @@ class JSONStylesheet : Stylesheet {
     }
     
     var styleClasses = [(identifier: String, styleClass: StyleClass)]()
-    var dynamicPropertySets:[StylePropertySet.Type] { get { return [UIViewPropertySet.self, UILabelPropertySet.self, UIButtonPropertySet.self, UIImageViewPropertySet.self] } }
+    var dynamicPropertySets:[StylePropertySet.Type] { get { return [UIViewPropertySet.self, UILabelPropertySet.self, UIButtonPropertySet.self, UITextFieldPropertySet.self, UIImageViewPropertySet.self] } }
     
     required init() {
         var jsonPath: String?
