@@ -26,6 +26,7 @@ extension StyleClass {
                         switch key {
                         case "font":
                             fontStyleApplicator(target: textField, value: value as? UIFont.SimplifiedFont)
+                            break
                         default:
                             textField.setStyleProperties(value: value, key: key)
                         }
