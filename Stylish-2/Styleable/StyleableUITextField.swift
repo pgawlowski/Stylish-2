@@ -24,9 +24,6 @@ extension StyleClass {
                 for (key, value) in style.UITextField.propertySet {
                     if !(value is NSNull) {
                         switch key {
-                        case "font":
-                            fontStyleApplicator(target: textField, value: value as? UIFont.SimplifiedFont)
-                            break
                         default:
                             textField.setStyleProperties(value: value, key: key)
                         }
@@ -35,15 +32,7 @@ extension StyleClass {
             }
             }]
     }
-    
-    class func fontStyleApplicator(target: UITextField, value: UIFont.SimplifiedFont?) {
-        var font: UIFont = target.font!
-        if let fontValue = value {
-            font = fontValue.createFont(font)
-        }
-        target.font = font
-    }
-    
+        
     @IBInspectable var styles:String = "" {
         didSet {
             parseAndApplyStyles()

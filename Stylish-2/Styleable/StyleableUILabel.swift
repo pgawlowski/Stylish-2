@@ -27,9 +27,6 @@ extension StyleClass {
                 for (key, value) in style.UILabel.propertySet {
                     if !(value is NSNull) {
                         switch key {
-                        case "font" where !(value is NSNull):
-                            fontStyleApplicator(target: label, value: value as? UIFont.SimplifiedFont)
-                            break
                         default:
                             label.setStyleProperties(value: value, key: key)
                         }
@@ -43,9 +40,6 @@ extension StyleClass {
                         case "textColor" where !(value is NSNull):
                             button.setTitleColor(value as? UIColor, for: .normal)
                             break
-                        case "font" where !(value is NSNull):
-                            fontStyleApplicator(target: button.titleLabel!, value: value as? UIFont.SimplifiedFont)
-                            break
                         default:
                             button.titleLabel?.setStyleProperties(value: value, key: key)
                             break
@@ -57,14 +51,6 @@ extension StyleClass {
                 return
             }
         }]
-    }
-
-    class func fontStyleApplicator(target: UILabel, value: UIFont.SimplifiedFont?) {
-        var font: UIFont = target.font
-        if let fontValue = value {
-            font = fontValue.createFont(font)
-        }
-        target.font = font
     }
     
     override func didMoveToSuperview() {
