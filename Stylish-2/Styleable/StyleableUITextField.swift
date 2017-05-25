@@ -27,9 +27,6 @@ extension StyleClass {
                         case "font":
                             fontStyleApplicator(target: textField, value: value as? UIFont.SimplifiedFont)
                             break
-                        case "backgroundColor":
-                            textField.backgroundColor = value as? UIColor
-                            break;
                         default:
                             textField.setStyleProperties(value: value, key: key)
                         }
