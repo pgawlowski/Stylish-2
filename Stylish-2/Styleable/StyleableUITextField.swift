@@ -18,7 +18,7 @@ extension StyleClass {
 
 @IBDesignable class StyleableUITextField: UITextField, Styleable {
     class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + [{
+        return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + [{
             (style:StyleClass, target:Any) in
             if let textField = target as? UITextField {
                 for (key, value) in style.UITextField.propertySet {
