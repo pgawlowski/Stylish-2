@@ -24,13 +24,6 @@ extension StyleClass {
                 for (key, value) in style.UITextField.propertySet {
                     if !(value is NSNull) {
                         switch key {
-                        case "background":
-                            if value is UIImage {
-                                textField.background = value as? UIImage
-                            } else if value is UIColor {
-                                textField.background = UIImage.from(color: value as! UIColor)
-                            }
-                            break
                         default:
                             textField.setStyleProperties(value: value, key: key)
                         }
