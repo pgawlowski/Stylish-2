@@ -19,7 +19,7 @@ extension StyleClass {
 
 @IBDesignable class StyleableUILabel : UILabel, Styleable {
     class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + [{
+        return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + [{
             (style:StyleClass, target:Any) in
 
             switch target {
