@@ -133,9 +133,9 @@ enum JSONStyleProperty {
             break
         case is UIFont.Type:
             let dict = value
-            let fontName: String? = dict?.value(forKey: "name") as? String
+            let fontName: String? = dict?.value(forKey: "fontName") as? String
             let fontWeight: String? = dict?["weight"] as? String
-            let fontSize: Float? = dict?.value(forKey: "size") as? Float
+            let fontSize: Float? = dict?.value(forKey: "pointSize") as? Float
             let font = UIFont.SimplifiedFont(name: fontName, weight: fontWeight, size: fontSize)
             
             self = .UIFontProperty(value: font)

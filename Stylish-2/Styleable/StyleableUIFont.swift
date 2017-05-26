@@ -10,6 +10,17 @@ import UIKit
 
 struct UIFontPropertySet : DynamicStylePropertySet {
     var propertySet: Dictionary<String, Any> = UIFont().retriveDynamicPropertySet()
+    var font:UIFont.SimplifiedFont?
+    
+    mutating func setStyleProperty<T>(named name: String, toValue value: T) {
+        switch name {
+        case _ where name.isVariant(of: "font"):
+            
+            font = value as? UIFont.SimplifiedFont
+        default :
+            return
+        }
+    }
 }
 
 extension StyleClass {
@@ -20,14 +31,12 @@ extension StyleClass {
     class var StyleApplicators: [StyleApplicator] {
         return [{
             (style:StyleClass, target:Any) in
-            for (_, value) in style.UIFont.propertySet {
-                if !(value is NSNull) {
-                    if let target = target as? UITextField {
-                        target.font = fontStyleApplicator(font: target.font!, value: value as? UIFont.SimplifiedFont)
-                    }
-                    else if let target = target as? UILabel {
-                        target.font = fontStyleApplicator(font: target.font!, value: value as? UIFont.SimplifiedFont)
-                    }
+            if let value = style.UIFont.font {
+                if let target = target as? UITextField {
+                    target.font = fontStyleApplicator(font: target.font!, value: value)
+                }
+                else if let target = target as? UILabel {
+                    target.font = fontStyleApplicator(font: target.font!, value: value)
                 }
             }
         }]
