@@ -21,7 +21,7 @@ extension StyleClass {
 
 @IBDesignable class StyleableUIButton : UIButton, Styleable {
     class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + StyleableUILabel.StyleApplicators + [{
+        return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + StyleableUILabel.StyleApplicators + [{
             (style:StyleClass, target:Any) in
             if let button = target as? UIButton {
                 for (key, value) in style.UIButton.propertySet {

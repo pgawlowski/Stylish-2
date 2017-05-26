@@ -38,6 +38,9 @@ extension StyleClass {
                 else if let target = target as? UILabel {
                     target.font = fontStyleApplicator(font: target.font!, value: value)
                 }
+                else if let target = target as? UIButton, let targetFont = target.titleLabel?.font {
+                    target.titleLabel?.font = fontStyleApplicator(font: targetFont, value: value)
+                }
             }
         }]
     }
