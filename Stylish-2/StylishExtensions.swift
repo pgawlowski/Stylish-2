@@ -118,7 +118,12 @@ extension UIFont {
             fontName = (self.fontWeight != nil && fontName?.range(of: fontWeight!) == nil) ? fontName! + "-" + self.fontWeight! : fontName
             let fontSize = (self.fontSize != 0) ? self.fontSize : currentFont.pointSize
             
-            return UIFont(name: fontName!, size: fontSize!)!
+            if let font = UIFont(name: fontName!, size: fontSize!) {
+                return font
+            } else {
+                print("Invalid font name \(fontName)")
+                return UIFont(name: "HelveticaNeue", size: 12)!
+            }
         }
     }
 }
