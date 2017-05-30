@@ -127,7 +127,7 @@ class JSONStylesheet : Stylesheet {
                     let searchPredicate = NSPredicate(format: "styleClass MATCHES[c] %@", style)
                     
                     if let dict: Dictionary = (json as NSArray).filtered(using: searchPredicate).first as? [String : AnyObject],
-                        let styleClass = dictionary["styleClass"] as? String,
+                        let styleClass = dict["styleClass"] as? String,
                         let arr = dict["properties"] as? [[String : AnyObject]] {
                         styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: arr, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
                     }
