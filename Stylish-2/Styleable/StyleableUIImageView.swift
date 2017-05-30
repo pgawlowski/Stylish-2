@@ -18,6 +18,8 @@ struct UIImageViewPropertySet : DynamicStylePropertySet {
         switch name {
         case _ where name.isVariant(of: "Image"):
             image = value as? UIImage
+        case _ where name.isVariant(of: "Template"):
+            image = (value as? UIImage)?.withRenderingMode(.alwaysTemplate)
         default :
             return
         }
