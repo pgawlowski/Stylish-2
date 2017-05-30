@@ -10,13 +10,29 @@ import UIKit
 
 struct UIFontPropertySet : DynamicStylePropertySet {
     var propertySet: Dictionary<String, Any> = UIFont().retriveDynamicPropertySet()
-    var font:UIFont.SimplifiedFont?
     
     mutating func setStyleProperty<T>(named name: String, toValue value: T) {
         switch name {
         case _ where name.isVariant(of: "font"):
+            if let value = value as? UIFont.SimplifiedFont {
+                let currentName = (!(self.propertySet["fontName"] is NSNull)) ? self.propertySet["fontName"] as! String : "HelveticaNeue"
+                var fontName: String = ((value.fontName) != nil) ? value.fontName! : currentName
+
+                if let fontWeight = value.fontWeight {
+                    if let dashRange = fontName.range(of: "-") {
+                        fontName.removeSubrange(dashRange.lowerBound..<(fontName.endIndex))
+                    }
+                    
+                    fontName = (fontWeight != nil && fontName.range(of: fontWeight) == nil) ? fontName + "-" + fontWeight : fontName
+                }
+                self.propertySet["fontName"] = fontName
+                
+                
+                if let fontSize = value.fontSize, fontSize != 0 {
+                    self.propertySet["pointSize"] = fontSize
+                }
+            }
             
-            font = value as? UIFont.SimplifiedFont
         default :
             return
         }
@@ -31,15 +47,21 @@ extension StyleClass {
     class var StyleApplicators: [StyleApplicator] {
         return [{
             (style:StyleClass, target:Any) in
-            if let value = style.UIFont.font {
-                if let target = target as? UITextField {
-                    target.font = fontStyleApplicator(font: target.font!, value: value)
-                }
-                else if let target = target as? UILabel {
-                    target.font = fontStyleApplicator(font: target.font!, value: value)
-                }
-                else if let target = target as? UIButton, let targetFont = target.titleLabel?.font {
-                    target.titleLabel?.font = fontStyleApplicator(font: targetFont, value: value)
+            
+            let fontName = style.UIFont.propertySet["fontName"]
+            let fontSize = style.UIFont.propertySet["pointSize"]
+            
+            if !(fontName is NSNull) && !(fontSize is NSNull) {                
+                if let value = UIFont(name: fontName as! String, size: fontSize as! CGFloat) {
+                    if let target = target as? UITextField {
+                        target.font = value
+                    }
+                    else if let target = target as? UILabel {
+                        target.font = value
+                    }
+                    else if let target = target as? UIButton, let targetFont = target.titleLabel?.font {
+                        target.titleLabel?.font = value
+                    }
                 }
             }
         }]

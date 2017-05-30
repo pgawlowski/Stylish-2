@@ -121,17 +121,18 @@ class JSONStylesheet : Stylesheet {
     
     private func parse(json:[[String : AnyObject]]) {
         for dictionary in json {
-            if let _ = dictionary["styleClass"] as? String,
+            if let styleClass = dictionary["styleClass"] as? String,
                 let array = dictionary["styles"] as? [String] {
+                
+                var outputArray = [[String : AnyObject]]()
                 for style in array {
                     let searchPredicate = NSPredicate(format: "styleClass MATCHES[c] %@", style)
-                    
                     if let dict: Dictionary = (json as NSArray).filtered(using: searchPredicate).first as? [String : AnyObject],
-                        let styleClass = dict["styleClass"] as? String,
                         let arr = dict["properties"] as? [[String : AnyObject]] {
-                        styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: arr, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
+                        outputArray += arr
                     }
                 }
+                styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: outputArray, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
             } else if let styleClass = dictionary["styleClass"] as? String,
                 let array = dictionary["properties"] as? [[String : AnyObject]] {
                 styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: array, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
