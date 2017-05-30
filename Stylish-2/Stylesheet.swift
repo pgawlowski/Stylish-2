@@ -121,7 +121,18 @@ class JSONStylesheet : Stylesheet {
     
     private func parse(json:[[String : AnyObject]]) {
         for dictionary in json {
-            if let styleClass = dictionary["styleClass"] as? String, let array = dictionary["properties"] as? [[String : AnyObject]] {
+            if let styleClass = dictionary["styleClass"] as? String,
+                let array = dictionary["styles"] as? [String] {
+                for style in array {
+                    let searchPredicate = NSPredicate(format: "styleClass MATCHES[c] %@", style)
+                    
+                    if let dict: Dictionary = (json as NSArray).filtered(using: searchPredicate).first as! [String : AnyObject],
+                        let arr = dict["properties"] as? [[String : AnyObject]] {
+                        styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: arr, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
+                    }
+                }
+            } else if let styleClass = dictionary["styleClass"] as? String,
+                let array = dictionary["properties"] as? [[String : AnyObject]] {
                 styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: array, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
             } else {
                 assert(false, "Error in JSON stylesheet, possibly missing a 'styleClass' String value, or a 'properties' array for one of the included style classes")
