@@ -10,6 +10,7 @@ import UIKit
 
 struct UIFontPropertySet : DynamicStylePropertySet {
     var propertySet: Dictionary<String, Any> = UIFont().retriveDynamicPropertySet()
+    var fontWeight: String?
     
     mutating func setStyleProperty<T>(named name: String, toValue value: T) {
         switch name {
@@ -17,16 +18,8 @@ struct UIFontPropertySet : DynamicStylePropertySet {
             if let value = value as? UIFont.SimplifiedFont {
                 let currentName = (!(self.propertySet["fontName"] is NSNull)) ? self.propertySet["fontName"] as! String : "HelveticaNeue"
                 var fontName: String = ((value.fontName) != nil) ? value.fontName! : currentName
-
-                if let fontWeight = value.fontWeight {
-                    if let dashRange = fontName.range(of: "-") {
-                        fontName.removeSubrange(dashRange.lowerBound..<(fontName.endIndex))
-                    }
-                    
-                    fontName = (fontWeight != nil && fontName.range(of: fontWeight) == nil) ? fontName + "-" + fontWeight : fontName
-                }
                 self.propertySet["fontName"] = fontName
-                
+                self.fontWeight = (value.fontWeight != nil) ? value.fontWeight : ""
                 
                 if let fontSize = value.fontSize, fontSize != 0 {
                     self.propertySet["pointSize"] = fontSize
@@ -48,20 +41,32 @@ extension StyleClass {
         return [{
             (style:StyleClass, target:Any) in
             
-            let fontName = style.UIFont.propertySet["fontName"]
-            let fontSize = style.UIFont.propertySet["pointSize"]
+            var targetFont: UIFont?
             
-            if !(fontName is NSNull) && !(fontSize is NSNull) {                
-                if let value = UIFont(name: fontName as! String, size: fontSize as! CGFloat) {
-                    if let target = target as? UITextField {
-                        target.font = value
+            if let target = target as? UITextField {
+                targetFont = target.font!
+            }
+            else if let target = target as? UILabel {
+                targetFont = target.font
+            }
+            else if let target = target as? UIButton {
+                targetFont = (target.titleLabel?.font)!
+            }
+
+            if targetFont != nil {
+                var fontName: String = (style.UIFont.propertySet["fontName"] is NSNull) ? targetFont!.fontName : style.UIFont.propertySet["fontName"] as! String
+                let fontWeight: String = (style.UIFont.fontWeight != nil) ? style.UIFont.fontWeight! : ""
+                let fontSize = (style.UIFont.propertySet["pointSize"] is NSNull) ? targetFont?.pointSize : style.UIFont.propertySet["pointSize"] as! CGFloat
+                
+                if !fontWeight.isEmpty {
+                    if let dashRange = fontName.range(of: "-") {
+                        fontName.removeSubrange(dashRange.lowerBound..<(fontName.endIndex))
                     }
-                    else if let target = target as? UILabel {
-                        target.font = value
-                    }
-                    else if let target = target as? UIButton, let targetFont = target.titleLabel?.font {
-                        target.titleLabel?.font = value
-                    }
+                    fontName = (fontWeight != nil && fontName.range(of: fontWeight) == nil) ? fontName + "-" + fontWeight : fontName
+                }
+                
+                if let font = UIFont(name: fontName, size: fontSize!) {
+                    targetFont = font
                 }
             }
         }]
