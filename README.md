@@ -24,7 +24,7 @@ Script:
 ```
 > ${SRCROOT}/stylesheet.json
 echo [ >> ${SRCROOT}/stylesheet.json
-for file in ${SRCROOT}/ExampleProject/StylesheetStyles/*/* ;
+for file in ${SRCROOT}/ExampleProject/StylesheetStyles/* ;
 do
 pbcopy < $file
 pbpaste >> ${SRCROOT}/stylesheet.json
