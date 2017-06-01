@@ -41,26 +41,22 @@ extension Styleable where Self:UIView {
         if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
             let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
             for string in components where string != "" {
-                if let style = stylesheet[string] {
+                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+                if let style = stylesheet[trimmed] {
                     self.apply(style: style)
+                } else {
+                    print("!!!! Missing style named `\(trimmed)` !!!!")
                 }
             }
         }
         else if let stylesheetType = Stylish.GlobalStylesheet {
             let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
             for string in components where string != "" {
-                if let style = stylesheet[string] {
+                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+                if let style = stylesheet[trimmed] {
                     self.apply(style: style)
-                }
-            }
-        }
-        else {
-            if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-                let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
-                for string in components where string != "" {
-                    if let style = stylesheet[string] {
-                        self.apply(style: style)
-                    }
+                } else {
+                    print("!!!! Missing style named `\(trimmed)` !!!!")
                 }
             }
         }

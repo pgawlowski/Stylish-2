@@ -1,0 +1,21 @@
+PODS:
+  - Stylish-2 (0.1.0)
+
+DEPENDENCIES:
+  - Stylish-2 (from `https://github.com/pgawlowski/Stylish-2.git`)
+
+EXTERNAL SOURCES:
+  Stylish-2:
+    :git: https://github.com/pgawlowski/Stylish-2.git
+
+CHECKOUT OPTIONS:
+  Stylish-2:
+    :commit: fcf60a316a67bcbb2e202a1098476737fe47f83e
+    :git: https://github.com/pgawlowski/Stylish-2.git
+
+SPEC CHECKSUMS:
+  Stylish-2: 08fa3f95dcee51722affcd79006dfd53b23fd72c
+
+PODFILE CHECKSUM: 9e8616349a498e5435915c45352dd51345c307fa
+
+COCOAPODS: 1.2.1
