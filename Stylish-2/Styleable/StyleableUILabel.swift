@@ -17,7 +17,7 @@ extension StyleClass {
     var UILabel:UILabelPropertySet { get { return self.retrieve(propertySet: UILabelPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable class StyleableUILabel : UILabel, Styleable {
+@IBDesignable public class StyleableUILabel : UILabel, Styleable {
     class var StyleApplicators: [StyleApplicator] {
         return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + [{
             (style:StyleClass, target:Any) in
@@ -53,7 +53,7 @@ extension StyleClass {
         }]
     }
     
-    override func didMoveToSuperview() {
+    override public func didMoveToSuperview() {
         NotificationCenter.default.addObserver(self, selector: #selector(StyleableUILabel.refreshFont), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
         super.didMoveToSuperview()
     }
@@ -74,7 +74,7 @@ extension StyleClass {
         parseAndApplyStyles()
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
     
