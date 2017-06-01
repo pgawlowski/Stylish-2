@@ -18,6 +18,8 @@ struct UIImageViewPropertySet : DynamicStylePropertySet {
         switch name {
         case _ where name.isVariant(of: "Image"):
             image = value as? UIImage
+        case _ where name.isVariant(of: "Template"):
+            image = (value as? UIImage)?.withRenderingMode(.alwaysTemplate)
         default :
             return
         }
@@ -28,7 +30,7 @@ extension StyleClass {
     var UIImageView:UIImageViewPropertySet { get { return self.retrieve(propertySet: UIImageViewPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable class StyleableUIImageView : UIImageView, Styleable {
+@IBDesignable public class StyleableUIImageView : UIImageView, Styleable {
     class var StyleApplicators: [StyleApplicator] {
         return StyleableUIView.StyleApplicators + [{
             (style:StyleClass, target:Any) in
@@ -51,7 +53,7 @@ extension StyleClass {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
 }

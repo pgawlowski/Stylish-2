@@ -19,7 +19,7 @@ extension StyleClass {
     var UIButton:UIButtonPropertySet { get { return self.retrieve(propertySet: UIButtonPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable class StyleableUIButton : UIButton, Styleable {
+@IBDesignable public class StyleableUIButton : UIButton, Styleable {
     class var StyleApplicators: [StyleApplicator] {
         return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + StyleableUILabel.StyleApplicators + [{
             (style:StyleClass, target:Any) in
@@ -45,7 +45,7 @@ extension StyleClass {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
 }

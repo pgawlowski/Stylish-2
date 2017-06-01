@@ -125,7 +125,7 @@ enum JSONStyleProperty {
         case is UIImage.Type:
             let bundle = Bundle(for: JSONStylesheet.self)
             let tuple = checkClosure(value as? String, self.value as! String)
-            if tuple.0 != nil, let value = UIImage(named: tuple.0 as! String, in: bundle, compatibleWith: UIScreen.main.traitCollection) {
+            if tuple.0 != nil, let value = UIImage(named: tuple.0 as! String) {
                 self = .UIImageProperty(value: value)
             } else {
                 self = tuple.1!

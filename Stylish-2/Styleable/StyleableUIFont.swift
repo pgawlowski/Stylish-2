@@ -34,7 +34,7 @@ extension StyleClass {
     var UIFont:UIFontPropertySet { get { return self.retrieve(propertySet: UIFontPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable class StyleableUIFont : UIFont, Styleable {
+@IBDesignable public class StyleableUIFont : UIFont, Styleable {
     class var StyleApplicators: [StyleApplicator] {
         return [{
             (style:StyleClass, target:Any) in
@@ -95,6 +95,6 @@ extension StyleClass {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
     }
 }

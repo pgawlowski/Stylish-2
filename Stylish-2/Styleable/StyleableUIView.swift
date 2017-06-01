@@ -17,7 +17,7 @@ extension StyleClass {
     var UIView:UIViewPropertySet { get { return self.retrieve(propertySet: UIViewPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable class StyleableUIView : UIView, Styleable {
+@IBDesignable public class StyleableUIView : UIView, Styleable {
     class var StyleApplicators:[StyleApplicator] {
         return [{
             (style:StyleClass, target:Any) in
@@ -43,7 +43,7 @@ extension StyleClass {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
 }

@@ -16,7 +16,7 @@ extension StyleClass {
     var UITextField:UITextFieldPropertySet { get { return self.retrieve(propertySet: UITextFieldPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable class StyleableUITextField: UITextField, Styleable {
+@IBDesignable public class StyleableUITextField: UITextField, Styleable {
     class var StyleApplicators: [StyleApplicator] {
         return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + [{
             (style:StyleClass, target:Any) in
@@ -45,7 +45,7 @@ extension StyleClass {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
 
