@@ -69,8 +69,8 @@ This is the basic structure of .json stylesheet property. `propertySetName` shou
 - UIImageViewPropertySet
 - UIFontPropertySet
 
-`propertySetName` - supposed to be the exact name as availabel property we want to set
-`propertyType` - supposed to be the exact name as availabel type of property we want to modify
+`propertySetName` - supposed to be the exact name as property we want to set
+`propertyType` - supposed to be the exact type of property we want to modify
 
 ### Mixing styles
 ```
