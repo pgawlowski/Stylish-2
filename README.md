@@ -202,3 +202,6 @@ Separate styling for `UIFont`
 Single `styleClass` mixing all required properties.
 
 Be aware that weight must be available for font you are using! 
+
+## Tips
+To preview styles in storyboard you need to turn on `Editor->Automatically Refresh Views`. To prevent Xcode performance issues it is better to keep it turned off.
