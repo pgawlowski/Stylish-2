@@ -1,1 +1,64 @@
-UITextField
+{
+    "styleClass" : "UITextField.Input",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#9B9B9B"
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "NSTextAlignment",
+                    "propertyValue" : "center",
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clearsOnBeginEditing",
+                    "propertyType" : "Bool",
+                    "propertyValue" : false
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "adjustsFontSizeToFitWidth",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "borderStyle",
+                    "propertyType" : "UITextBorderStyle",
+                    "propertyValue" : "roundedRect"
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clipToBounds",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF"
+                    },
+                    ]
+},
+{
+    "styleClass" : "UITextField.PasswordInput",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clearsOnBeginEditing",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "secureTextEntry",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    ]
+},

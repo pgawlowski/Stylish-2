@@ -1,1 +1,93 @@
-UIButton
+{
+    "styleClass" : "UIButton.StandardButtonWithBG",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#FFFFFF"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#48B6B1"
+                    }
+                    ]
+},
+{
+    "styleClass" : "UIButton.StandardButtonWithoutBG",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#48B6B1"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF00"
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIButton.StandardButtonWithSign",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF00"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#F2F2F2"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderWidth",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 1.0
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIButton.StandardInput",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#C7C7CD"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#C7C7CD"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderWidth",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 0.5
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.cornerRadius",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 5.0
+                    }
+                    ]
+},
+
