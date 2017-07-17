@@ -1,10 +1,503 @@
 [
-theme
-UIButton
-UIColor
-UIFont
-UIImageView
-UILabel
-UITextField
-UIView
+{
+    "styleClass" : "UIButton.StandardBackground",
+    "styles" : [
+                "UIButton.StandardButtonWithBG",
+                "UIFont.TitilliumWeb",
+                "UIFont.Normal",
+                "UIFont.Bold",
+                ]
+},
+{
+    "styleClass" : "UIButton.CancelButton",
+    "styles" : [
+                "UIButton.StandardButtonWithBG",
+                "UIFont.TitilliumWeb",
+                "UIFont.Normal",
+                "UIFont.Bold",
+                "BackgroundColor.Red",
+                ]
+},
+
+
+{
+    "styleClass" : "UITextField.StandardInput",
+    "styles" : [
+                "UITextField.Input",
+                "UIFont.OpenSans",
+                "UIFont.Normal",
+                ]
+},
+{
+    "styleClass" : "UITextField.PasswordInput",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clearsOnBeginEditing",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "secureTextEntry",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.StandardLabel",
+    "styles" : [
+                "UIFont.OpenSans",
+                "UIFont.Small",
+                "UILabel.TextAlignment.Left",
+                "UILabel.TextColor.Black",
+                ]
+},
+
+{
+    "styleClass" : "UILabel.StandardLabelBlue",
+    "styles" : [
+                "UIFont.OpenSans",
+                "UIFont.Normal",
+                "UILabel.TextAlignment.Center",
+                "UILabel.TextColor.Blue",
+                ]
+},
+{
+    "styleClass" : "UIButton.StandardButtonWithBG",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#FFFFFF"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#48B6B1"
+                    }
+                    ]
+},
+{
+    "styleClass" : "UIButton.StandardButtonWithoutBG",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#48B6B1"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF00"
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIButton.StandardButtonWithSign",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF00"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#F2F2F2"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderWidth",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 1.0
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIButton.StandardInput",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#C7C7CD"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#C7C7CD"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderWidth",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 0.5
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.cornerRadius",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 5.0
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "BackgroundColor.Orange",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FF7F00"
+                    },
+                    ]
+},
+{
+    "styleClass" : "BackgroundColor.Red",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#F23D3A"
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIView.Primary.backgroundColor",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#F2F4F7"
+                    },
+                    ]
+},
+
+
+{
+    "styleClass" : "UILabel.TextColor.Black",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#000000",
+                    },
+                    ]
+},
+
+
+{
+    "styleClass" : "UILabel.TextColor.Blue",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#0000FF",
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.OpenSans",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "fontName" : "OpenSans",
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UIFont.TitilliumWeb",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "fontName" : "TitilliumWeb-Regular",
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UIFont.Regular",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Regular",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Bold",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Bold",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Light",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Light",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.SemiBold",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "SemiBold",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Italic",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Italic",
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UIFont.Large",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 22,
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Small",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 14,
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Normal",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 17,
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.ExtraSmall",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 11,
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.TextAlignment.Left",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Left"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.TextAlignment.Right",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Right"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.TextAlignment.Center",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Center"
+                    }
+                    ]
+},
+
+
+{
+    "styleClass" : "UITextField.TextAlignment.Left",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Left"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UITextField.TextAlignment.Right",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Right"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UITextField.TextAlignment.Center",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Center"
+                    }
+                    ]
+},
+{
+    "styleClass" : "UITextField.Input",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#9B9B9B"
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "NSTextAlignment",
+                    "propertyValue" : "center",
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clearsOnBeginEditing",
+                    "propertyType" : "Bool",
+                    "propertyValue" : false
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "adjustsFontSizeToFitWidth",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "borderStyle",
+                    "propertyType" : "UITextBorderStyle",
+                    "propertyValue" : "roundedRect"
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clipToBounds",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FFFFFF"
+                    },
+                    ]
+},
+{
+    "styleClass" : "UITextField.PasswordInput",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clearsOnBeginEditing",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "secureTextEntry",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    ]
+},
 ]

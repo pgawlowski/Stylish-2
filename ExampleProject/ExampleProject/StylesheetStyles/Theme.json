@@ -1,1 +1,66 @@
-theme
+{
+    "styleClass" : "UIButton.StandardBackground",
+    "styles" : [
+                "UIButton.StandardButtonWithBG",
+                "UIFont.TitilliumWeb",
+                "UIFont.Normal",
+                "UIFont.Bold",
+                ]
+},
+{
+    "styleClass" : "UIButton.CancelButton",
+    "styles" : [
+                "UIButton.StandardButtonWithBG",
+                "UIFont.TitilliumWeb",
+                "UIFont.Normal",
+                "UIFont.Bold",
+                "BackgroundColor.Red",
+                ]
+},
+
+
+{
+    "styleClass" : "UITextField.StandardInput",
+    "styles" : [
+                "UITextField.Input",
+                "UIFont.OpenSans",
+                "UIFont.Normal",
+                ]
+},
+{
+    "styleClass" : "UITextField.PasswordInput",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "clearsOnBeginEditing",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "secureTextEntry",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.StandardLabel",
+    "styles" : [
+                "UIFont.OpenSans",
+                "UIFont.Small",
+                "UILabel.TextAlignment.Left",
+                "UILabel.TextColor.Black",
+                ]
+},
+
+{
+    "styleClass" : "UILabel.StandardLabelBlue",
+    "styles" : [
+                "UIFont.OpenSans",
+                "UIFont.Normal",
+                "UILabel.TextAlignment.Center",
+                "UILabel.TextColor.Blue",
+                ]
+},

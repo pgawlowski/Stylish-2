@@ -1,1 +1,59 @@
-UIColor
+{
+    "styleClass" : "BackgroundColor.Orange",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FF7F00"
+                    },
+                    ]
+},
+{
+    "styleClass" : "BackgroundColor.Red",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#F23D3A"
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIView.Primary.backgroundColor",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#F2F4F7"
+                    },
+                    ]
+},
+
+
+{
+    "styleClass" : "UILabel.TextColor.Black",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#000000",
+                    },
+                    ]
+},
+
+
+{
+    "styleClass" : "UILabel.TextColor.Blue",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#0000FF",
+                    },
+                    ]
+},

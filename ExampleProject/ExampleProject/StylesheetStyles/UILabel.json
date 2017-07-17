@@ -1,1 +1,72 @@
-UILabel
+{
+    "styleClass" : "UILabel.TextAlignment.Left",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Left"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.TextAlignment.Right",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Right"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UILabel.TextAlignment.Center",
+    "properties" : [
+                    {
+                    "propertySetName" : "UILabelPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Center"
+                    }
+                    ]
+},
+
+
+{
+    "styleClass" : "UITextField.TextAlignment.Left",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Left"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UITextField.TextAlignment.Right",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Right"
+                    }
+                    ]
+},
+
+{
+    "styleClass" : "UITextField.TextAlignment.Center",
+    "properties" : [
+                    {
+                    "propertySetName" : "UITextFieldPropertySet",
+                    "propertyName" : "textAlignment",
+                    "propertyType" : "textAlignment",
+                    "propertyValue" : "Center"
+                    }
+                    ]
+},

@@ -1,1 +1,146 @@
-UIFont
+{
+    "styleClass" : "UIFont.OpenSans",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "fontName" : "OpenSans",
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UIFont.TitilliumWeb",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "fontName" : "TitilliumWeb-Regular",
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UIFont.Regular",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Regular",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Bold",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Bold",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Light",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Light",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.SemiBold",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "SemiBold",
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Italic",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "weight" : "Italic",
+                    }
+                    },
+                    ]
+},
+
+{
+    "styleClass" : "UIFont.Large",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 22,
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Small",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 14,
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.Normal",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 17,
+                    }
+                    },
+                    ]
+},
+{
+    "styleClass" : "UIFont.ExtraSmall",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIFontPropertySet",
+                    "propertyName" : "font",
+                    "propertyType" : "UIFont",
+                    "propertyValue" : {
+                    "pointSize" : 11,
+                    }
+                    },
+                    ]
+},
