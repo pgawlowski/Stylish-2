@@ -56,11 +56,11 @@
 },
 
 {
-    "styleClass" : "UILabel.StandardLabelWhite",
+    "styleClass" : "UILabel.StandardLabelBlue",
     "styles" : [
                 "UIFont.OpenSans",
                 "UIFont.Normal",
                 "UILabel.TextAlignment.Center",
-                "UILabel.TextColor.White",
+                "UILabel.TextColor.Blue",
                 ]
 },
