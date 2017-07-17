@@ -17,9 +17,7 @@ s.license = { :type => "MIT", :file => "LICENSE" }
 s.author = { "Piotr Gawłowski" => "pg.gawlowski@gmail.com" }
 
 # 5
-s.homepage = "Not ready yet!"
-# For example,
-# s.homepage = "https://github.com/JRG-Developer/RWPickFlavor"
+s.homepage = "https://github.com/pgawlowski/Stylish-2"
 
 
 # 6
@@ -29,10 +27,5 @@ s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s
 # 7
 s.source_files = "Stylish-2/**/*.{swift}"
 
-s.resource_bundles = {
-'Stylish-2' => [
-'Pod/**/*.json'
-]
-}
 
 end

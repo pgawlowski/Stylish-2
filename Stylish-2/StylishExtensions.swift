@@ -121,7 +121,7 @@ extension UIFont {
             if let font = UIFont(name: fontName!, size: fontSize!) {
                 return font
             } else {
-                print("Invalid font name \(fontName)")
+                print("Invalid font name \(String(describing: fontName))")
                 return UIFont(name: "HelveticaNeue", size: 12)!
             }
         }
