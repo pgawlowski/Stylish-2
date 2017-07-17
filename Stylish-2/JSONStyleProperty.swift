@@ -123,7 +123,6 @@ enum JSONStyleProperty {
             }
             break
         case is UIImage.Type:
-            let bundle = Bundle(for: JSONStylesheet.self)
             let tuple = checkClosure(value as? String, self.value as! String)
             if tuple.0 != nil, let value = UIImage(named: tuple.0 as! String) {
                 self = .UIImageProperty(value: value)
