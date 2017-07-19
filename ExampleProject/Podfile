@@ -6,7 +6,9 @@ target 'ExampleProject' do
   use_frameworks!
 
   # Pods for ExampleProject
-  pod 'Stylish-2', :git => 'https://github.com/pgawlowski/Stylish-2.git’
+  #  pod 'Stylish-2', :git => 'https://github.com/pgawlowski/Stylish-2.git’
+
+pod 'Stylish-2', :path => '/Users/pgawlowski/Documents/Projects/Stylish-2’
 
   target 'ExampleProjectTests' do
     inherit! :search_paths

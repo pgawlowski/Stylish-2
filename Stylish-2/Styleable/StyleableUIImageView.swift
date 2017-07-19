@@ -27,19 +27,25 @@ struct UIImageViewPropertySet : DynamicStylePropertySet {
 }
 
 extension StyleClass {
-    var UIImageView:UIImageViewPropertySet { get { return self.retrieve(propertySet: UIImageViewPropertySet.self) } set { self.register(propertySet: newValue) } }
+//    var UIImageView:UIImageViewPropertySet { get { return self.retrieve(propertySet: UIImageViewPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable public class StyleableUIImageView : UIImageView, Styleable {
-    class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + [{
-            (style:StyleClass, target:Any) in
-            if let imageView = target as? UIImageView {
-                imageView.image =? style.UIImageView.image
-                if let customStyleBlock = style.UIImageView.customUIImageViewStyleBlock { customStyleBlock(imageView) }
-            }
-            }]
+ public class StyleableUIImageView : UIImageView, Styleable {
+    
+    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UIImageViewPropertySet : {
+            (style:Property, target:Any) in
+        }]
     }
+
+    //        return StyleableUIView.StyleApplicators + [{
+    //            (style:StyleClass, target:Any) in
+    //            if let imageView = target as? UIImageView {
+    //                imageView.image =? style.UIImageView.image
+    //                if let customStyleBlock = style.UIImageView.customUIImageViewStyleBlock { customStyleBlock(imageView) }
+    //            }
+    //            }]
+
     
     @IBInspectable var styles:String = "" {
         didSet {

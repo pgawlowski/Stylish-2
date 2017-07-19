@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
 # 1
 s.platform = :ios
 s.ios.deployment_target = '9.0'
-s.name = "Stylish-2"
-s.summary = "Stylish-2 allows to dynamicly style app in css-like manner."
+s.name = "Stylish2"
+s.summary = "Stylish2 allows to dynamicly style app in css-like manner."
 s.requires_arc = true
 
 # 2
@@ -21,9 +21,8 @@ s.homepage = "https://github.com/pgawlowski/Stylish-2"
 
 
 # 6
-s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s.version}"}
+s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s.version}" }
 
-s.dependency 'ObjectMapper', '~> 2.2'
 
 # 7
 s.source_files = "Stylish-2/**/*.{swift}"

@@ -23,29 +23,30 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-yK-mLS" customClass="StyleableUIButton" customModule="Stylish_2">
                                 <rect key="frame" x="8" y="28" width="359" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="UIButton.StandardBackground"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIButton.StandardBackground"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIButton.StandardButtonWithBG"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBO-hN-ygC" customClass="StyleableUIButton" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="69" width="359" height="33"/>
+                                <rect key="frame" x="8" y="69" width="359" height="30"/>
                                 <state key="normal" title="UIButton.CancelButton"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIButton.CancelButton"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UITextField.StandardInput" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3D-3F-Ckk" customClass="StyleableUITextField" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="110" width="359" height="30"/>
+                                <rect key="frame" x="8" y="107" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UITextField.StandardInput"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UITextField.Input"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UITextField.PasswordInput" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUh-Go-vKC" customClass="StyleableUITextField" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="148" width="359" height="30"/>
+                                <rect key="frame" x="8" y="145" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -54,7 +55,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UILabel.StandardLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-hZ-Gf8" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="186" width="359" height="17"/>
+                                <rect key="frame" x="8" y="183" width="359" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -63,7 +64,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UILabel.StandardLabelBlue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXI-ch-AZS" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="211" width="359" height="21"/>
+                                <rect key="frame" x="8" y="211.5" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -72,22 +73,16 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Styles merging exmaple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-UW-uzw" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="240" width="359" height="26.5"/>
+                                <rect key="frame" x="8" y="240.5" width="359" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIFont.OpenSans, UIFont.Large, UIFont.Bold"/>
-                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Styles overriding example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-rH-Q7w" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="274.5" width="359" height="21"/>
+                                <rect key="frame" x="8" y="269" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="BackgroundColor.Orange, UILabel.TextAlignment.Left, UILabel.TextAlignment.Right, UILabel.TextAlignment.Center, "/>
-                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

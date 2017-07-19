@@ -14,43 +14,38 @@ struct UILabelPropertySet : DynamicStylePropertySet {
 }
 
 extension StyleClass {
-    var UILabel:UILabelPropertySet { get { return self.retrieve(propertySet: UILabelPropertySet.self) } set { self.register(propertySet: newValue) } }
+//    var UILabel:UILabelPropertySet { get { return self.retrieve(propertySet: UILabelPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable public class StyleableUILabel : UILabel, Styleable {
-    class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + [{
-            (style:StyleClass, target:Any) in
+ public class StyleableUILabel : UILabel, Styleable {
 
-            switch target {
-            case let label as UILabel:
-                for (key, value) in style.UILabel.propertySet {
-                    if !(value is NSNull) {
-                        switch key {
-                        default:
-                            label.setStyleProperties(value: value, key: key)
-                        }
-                    }
+    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UILabelPropertySet : {
+            (property:Property, target:Any) in
+            if let key = property.propertyName, let styleProperty = property.propertyValue {
+                switch target {
+                case let label as UILabel:
+                    label.setStyleProperties(value: styleProperty.value, key: key)
+                    break
+                case let button as UIButton:
+                    self.setProperties(target: button, styleProperty, key)
+                    break
+                default:
+                    break
                 }
-                break
-            case let button as UIButton:
-                for (key, value) in style.UILabel.propertySet {
-                    if !(value is NSNull) {
-                        switch key as NSString {
-                        case "textColor" where !(value is NSNull):
-                            button.setTitleColor(value as? UIColor, for: .normal)
-                            break
-                        default:
-                            button.titleLabel?.setStyleProperties(value: value, key: key)
-                            break
-                        }
-                    }
-                }
-                break
-            default:
-                return
             }
         }]
+    }
+
+    class func setProperties(target: UIButton, _ property: JSONStyleProperty, _ key: String) {
+        switch key {
+        case "textColor":
+            target.setTitleColor(property.value as? UIColor, for: .normal)
+            break
+        default:
+            target.titleLabel?.setStyleProperties(value: property.value, key: key)
+            break
+        }
     }
     
     override public func didMoveToSuperview() {

@@ -16,19 +16,16 @@ struct UIButtonPropertySet : DynamicStylePropertySet {
 }
 
 extension StyleClass {
-    var UIButton:UIButtonPropertySet { get { return self.retrieve(propertySet: UIButtonPropertySet.self) } set { self.register(propertySet: newValue) } }
+//    var UIButton:UIButtonPropertySet { get { return self.retrieve(propertySet: UIButtonPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable public class StyleableUIButton : UIButton, Styleable {
-    class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + StyleableUILabel.StyleApplicators + [{
-            (style:StyleClass, target:Any) in
-            if let button = target as? UIButton {
-                for (key, value) in style.UIButton.propertySet {
-                    if !(value is NSNull) {
-                        button.setStyleProperties(value: value, key: key)
-                    }
-                }
+public class StyleableUIButton : UIButton, Styleable {
+    
+    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UIButtonPropertySet : {
+            (property:Property, target:Any) in
+            if let button = target as? UIButton, let key = property.propertyName, let styleProperty = property.propertyValue {
+                    button.setStyleProperties(value: styleProperty.value, key: key)
             }
         }]
     }
@@ -48,4 +45,5 @@ extension StyleClass {
     override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
+    
 }

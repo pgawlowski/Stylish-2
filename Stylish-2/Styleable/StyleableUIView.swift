@@ -14,22 +14,33 @@ struct UIViewPropertySet : DynamicStylePropertySet {
 }
 
 extension StyleClass {
-    var UIView:UIViewPropertySet { get { return self.retrieve(propertySet: UIViewPropertySet.self) } set { self.register(propertySet: newValue) } }
+//    var UIView:UIViewPropertySet { get { return self.retrieve(propertySet: UIViewPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable public class StyleableUIView : UIView, Styleable {
-    class var StyleApplicators:[StyleApplicator] {
-        return [{
-            (style:StyleClass, target:Any) in
-            if let view = target as? UIView {
-                for (key, value) in style.UIView.propertySet {
-                    if !(value is NSNull) {
-                        view.setStyleProperties(value: value, key: key)
-                    }
-                }
+ public class StyleableUIView : UIView, Styleable {
+    
+    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UIViewPropertySet : {
+            (property:Property, target:Any) in
+            if let view = target as? UIView, let key = property.propertyName, let propertySet = property.propertyValue {
+                view.setStyleProperties(value: propertySet.value, key: key)
             }
         }]
     }
+
+//    class var StyleApplicators:[StyleApplicator] {
+//        return []
+//        return [{
+//            (style:StyleClass, target:Any) in
+//            if let view = target as? UIView {
+//                for (key, value) in style.UIView.propertySet {
+//                    if !(value is NSNull) {
+//                        view.setStyleProperties(value: value, key: key)
+//                    }
+//                }
+//            }
+//        }]
+//    }
     
     @IBInspectable var styles:String = "" {
         didSet {

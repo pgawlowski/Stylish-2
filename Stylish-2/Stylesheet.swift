@@ -12,7 +12,6 @@ import UIKit
 protocol Stylesheet : class {
     var styleClasses:[(identifier:String, styleClass:StyleClass)] { get }
     func style(named:String)->StyleClass?
-    init()
 }
 
 extension Stylesheet {
@@ -35,7 +34,10 @@ extension Stylesheet {
 let STYLE_FILE = "stylesheet"
 let STYLE_EXTENSION = "json"
 
-class JSONStylesheet : Stylesheet {
+public class JSONStylesheet : Stylesheet {
+    
+    var filePath: String?
+    static var styles = [StyleClassMap]()
     
     static var cachedStylesheet:JSONStylesheet?
     static var cacheTimestamp:TimeInterval = 0
@@ -53,11 +55,12 @@ class JSONStylesheet : Stylesheet {
                         assert(false, "The '\(property)' property in '\(propertySetName)' for the style class '\(styleClass)' has the following error: \(style.value)")
                         break
                     default :
-                        var propertySet = retrieve(dynamicPropertySetName: propertySetName)
-                        propertySet?.setStyleProperty(named:property, toValue:style.value)
-                        if let modified = propertySet {
-                            register(propertySet: modified)
-                        }
+                        break
+//                        var propertySet = retrieve(dynamicPropertySetName: propertySetName)
+//                        propertySet?.setStyleProperty(named:property, toValue:style.value)
+//                        if let modified = propertySet {
+//                            register(propertySet: modified)
+//                        }
                     }
                 }
             }
@@ -67,7 +70,7 @@ class JSONStylesheet : Stylesheet {
     var styleClasses = [(identifier: String, styleClass: StyleClass)]()
     var dynamicPropertySets:[StylePropertySet.Type] { get { return [UIViewPropertySet.self, UILabelPropertySet.self, UIButtonPropertySet.self, UITextFieldPropertySet.self, UIImageViewPropertySet.self, UIFontPropertySet.self] } }
     
-    required init() {
+    internal func setup() {
         var jsonPath: String?
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let savedDirectory = paths[0]
@@ -90,11 +93,13 @@ class JSONStylesheet : Stylesheet {
             jsonPath = bundle.path(forResource: "stylesheet", ofType: "json")
         #endif
 
-        // Compare the file modification date of the downloaded / copied version of stylesheet.json in the Documents directory, and the original version of stylesheet.json included in the app bundle. If the Documents version is more recent, load and parse that version.  Otherwise, use the bundle version and then copy it to the Documents directory.        
+        // Compare the file modification date of the downloaded / copied version of stylesheet.json in the Documents directory, and the original version of stylesheet.json included in the app bundle. If the Documents version is more recent, load and parse that version.  Otherwise, use the bundle version and then copy it to the Documents directory.
+        
         if let savedAttributes = try? fileManager.attributesOfItem(atPath: filename), let savedDate = savedAttributes[FileAttributeKey.modificationDate] as? NSDate, let path = jsonPath, let bundledAttributes = try? fileManager.attributesOfItem(atPath: path), let bundledDate = bundledAttributes[FileAttributeKey.modificationDate] as? NSDate  {
             
             if let data = NSData(contentsOfFile:filename), let json = (try? JSONSerialization.jsonObject(with: data as Data, options:[])) as? [[String : AnyObject]], savedDate.timeIntervalSinceReferenceDate >= bundledDate.timeIntervalSinceReferenceDate {
-                parse(json: json)
+//                parse(json: json)
+                parseJsonArrayToModel(json)
             } else if let path = jsonPath, let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
                 if let stringJSON = String(data:data as Data, encoding: String.Encoding.utf8) {
                     do {
@@ -103,7 +108,8 @@ class JSONStylesheet : Stylesheet {
                     catch {}
                 }
                 
-                parse(json: json)
+//                parse(json: json)
+                parseJsonArrayToModel(json)
             }
         }
         else if let path = jsonPath, let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
@@ -113,10 +119,18 @@ class JSONStylesheet : Stylesheet {
                 }
                 catch {}
             }
-            parse(json: json)
+//            parse(json: json)
+            parseJsonArrayToModel(json)
         }
         
         return
+    }
+    
+    private func parseJsonArrayToModel(_ array: [[String:Any]]){
+        JSONStylesheet.styles = [StyleClassMap]()
+        for element in array {
+            JSONStylesheet.styles.append(StyleClassMap(JSON: element)!)
+        }
     }
     
     private func parse(json:[[String : AnyObject]]) {

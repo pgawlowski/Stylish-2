@@ -13,26 +13,20 @@ struct UITextFieldPropertySet : DynamicStylePropertySet {
 }
 
 extension StyleClass {
-    var UITextField:UITextFieldPropertySet { get { return self.retrieve(propertySet: UITextFieldPropertySet.self) } set { self.register(propertySet: newValue) } }
+//    var UITextField:UITextFieldPropertySet { get { return self.retrieve(propertySet: UITextFieldPropertySet.self) } set { self.register(propertySet: newValue) } }
 }
 
-@IBDesignable public class StyleableUITextField: UITextField, Styleable {
-    class var StyleApplicators: [StyleApplicator] {
-        return StyleableUIView.StyleApplicators + StyleableUIFont.StyleApplicators + [{
-            (style:StyleClass, target:Any) in
-            if let textField = target as? UITextField {
-                for (key, value) in style.UITextField.propertySet {
-                    if !(value is NSNull) {
-                        switch key {
-                        default:
-                            textField.setStyleProperties(value: value, key: key)
-                        }
-                    }
-                }
+ public class StyleableUITextField: UITextField, Styleable {
+
+    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UITextFieldPropertySet : {
+            (property:Property, target:Any) in
+            if let textField = target as? UITextField, let key = property.propertyName, let styleProperty = property.propertyValue {
+                textField.setStyleProperties(value: styleProperty.value, key: key)
             }
-            }]
+        }]
     }
-        
+
     @IBInspectable var styles:String = "" {
         didSet {
             parseAndApplyStyles()

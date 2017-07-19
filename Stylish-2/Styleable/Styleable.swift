@@ -11,19 +11,43 @@ import UIKit
 
 private class BundleMarker {}
 
+enum StyleApplicatorType: String {
+    case UIButtonPropertySet
+    case UITextFieldPropertySet
+    case UILabelPropertySet
+    case UIViewPropertySet
+    case UIFontPropertySet
+    case UIImageViewPropertySet
+}
+
 //Mark Styleable
-typealias StyleApplicator = (StyleClass, Any)->()
+typealias StyleApplicator = (Property, Any)->()
 
 protocol Styleable {
-    static var StyleApplicators:[StyleApplicator] { get }
+    static var StyleApplicator:[StyleApplicatorType : StyleApplicator] { get }
+
     var styles:String { get set }
     var stylesheet:String { get set }
 }
 
 extension Styleable {
-    func apply(style:StyleClass) {
-        for applicator in Self.StyleApplicators {
-            applicator(style, self)
+    static var StyleApplicators:[StyleApplicatorType : StyleApplicator] {
+        return StyleableUIButton.StyleApplicator + StyleableUIFont.StyleApplicator + StyleableUIImageView.StyleApplicator + StyleableUILabel.StyleApplicator + StyleableUITextField.StyleApplicator + StyleableUIView.StyleApplicator
+    }
+    
+    func apply(style:StyleClassMap) {
+//        if let styleType = style.styles {
+//            styleToApply = JSONStylesheet.styles.first(where: { (styleClass) -> Bool in
+//                if styleClass.name == styleType {
+//            })
+//        }
+
+        if let properties = style.properties {
+            for property in properties {
+                if let applicator = Self.StyleApplicators[StyleApplicatorType(rawValue:property.propertySetName!)!] {
+                    applicator(property, self)
+                }
+            }
         }
     }
 }
@@ -37,29 +61,44 @@ extension Styleable where Self:UIView {
     func parseAndApply(styles:String, usingStylesheet stylesheetName:String) {
         let components = styles.replacingOccurrences(of: ", ", with: ",").replacingOccurrences(of: " ,", with: ",").components(separatedBy:",")
         
-        let stylesheetName = "StylishJSONStylesheet"
-        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-            let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
-            for string in components where string != "" {
-                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
-                if let style = stylesheet[trimmed] {
-                    self.apply(style: style)
-                } else {
-                    print("!!!! Missing style named `\(trimmed)` !!!!")
+        for string in components where string != "" {
+            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let style = JSONStylesheet.styles.first(where: { (map) -> Bool in
+                return map.name == trimmed
+            }) {
+                var styleToApply = style
+                for styleType in style.styles {
+                    styleToApply = JSONStylesheet.styles.first(where: { (styleClass) -> Bool in
+                        return styleClass.name! == styleType
+                    })!
                 }
+                self.apply(style: styleToApply)
             }
         }
-        else if let stylesheetType = Stylish.GlobalStylesheet {
-            let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
-            for string in components where string != "" {
-                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
-                if let style = stylesheet[trimmed] {
-                    self.apply(style: style)
-                } else {
-                    print("!!!! Missing style named `\(trimmed)` !!!!")
-                }
-            }
-        }
+
+//        let stylesheetName = "StylishJSONStylesheet"
+//        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+//            let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
+//            for string in components where string != "" {
+//                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+//                if let style = stylesheet[trimmed] {
+//                    self.apply(style: style)
+//                } else {
+//                    print("!!!! Missing style named `\(trimmed)` !!!!")
+//                }
+//            }
+//        }
+//        else if let stylesheetType = Stylish.GlobalStylesheet {
+//            let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
+//            for string in components where string != "" {
+//                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+//                if let style = stylesheet[trimmed] {
+//                    self.apply(style: style)
+//                } else {
+//                    print("!!!! Missing style named `\(trimmed)` !!!!")
+//                }
+//            }
+//        }
     }
     
     private func useCachedJSON(forStylesheetType:Stylesheet.Type) -> Bool {
@@ -85,30 +124,30 @@ extension Styleable where Self:UIView {
         }
         
         if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-            let stylesheet = stylesheetType.init()
-            for string in components where string != "" {
-                if stylesheet[string] == nil {
-                    invalidStyle = true
-                }
-            }
+//            let stylesheet = stylesheetType.init()
+//            for string in components where string != "" {
+//                if stylesheet[string] == nil {
+//                    invalidStyle = true
+//                }
+//            }
         }
         else if let stylesheetType = Stylish.GlobalStylesheet {
-            let stylesheet = stylesheetType.init()
-            for string in components where string != "" {
-                if stylesheet[string] == nil {
-                    invalidStyle = true
-                }
-            }
+//            let stylesheet = stylesheetType.init()
+//            for string in components where string != "" {
+//                if stylesheet[string] == nil {
+//                    invalidStyle = true
+//                }
+//            }
         }
         else {
             let stylesheetName = "StylishJSONStylesheet"
             if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-                let stylesheet = stylesheetType.init()
-                for string in components where string != "" {
-                    if stylesheet[string] == nil {
-                        invalidStyle = true
-                    }
-                }
+//                let stylesheet = stylesheetType.init()
+//                for string in components where string != "" {
+//                    if stylesheet[string] == nil {
+//                        invalidStyle = true
+//                    }
+//                }
             }
             else {
                 invalidStyle = true

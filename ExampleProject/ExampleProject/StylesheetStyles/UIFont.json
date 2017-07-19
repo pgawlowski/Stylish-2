@@ -6,7 +6,8 @@
                     "propertyName" : "font",
                     "propertyType" : "UIFont",
                     "propertyValue" : {
-                    "fontName" : "OpenSans",
+                        "fontName" : "Menlo",
+                        "weight" : "Italic"
                     }
                     },
                     ]
