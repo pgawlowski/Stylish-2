@@ -25,9 +25,7 @@ typealias StyleApplicator = (Property, Any)->()
 
 protocol Styleable {
     static var StyleApplicator:[StyleApplicatorType : StyleApplicator] { get }
-
     var styles:String { get set }
-    var stylesheet:String { get set }
 }
 
 extension Styleable {
@@ -39,20 +37,14 @@ extension Styleable {
         if let properties = style.properties {
             for property in properties {
                 if let applicator = Self.StyleApplicators[StyleApplicatorType(rawValue:property.propertySetName!)!] {
-//                    switch property.propertyValue {
-//                    case .InvalidProperty: break
-//                        
-//                    default:
-//                        <#code#>
-//                    }
-//                    switch property.propertyValue {
-//                    case .InvalidProperty:
-//                        assert(false, "The '\(property.propertyName)' property in '\(property.propertySetName)' for the style class '\(style.name)' has the following error: \(property.propertyValue)")
-//                        break
-//                    default:
+                    switch property.propertyValue {
+                    case .InvalidProperty:
+                        assert(false, "The '\(String(describing: property.propertyName))' property in '\(String(describing: property.propertySetName))' for the style class '\(String(describing: style.name))' has the following error: \(property.propertyValue.value)")
+                        break
+                    default:
                         applicator(property, self)
-//                        break
-//                    }
+                        break
+                    }
                 }
             }
         }
@@ -62,20 +54,20 @@ extension Styleable {
 extension Styleable where Self:UIView {
     func parseAndApplyStyles() {
         self.layoutIfNeeded()
-        parseAndApply(styles: styles, usingStylesheet: stylesheet)
+        parseAndApply(styles: styles)
     }
     
-    func parseAndApply(styles:String, usingStylesheet stylesheetName:String) {
+    func parseAndApply(styles:String) {
         let components = styles.replacingOccurrences(of: ", ", with: ",").replacingOccurrences(of: " ,", with: ",").components(separatedBy:",")
         
         for string in components where string != "" {
             let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
-            if let style = JSONStylesheet.styles.first(where: { (map) -> Bool in
+            if let style = JSONStylesheet.stylesheet.first(where: { (map) -> Bool in
                 return map.name == trimmed
             }) {
                 var styleToApply = style
                 for styleType in style.styles {
-                    styleToApply = JSONStylesheet.styles.first(where: { (styleClass) -> Bool in
+                    styleToApply = JSONStylesheet.stylesheet.first(where: { (styleClass) -> Bool in
                         return styleClass.name! == styleType
                     })!
                 }
@@ -86,19 +78,11 @@ extension Styleable where Self:UIView {
         }
     }
     
-    private func useCachedJSON(forStylesheetType:Stylesheet.Type) -> Bool {
-        let jsonCacheDuration = 3.0
-        let isJSON = forStylesheetType is JSONStylesheet.Type
-        let cacheExists = JSONStylesheet.cachedStylesheet != nil
-        let isCacheExpired = NSDate.timeIntervalSinceReferenceDate - JSONStylesheet.cacheTimestamp > jsonCacheDuration
-        return isJSON && cacheExists && !isCacheExpired
-    }
-    
     func showErrorIfInvalidStyles() {
-        showErrorIfInvalid(styles: styles, usingStylesheet: stylesheet)
+        showErrorIfInvalid(styles: styles)
     }
     
-    func showErrorIfInvalid(styles:String, usingStylesheet stylesheetName:String) {
+    func showErrorIfInvalid(styles:String) {
         let components = styles.replacingOccurrences(of:", ", with: ",").replacingOccurrences(of:" ,", with: ",").components(separatedBy:",")
         
         var invalidStyle = false
@@ -108,36 +92,45 @@ extension Styleable where Self:UIView {
             }
         }
         
-        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-//            let stylesheet = stylesheetType.init()
-//            for string in components where string != "" {
-//                if stylesheet[string] == nil {
-//                    invalidStyle = true
-//                }
+        let stylesheet = JSONStylesheet.cachedJson
+        for string in components where string != "" {
+//            if stylesheet[string] == nil {
+//                invalidStyle = true
 //            }
         }
-        else if let stylesheetType = Stylish.GlobalStylesheet {
-//            let stylesheet = stylesheetType.init()
-//            for string in components where string != "" {
-//                if stylesheet[string] == nil {
-//                    invalidStyle = true
-//                }
+        
+        
+        
+//        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+////            let stylesheet = stylesheetType.init()
+////            for string in components where string != "" {
+////                if stylesheet[string] == nil {
+////                    invalidStyle = true
+////                }
+////            }
+//        }
+//        else if let stylesheetType = Stylish.GlobalStylesheet {
+////            let stylesheet = stylesheetType.init()
+////            for string in components where string != "" {
+////                if stylesheet[string] == nil {
+////                    invalidStyle = true
+////                }
+////            }
+//        }
+//        else {
+//            let stylesheetName = "StylishJSONStylesheet"
+//            if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
+////                let stylesheet = stylesheetType.init()
+////                for string in components where string != "" {
+////                    if stylesheet[string] == nil {
+////                        invalidStyle = true
+////                    }
+////                }
 //            }
-        }
-        else {
-            let stylesheetName = "StylishJSONStylesheet"
-            if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-//                let stylesheet = stylesheetType.init()
-//                for string in components where string != "" {
-//                    if stylesheet[string] == nil {
-//                        invalidStyle = true
-//                    }
-//                }
-            }
-            else {
-                invalidStyle = true
-            }
-        }
+//            else {
+//                invalidStyle = true
+//            }
+//        }
         if invalidStyle {
             let errorView = Stylish.ErrorView(frame: bounds)
             errorView.tag = Stylish.ErrorViewTag

@@ -29,7 +29,9 @@ import UIKit
                 break
             }
             
-            if let targetFont = targetFont, let propertySet = property.propertyValue, let font = propertySet.value as? SimplifiedFont {
+            if let targetFont = targetFont {
+                let propertySet = property.propertyValue
+                let font = propertySet.value as! SimplifiedFont
                 
                 var fontName: String = (font.fontName != nil) ? targetFont.fontName : font.fontName!
                 let fontSize = (font.fontSize != nil) ? targetFont.pointSize : font.fontSize

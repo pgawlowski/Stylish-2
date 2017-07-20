@@ -32,16 +32,28 @@
                     "propertyValue" : "roundedRect"
                     },
                     {
-                    "propertySetName" : "UITextFieldPropertySet",
-                    "propertyName" : "clipToBounds",
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.masksToBounds",
                     "propertyType" : "Bool",
                     "propertyValue" : true
                     },
                     {
                     "propertySetName" : "UIViewPropertySet",
-                    "propertyName" : "layer.backgroundColor",
-                    "propertyType" : "CGColor",
-                    "propertyValue" : "#FFFFFF"
+                    "propertyName" : "clipsToBounds",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "opaque",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "backgroundColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#FF00FF"
                     },
                     ]
 },

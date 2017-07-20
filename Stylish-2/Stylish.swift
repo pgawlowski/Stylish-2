@@ -10,32 +10,6 @@ import Foundation
 import UIKit
 
 struct Stylish {
-    static var GlobalStylesheet:Stylesheet.Type? = nil {
-        didSet {
-            refreshAllStyles()
-        }
-    }
-    
-    static func refreshAllStyles() {
-        for window in UIApplication.shared.windows {
-            refreshStyles(for: window)
-        }
-    }
-    
-    static func refreshStyles(for view:UIView) {
-        for subview in view.subviews {
-            refreshStyles(for: subview)
-        }
-        if let styleable = view as? Styleable {
-            var styleableView = styleable
-            styleableView.stylesheet = styleable.stylesheet
-        }
-    }
-}
-
-// MARK: - Stylish Error View -
-
-extension Stylish {
     static let ErrorViewTag = 7331
     
     class ErrorView:UIKit.UIView {

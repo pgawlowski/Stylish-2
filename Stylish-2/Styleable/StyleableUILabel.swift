@@ -14,13 +14,13 @@ public class StyleableUILabel : UILabel, Styleable {
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UILabelPropertySet : {
             (property:Property, target:Any) in
-            if let key = property.propertyName, let styleProperty = property.propertyValue {
+            if let key = property.propertyName {
                 switch target {
                 case let label as UILabel:
-                    label.setStyleProperties(value: styleProperty.value, key: key)
+                    label.setStyleProperties(value: property.propertyValue.value, key: key)
                     break
                 case let button as UIButton:
-                    self.setProperties(target: button, styleProperty, key)
+                    self.setProperties(target: button, property.propertyValue, key)
                     break
                 default:
                     break

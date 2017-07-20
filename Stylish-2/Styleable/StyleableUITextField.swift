@@ -13,8 +13,8 @@ public class StyleableUITextField: UITextField, Styleable {
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UITextFieldPropertySet : {
             (property:Property, target:Any) in
-            if let textField = target as? UITextField, let key = property.propertyName, let styleProperty = property.propertyValue {
-                textField.setStyleProperties(value: styleProperty.value, key: key)
+            if let textField = target as? UITextField, let key = property.propertyName {
+                textField.setStyleProperties(value: property.propertyValue.value, key: key)
             }
         }]
     }
@@ -34,5 +34,4 @@ public class StyleableUITextField: UITextField, Styleable {
     override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
-
 }

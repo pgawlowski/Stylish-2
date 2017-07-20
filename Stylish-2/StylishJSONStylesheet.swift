@@ -32,9 +32,7 @@ import Foundation
 
 public class StylishJSONStylesheet:JSONStylesheet {
     public static let sharedInstance = StylishJSONStylesheet()
-    
-//    override var dynamicPropertySets: [StylePropertySet.Type] { get { return super.dynamicPropertySets} }
-    
+        
     public func setup(filePath: String) {
         self.filePath = filePath
         self.setup()
