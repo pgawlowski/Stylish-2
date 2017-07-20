@@ -9,15 +9,7 @@
 import Foundation
 import UIKit
 
-struct UILabelPropertySet : DynamicStylePropertySet {
-    var propertySet: Dictionary<String, Any> = UILabel().retriveDynamicPropertySet()
-}
-
-extension StyleClass {
-//    var UILabel:UILabelPropertySet { get { return self.retrieve(propertySet: UILabelPropertySet.self) } set { self.register(propertySet: newValue) } }
-}
-
- public class StyleableUILabel : UILabel, Styleable {
+public class StyleableUILabel : UILabel, Styleable {
 
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UILabelPropertySet : {

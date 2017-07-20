@@ -47,28 +47,28 @@ public class JSONStylesheet : Stylesheet {
         init(jsonArray:[[String : AnyObject]], styleClass:String, dynamicPropertySets:[StylePropertySet.Type]? = nil) {
             stylePropertySets = StylePropertySetCollection(sets: dynamicPropertySets)
             for dictionary in jsonArray {
-                if let propertySetName = dictionary["propertySetName"] as? String, let property = dictionary["propertyName"] as? String {
-                    var style = JSONStyleProperty(dictionary: dictionary)
-                    style.mutate(dictionary:dictionary)
-                    switch style {
-                    case .InvalidProperty :
-                        assert(false, "The '\(property)' property in '\(propertySetName)' for the style class '\(styleClass)' has the following error: \(style.value)")
-                        break
-                    default :
-                        break
-//                        var propertySet = retrieve(dynamicPropertySetName: propertySetName)
-//                        propertySet?.setStyleProperty(named:property, toValue:style.value)
-//                        if let modified = propertySet {
-//                            register(propertySet: modified)
-//                        }
-                    }
-                }
+//                if let propertySetName = dictionary["propertySetName"] as? String, let property = dictionary["propertyName"] as? String {
+//                    var style = JSONStyleProperty(dictionary: dictionary)
+//                    style.mutate(dictionary:dictionary)
+//                    switch style {
+//                    case .InvalidProperty :
+//                        assert(false, "The '\(property)' property in '\(propertySetName)' for the style class '\(styleClass)' has the following error: \(style.value)")
+//                        break
+//                    default :
+//                        break
+////                        var propertySet = retrieve(dynamicPropertySetName: propertySetName)
+////                        propertySet?.setStyleProperty(named:property, toValue:style.value)
+////                        if let modified = propertySet {
+////                            register(propertySet: modified)
+////                        }
+//                    }
+//                }
             }
         }
     }
     
     var styleClasses = [(identifier: String, styleClass: StyleClass)]()
-    var dynamicPropertySets:[StylePropertySet.Type] { get { return [UIViewPropertySet.self, UILabelPropertySet.self, UIButtonPropertySet.self, UITextFieldPropertySet.self, UIImageViewPropertySet.self, UIFontPropertySet.self] } }
+//    var dynamicPropertySets:[StylePropertySet.Type] { get { return [UIViewPropertySet.self, UILabelPropertySet.self, UIButtonPropertySet.self, UITextFieldPropertySet.self, UIImageViewPropertySet.self, UIFontPropertySet.self] } }
     
     internal func setup() {
         var jsonPath: String?
@@ -133,28 +133,28 @@ public class JSONStylesheet : Stylesheet {
         }
     }
     
-    private func parse(json:[[String : AnyObject]]) {
-        for dictionary in json {
-            if let styleClass = dictionary["styleClass"] as? String,
-                let array = dictionary["styles"] as? [String] {
-                
-                var outputArray = [[String : AnyObject]]()
-                for style in array {
-                    let searchPredicate = NSPredicate(format: "styleClass MATCHES[c] %@", style)
-                    if let dict: Dictionary = (json as NSArray).filtered(using: searchPredicate).first as? [String : AnyObject],
-                        let arr = dict["properties"] as? [[String : AnyObject]] {
-                        outputArray += arr
-                    }
-                }
-                styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: outputArray, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
-            } else if let styleClass = dictionary["styleClass"] as? String,
-                let array = dictionary["properties"] as? [[String : AnyObject]] {
-                styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: array, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
-            } else {
-                assert(false, "Error in JSON stylesheet, possibly missing a 'styleClass' String value, or a 'properties' array for one of the included style classes")
-            }
-        }
-        JSONStylesheet.cacheTimestamp = NSDate.timeIntervalSinceReferenceDate
-        JSONStylesheet.cachedStylesheet = self
-    }
+//    private func parse(json:[[String : AnyObject]]) {
+//        for dictionary in json {
+//            if let styleClass = dictionary["styleClass"] as? String,
+//                let array = dictionary["styles"] as? [String] {
+//                
+//                var outputArray = [[String : AnyObject]]()
+//                for style in array {
+//                    let searchPredicate = NSPredicate(format: "styleClass MATCHES[c] %@", style)
+//                    if let dict: Dictionary = (json as NSArray).filtered(using: searchPredicate).first as? [String : AnyObject],
+//                        let arr = dict["properties"] as? [[String : AnyObject]] {
+//                        outputArray += arr
+//                    }
+//                }
+//                styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: outputArray, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
+//            } else if let styleClass = dictionary["styleClass"] as? String,
+//                let array = dictionary["properties"] as? [[String : AnyObject]] {
+//                styleClasses.append((identifier: styleClass, styleClass: DynamicStyleClass(jsonArray: array, styleClass:styleClass, dynamicPropertySets: dynamicPropertySets)))
+//            } else {
+//                assert(false, "Error in JSON stylesheet, possibly missing a 'styleClass' String value, or a 'properties' array for one of the included style classes")
+//            }
+//        }
+//        JSONStylesheet.cacheTimestamp = NSDate.timeIntervalSinceReferenceDate
+//        JSONStylesheet.cachedStylesheet = self
+//    }
 }

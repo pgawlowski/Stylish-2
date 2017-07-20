@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-// MARK: UIButton
-
-struct UIButtonPropertySet : DynamicStylePropertySet {
-    var propertySet: Dictionary<String, Any> = UIButton().retriveDynamicPropertySet()
-}
-
-extension StyleClass {
-//    var UIButton:UIButtonPropertySet { get { return self.retrieve(propertySet: UIButtonPropertySet.self) } set { self.register(propertySet: newValue) } }
-}
-
 public class StyleableUIButton : UIButton, Styleable {
     
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
@@ -45,5 +35,4 @@ public class StyleableUIButton : UIButton, Styleable {
     override public func prepareForInterfaceBuilder() {
         showErrorIfInvalidStyles()
     }
-    
 }

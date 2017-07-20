@@ -9,26 +9,22 @@
 import Foundation
 import UIKit
 
-struct UIImageViewPropertySet : DynamicStylePropertySet {
-    var propertySet: Dictionary<String, Any> = UIImageView().retriveDynamicPropertySet()
-
-    var image:UIImage?
-    var customUIImageViewStyleBlock:((UIImageView)->())?
-    mutating func setStyleProperty<T>(named name: String, toValue value: T) {
-        switch name {
-        case _ where name.isVariant(of: "Image"):
-            image = value as? UIImage
-        case _ where name.isVariant(of: "Template"):
-            image = (value as? UIImage)?.withRenderingMode(.alwaysTemplate)
-        default :
-            return
-        }
-    }
-}
-
-extension StyleClass {
-//    var UIImageView:UIImageViewPropertySet { get { return self.retrieve(propertySet: UIImageViewPropertySet.self) } set { self.register(propertySet: newValue) } }
-}
+//struct UIImageViewPropertySet : DynamicStylePropertySet {
+////    var propertySet: Dictionary<String, Any> = UIImageView().retriveDynamicPropertySet()
+//
+//    var image:UIImage?
+//    var customUIImageViewStyleBlock:((UIImageView)->())?
+//    mutating func setStyleProperty<T>(named name: String, toValue value: T) {
+//        switch name {
+//        case _ where name.isVariant(of: "Image"):
+//            image = value as? UIImage
+//        case _ where name.isVariant(of: "Template"):
+//            image = (value as? UIImage)?.withRenderingMode(.alwaysTemplate)
+//        default :
+//            return
+//        }
+//    }
+//}
 
  public class StyleableUIImageView : UIImageView, Styleable {
     

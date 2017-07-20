@@ -36,16 +36,23 @@ extension Styleable {
     }
     
     func apply(style:StyleClassMap) {
-//        if let styleType = style.styles {
-//            styleToApply = JSONStylesheet.styles.first(where: { (styleClass) -> Bool in
-//                if styleClass.name == styleType {
-//            })
-//        }
-
         if let properties = style.properties {
             for property in properties {
                 if let applicator = Self.StyleApplicators[StyleApplicatorType(rawValue:property.propertySetName!)!] {
-                    applicator(property, self)
+//                    switch property.propertyValue {
+//                    case .InvalidProperty: break
+//                        
+//                    default:
+//                        <#code#>
+//                    }
+//                    switch property.propertyValue {
+//                    case .InvalidProperty:
+//                        assert(false, "The '\(property.propertyName)' property in '\(property.propertySetName)' for the style class '\(style.name)' has the following error: \(property.propertyValue)")
+//                        break
+//                    default:
+                        applicator(property, self)
+//                        break
+//                    }
                 }
             }
         }
@@ -73,32 +80,10 @@ extension Styleable where Self:UIView {
                     })!
                 }
                 self.apply(style: styleToApply)
+            } else {
+                print("!!!! Missing style named `\(trimmed)` !!!!")
             }
         }
-
-//        let stylesheetName = "StylishJSONStylesheet"
-//        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-//            let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
-//            for string in components where string != "" {
-//                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
-//                if let style = stylesheet[trimmed] {
-//                    self.apply(style: style)
-//                } else {
-//                    print("!!!! Missing style named `\(trimmed)` !!!!")
-//                }
-//            }
-//        }
-//        else if let stylesheetType = Stylish.GlobalStylesheet {
-//            let stylesheet = useCachedJSON(forStylesheetType: stylesheetType) ? JSONStylesheet.cachedStylesheet! : stylesheetType.init()
-//            for string in components where string != "" {
-//                let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
-//                if let style = stylesheet[trimmed] {
-//                    self.apply(style: style)
-//                } else {
-//                    print("!!!! Missing style named `\(trimmed)` !!!!")
-//                }
-//            }
-//        }
     }
     
     private func useCachedJSON(forStylesheetType:Stylesheet.Type) -> Bool {

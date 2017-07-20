@@ -38,10 +38,11 @@ class Property : Mappable {
 
     
     required init?(map: Map) {
-        
     }
     
     func mapping(map: Map) {
+        self = JSONStyleProperty.init(dictionary: map.JSON)
+        
         propertyName    <- map["propertyName"]
         propertySetName <- map["propertySetName"]
         propertyType <- map["propertyType"]
@@ -95,18 +96,20 @@ class Property : Mappable {
                 self.propertyValue = tuple.1!
             }
             break
-//        case _ where type.isVariant(of: "UI Edge Insets") || type.isVariant(of: "Edge Insets"):
-//            guard let top = (value["top"] as? NSNumber)?.floatValue,
-//                let left = (value["left"] as? NSNumber)?.floatValue,
-//                let bottom = (value["bottom"] as? NSNumber)?.floatValue,
-//                let right = (value["right"] as? NSNumber)?.floatValue else {
-//                    self.propertyValue = .InvalidProperty(errorMessage: "'propertyValue' in JSON was missing or or did not contain values for 'top', 'left', 'bottom', and 'right' that could be converted to Floats")
-//                    return true
-//            }
-//            let tuple = checkClosure(UIEdgeInsets(top: CGFloat(top), left: CGFloat(left), bottom: CGFloat(bottom), right: CGFloat(right)) as UIEdgeInsets, type)
-//            self.propertyValue = (tuple.0 != nil) ? .UIEdgeInsetsProperty(value: tuple.0 as! UIEdgeInsets) : tuple.1!
-//            break
-//            
+        case _ where type.isVariant(of: "UI Edge Insets") || type.isVariant(of: "Edge Insets"):
+            if let value = value as? NSDictionary {
+                guard let top = (value["top"] as? NSNumber)?.floatValue,
+                    let left = (value["left"] as? NSNumber)?.floatValue,
+                    let bottom = (value["bottom"] as? NSNumber)?.floatValue,
+                    let right = (value["right"] as? NSNumber)?.floatValue else {
+                        self.propertyValue = .InvalidProperty(errorMessage: "'propertyValue' in JSON was missing or or did not contain values for 'top', 'left', 'bottom', and 'right' that could be converted to Floats")
+                        return true
+                }
+                let tuple = checkClosure(UIEdgeInsets(top: CGFloat(top), left: CGFloat(left), bottom: CGFloat(bottom), right: CGFloat(right)) as UIEdgeInsets, type)
+                self.propertyValue = (tuple.0 != nil) ? .UIEdgeInsetsProperty(value: tuple.0 as! UIEdgeInsets) : tuple.1!
+            }
+            break
+
         default:
             return false;
         }

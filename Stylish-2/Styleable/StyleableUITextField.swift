@@ -8,15 +8,7 @@
 
 import UIKit
 
-struct UITextFieldPropertySet : DynamicStylePropertySet {
-    var propertySet: Dictionary<String, Any> = UITextField().retriveDynamicPropertySet()
-}
-
-extension StyleClass {
-//    var UITextField:UITextFieldPropertySet { get { return self.retrieve(propertySet: UITextFieldPropertySet.self) } set { self.register(propertySet: newValue) } }
-}
-
- public class StyleableUITextField: UITextField, Styleable {
+public class StyleableUITextField: UITextField, Styleable {
 
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UITextFieldPropertySet : {

@@ -41,15 +41,15 @@ protocol StylePropertySet {
 // Adds support for setting style properties by name / string, instead of direct reference. Necessary only if you want your StylePropertySet to support being configured via JSON or other dynamic means.
 
 protocol DynamicStylePropertySet : StylePropertySet {
-    var propertySet: Dictionary<String, Any> { get set }
+//    var propertySet: Dictionary<String, Any> { get set }
     mutating func setStyleProperty<T>(named name:String, toValue value:T)
 }
 
 extension DynamicStylePropertySet {
     mutating func setStyleProperty<T>(named name: String, toValue value: T) {
-        if propertySet[name] != nil {
-            propertySet.updateValue(value, forKey: name)
-        }
+//        if propertySet[name] != nil {
+//            propertySet.updateValue(value, forKey: name)
+//        }
     }
 }
 

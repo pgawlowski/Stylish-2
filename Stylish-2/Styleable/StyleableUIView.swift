@@ -9,15 +9,8 @@
 import Foundation
 import UIKit
 
-struct UIViewPropertySet : DynamicStylePropertySet {
-    var propertySet: Dictionary<String, Any> = UIView().retriveDynamicPropertySet() + CALayer().retriveDynamicPropertySet(prefix: "layer.")
-}
 
-extension StyleClass {
-//    var UIView:UIViewPropertySet { get { return self.retrieve(propertySet: UIViewPropertySet.self) } set { self.register(propertySet: newValue) } }
-}
-
- public class StyleableUIView : UIView, Styleable {
+public class StyleableUIView : UIView, Styleable {
     
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UIViewPropertySet : {
@@ -27,20 +20,6 @@ extension StyleClass {
             }
         }]
     }
-
-//    class var StyleApplicators:[StyleApplicator] {
-//        return []
-//        return [{
-//            (style:StyleClass, target:Any) in
-//            if let view = target as? UIView {
-//                for (key, value) in style.UIView.propertySet {
-//                    if !(value is NSNull) {
-//                        view.setStyleProperties(value: value, key: key)
-//                    }
-//                }
-//            }
-//        }]
-//    }
     
     @IBInspectable var styles:String = "" {
         didSet {
