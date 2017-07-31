@@ -30,11 +30,10 @@
 
 import Foundation
 
-public class StylishJSONStylesheet:JSONStylesheet {
+public class StylishJSONStylesheet: JSONStylesheet {
     public static let sharedInstance = StylishJSONStylesheet()
         
     public func setup(filePath: String) {
         self.filePath = filePath
-        self.setup()
     }
 }

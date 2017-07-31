@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-public class StyleableUILabel : UILabel, Styleable {
+@IBDesignable public class StyleableUILabel : UILabel, Styleable {
 
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UILabelPropertySet : {
             (property:Property, target:Any) in
-            if let key = property.propertyName {
+            if let key = property.propertyName, let propertyValue = property.propertyValue  {
                 switch target {
                 case let label as UILabel:
-                    label.setStyleProperties(value: property.propertyValue.value, key: key)
+                    label.setStyleProperties(value: propertyValue.value, key: key)
                     break
                 case let button as UIButton:
-                    self.setProperties(target: button, property.propertyValue, key)
+                    self.setProperties(target: button, propertyValue, key)
                     break
                 default:
                     break

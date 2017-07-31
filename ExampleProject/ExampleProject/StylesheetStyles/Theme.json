@@ -50,7 +50,7 @@
                 "UIFont.OpenSans",
                 "UIFont.Small",
                 "UILabel.TextAlignment.Left",
-                "UILabel.TextColor.Black",
+                "UILabel.TextColor.Red",
                 ]
 },
 

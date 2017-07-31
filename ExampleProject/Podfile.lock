@@ -1,7 +1,5 @@
 PODS:
-  - ObjectMapper (2.2.8)
-  - Stylish-2 (0.1.0):
-    - ObjectMapper (~> 2.2)
+  - Stylish-2 (0.1.0)
 
 DEPENDENCIES:
   - Stylish-2 (from `/Users/pgawlowski/Documents/Projects/Stylish-2`)
@@ -11,8 +9,7 @@ EXTERNAL SOURCES:
     :path: /Users/pgawlowski/Documents/Projects/Stylish-2
 
 SPEC CHECKSUMS:
-  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
-  Stylish-2: 1b4c779eb260940577e3dd2083015ff6c2b51e47
+  Stylish-2: 272b6f2d101c73402f0692059bbc0d333e87484f
 
 PODFILE CHECKSUM: cbc8b8e04fea60dae950bbfe857cb5f140ce8c5b
 

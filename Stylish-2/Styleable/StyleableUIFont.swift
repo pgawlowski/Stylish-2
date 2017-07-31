@@ -8,7 +8,7 @@
 
 import UIKit
 
- public class StyleableUIFont : UIFont, Styleable {
+public class StyleableUIFont : UIFont, Styleable {
     
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UIFontPropertySet : {
@@ -29,12 +29,9 @@ import UIKit
                 break
             }
             
-            if let targetFont = targetFont {
-                let propertySet = property.propertyValue
-                let font = propertySet.value as! SimplifiedFont
-                
-                var fontName: String = (font.fontName != nil) ? targetFont.fontName : font.fontName!
-                let fontSize = (font.fontSize != nil) ? targetFont.pointSize : font.fontSize
+            if let targetFont = targetFont, let propertySet = property.propertyValue, let font = propertySet.value as? SimplifiedFont {
+                var fontName: String = (font.fontName != nil) ? font.fontName! : targetFont.fontName
+                let fontSize = (font.fontSize != nil && font.fontSize != 0) ? font.fontSize : targetFont.pointSize
                 let fontWeight: String = (font.fontWeight != nil) ? font.fontWeight! : ""
 
                 if !fontWeight.isEmpty {

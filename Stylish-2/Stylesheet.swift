@@ -12,13 +12,15 @@ import UIKit
 let STYLE_FILE = "stylesheet"
 let STYLE_EXTENSION = "json"
 
-public class JSONStylesheet {
-    static var stylesheet = [StyleClassMap]()
+public class JSONStylesheet: NSObject {
+    var stylesheet = [StyleClassMap]()
     static var cachedJson = [[String : AnyObject]]()
 
     var filePath: String?
     
-    internal func setup() {
+    override init() {
+        super.init()
+
         var jsonPath: String?
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let savedDirectory = paths[0]
@@ -82,9 +84,9 @@ public class JSONStylesheet {
     }
     
     private func parseJsonArrayToModel(_ array: [[String:Any]]){
-        JSONStylesheet.stylesheet = [StyleClassMap]()
+        self.stylesheet = [StyleClassMap]()
         for element in array {
-            JSONStylesheet.stylesheet.append(StyleClassMap(JSON: element)!)
+            self.stylesheet.append(StyleClassMap(map: element))
         }
     }
     

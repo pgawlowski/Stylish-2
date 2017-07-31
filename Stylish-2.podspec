@@ -23,8 +23,6 @@ s.homepage = "https://github.com/pgawlowski/Stylish-2"
 # 6
 s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s.version}"}
 
-s.dependency 'ObjectMapper', '~> 2.2'
-
 # 7
 s.source_files = "Stylish-2/**/*.{swift}"
 

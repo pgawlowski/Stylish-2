@@ -7,22 +7,27 @@
 //
 
 import UIKit
-import ObjectMapper
 
-class StyleClassMap: Mappable {
+public class StyleClassMap {
     var name : String?
     var propertyToModifie : String?
-    var properties: [Property]?
-    var styles : [String] = []
+    var properties = [Property]()
+    var styles = [String]()
     
-    required init?(map: Map) {
+    required public init(map: [String: Any]) {
+        self.name = map["styleClass"] as? String
         
-    }
-    
-    func mapping(map: Map) {
-        name    <- map["styleClass"]
-        properties <- map["properties"]
-        styles <- map["styles"]
+        if let propertiesArray = map["properties"] as? [NSDictionary] {
+            for element in propertiesArray {
+                if let element = element as? [String : Any] {
+                    self.properties.append(Property(map: element))
+                }
+            }
+        }
+        
+        if let styles = map["styles"] as? [String] {
+            self.styles = styles
+        }
     }
     
     func getProperty() -> String {
@@ -30,21 +35,17 @@ class StyleClassMap: Mappable {
     }
 }
 
-class Property : Mappable {
+class Property {
     var propertyName : String?
     var propertySetName : String?
     var propertyType: String?
-    var propertyValue = JSONStyleProperty()
-
+    var propertyValue : JSONStyleProperty?
     
-    required init?(map: Map) {
-    }
-    
-    func mapping(map: Map) {
+    required init(map: [String : Any]) {
         self.propertyValue = JSONStyleProperty(map: map)
         
-        propertyName    <- map["propertyName"]
-        propertySetName <- map["propertySetName"]
-        propertyType <- map["propertyType"]
+        propertyName = map["propertyName"] as? String
+        propertySetName = map["propertySetName"] as? String
+        propertyType = map["propertyType"] as? String
     }
 }

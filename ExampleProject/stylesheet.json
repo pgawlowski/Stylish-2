@@ -51,7 +51,7 @@
                 "UIFont.OpenSans",
                 "UIFont.Small",
                 "UILabel.TextAlignment.Left",
-                "UILabel.TextColor.Black",
+                "UILabel.TextColor.Red",
                 ]
 },
 
@@ -71,21 +71,21 @@
                     "propertySetName" : "UILabelPropertySet",
                     "propertyName" : "textColor",
                     "propertyType" : "UIColor",
-                    "propertyValue" : "#FFFF00"
+                    "propertyValue" : "#0000FF"
                     },
                     {
-                    "propertySetName" : "UIViewPropertySet",
-                    "propertyName" : "layer.backgroundColor",
-                    "propertyType" : "CGColor",
-                    "propertyValue" : "#FF00FF"
+                    "propertySetName" : "UIButtonPropertySet",
+                    "propertyName" : "backgroundColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#FF0000"
                     },
                     {
                     "propertySetName" : "UIFontPropertySet",
                     "propertyName" : "font",
                     "propertyType" : "UIFont",
                     "propertyValue" : {
-                    "fontName" : "Menlo",
-                    "weight" : "Italic"
+                    "fontName" : "Noteworthy",
+                    "weight" : "Bold"
                     }
                     },
                 ]

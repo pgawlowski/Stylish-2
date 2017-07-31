@@ -171,7 +171,11 @@ extension NSObject {
             if key.range(of:".") != nil {
                 self.setValue(value, forKeyPath: key)
             } else {
-                self.setValue(value, forKey: key)
+                if self.responds(to: NSSelectorFromString(key)) {
+                    self.setValue(value, forKey: key)
+                } else {
+                    print("Unable to set value \"\(value)\" for key \"\(key)\"")
+                }
             }
         }
     }

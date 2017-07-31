@@ -22,14 +22,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBO-hN-ygC" customClass="StyleableUIButton" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="69" width="359" height="30"/>
+                                <rect key="frame" x="8" y="86" width="359" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wKO-4D-rC8"/>
+                                </constraints>
                                 <state key="normal" title="UIButton.CancelButton"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIButton.CancelButton"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UITextField.StandardInput" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3D-3F-Ckk" customClass="StyleableUITextField" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="107" width="359" height="30"/>
+                                <rect key="frame" x="8" y="138" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -38,7 +41,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UITextField.PasswordInput" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUh-Go-vKC" customClass="StyleableUITextField" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="145" width="359" height="30"/>
+                                <rect key="frame" x="8" y="176" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -47,7 +50,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UILabel.StandardLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-hZ-Gf8" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="183" width="359" height="20.5"/>
+                                <rect key="frame" x="8" y="214" width="359" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,7 +59,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UILabel.StandardLabelBlue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXI-ch-AZS" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="211.5" width="359" height="21"/>
+                                <rect key="frame" x="8" y="238.5" width="359" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -65,19 +68,22 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Styles merging exmaple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-UW-uzw" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="240.5" width="359" height="20.5"/>
+                                <rect key="frame" x="8" y="266.5" width="359" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Styles overriding example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-rH-Q7w" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="269" width="359" height="21"/>
+                                <rect key="frame" x="8" y="295" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-yK-mLS" customClass="StyleableUIButton" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="28" width="359" height="33"/>
+                                <rect key="frame" x="8" y="28" width="359" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RRq-xM-RNV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="UIButton.StandardBackground"/>
                                 <userDefinedRuntimeAttributes>
@@ -120,7 +126,9 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="Tp6-qh-yyS" customClass="StylishJSONStylesheet" customModule="Stylish_2"/>
             </objects>
+            <point key="canvasLocation" x="-506.39999999999998" y="89.505247376311857"/>
         </scene>
     </scenes>
 </document>

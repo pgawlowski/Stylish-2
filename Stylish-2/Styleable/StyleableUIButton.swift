@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-public class StyleableUIButton : UIButton, Styleable {
+@IBDesignable public class StyleableUIButton : UIButton, Styleable {
     
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UIButtonPropertySet : {
             (property:Property, target:Any) in
-            if let button = target as? UIButton, let key = property.propertyName {
-                    button.setStyleProperties(value: property.propertyValue.value, key: key)
+            if let button = target as? UIButton, let key = property.propertyName, let propertyValue = property.propertyValue  {
+                    button.setStyleProperties(value: propertyValue.value, key: key)
             }
         }]
     }

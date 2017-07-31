@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 
 
-public class StyleableUIView : UIView, Styleable {
+@IBDesignable public class StyleableUIView : UIView, Styleable {
     
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UIViewPropertySet : {
             (property:Property, target:Any) in
-            if let view = target as? UIView, let key = property.propertyName {
-                view.setStyleProperties(value: property.propertyValue.value, key: key)
+            
+            if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.propertyValue {
+                view.setStyleProperties(value: propertyValue.value, key: key)
             }
         }]
     }
