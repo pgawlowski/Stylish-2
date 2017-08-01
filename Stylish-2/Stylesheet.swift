@@ -20,7 +20,12 @@ public class JSONStylesheet: NSObject {
     
     override init() {
         super.init()
-
+        self.loadData()
+        
+        return
+    }
+    
+    public func loadData() {
         var jsonPath: String?
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let savedDirectory = paths[0]
@@ -40,9 +45,13 @@ public class JSONStylesheet: NSObject {
                 jsonPath = firstPath.appendingPathComponent("stylesheet.json")
             }
         #else
-            jsonPath = bundle.path(forResource: "stylesheet", ofType: "json")
+            if let path = self.filePath {
+                jsonPath = path
+            } else {
+                jsonPath = bundle.path(forResource: "stylesheet", ofType: "json")
+            }
         #endif
-
+        
         // Compare the file modification date of the downloaded / copied version of stylesheet.json in the Documents directory, and the original version of stylesheet.json included in the app bundle. If the Documents version is more recent, load and parse that version.  Otherwise, use the bundle version and then copy it to the Documents directory.
         if let savedAttributes = try? fileManager.attributesOfItem(atPath: filename), let savedDate = savedAttributes[FileAttributeKey.modificationDate] as? NSDate, let path = jsonPath, let bundledAttributes = try? fileManager.attributesOfItem(atPath: path), let bundledDate = bundledAttributes[FileAttributeKey.modificationDate] as? NSDate  {
             
@@ -59,7 +68,7 @@ public class JSONStylesheet: NSObject {
                     }
                     catch {}
                 }
-
+                
                 JSONStylesheet.cachedJson = json
                 if isValid(json) {
                     parseJsonArrayToModel(json)
@@ -79,8 +88,6 @@ public class JSONStylesheet: NSObject {
                 parseJsonArrayToModel(json)
             }
         }
-        
-        return
     }
     
     private func parseJsonArrayToModel(_ array: [[String:Any]]){

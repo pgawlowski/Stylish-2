@@ -35,5 +35,6 @@ public class StylishJSONStylesheet: JSONStylesheet {
         
     public func setup(filePath: String) {
         self.filePath = filePath
+        self.loadData()
     }
 }
