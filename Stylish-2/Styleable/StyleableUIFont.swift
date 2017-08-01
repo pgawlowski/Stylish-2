@@ -72,7 +72,4 @@ public class StyleableUIFont : UIFont, Styleable {
         didSet {
         }
     }
-    
-    override public func prepareForInterfaceBuilder() {
-    }
 }

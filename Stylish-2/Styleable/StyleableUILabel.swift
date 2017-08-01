@@ -60,11 +60,7 @@ import UIKit
     func refreshFont() {
         parseAndApplyStyles()
     }
-    
-    override public func prepareForInterfaceBuilder() {
-        showErrorIfInvalidStyles()
-    }
-    
+        
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

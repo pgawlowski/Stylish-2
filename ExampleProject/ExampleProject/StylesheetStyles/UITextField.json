@@ -68,7 +68,7 @@
                     },
                     {
                     "propertySetName" : "UITextFieldPropertySet",
-                    "propertyName" : "secureTextEntry",
+                    "propertyName" : "isSecureTextEntry",
                     "propertyType" : "Bool",
                     "propertyValue" : true
                     },

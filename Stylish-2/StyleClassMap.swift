@@ -15,7 +15,7 @@ public class StyleClassMap {
     var styles = [String]()
     
     required public init(map: [String: Any]) {
-        self.name = map["styleClass"] as? String
+        self.name = (map["styleClass"] as? String)?.lowercased()
         
         if let propertiesArray = map["properties"] as? [NSDictionary] {
             for element in propertiesArray {

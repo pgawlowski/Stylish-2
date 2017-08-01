@@ -58,7 +58,6 @@
 {
     "styleClass" : "UILabel.StandardLabelBlue",
     "styles" : [
-                "UIFont.OpenSans",
                 "UIFont.Normal",
                 "UILabel.TextAlignment.Center",
                 "UILabel.TextColor.Blue",
@@ -74,10 +73,10 @@
                     "propertyValue" : "#0000FF"
                     },
                     {
-                    "propertySetName" : "UIButtonPropertySet",
-                    "propertyName" : "backgroundColor",
-                    "propertyType" : "UIColor",
-                    "propertyValue" : "#FF0000"
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#00FF00"
                     },
                     {
                     "propertySetName" : "UIFontPropertySet",
@@ -439,7 +438,7 @@
                     },
                     {
                     "propertySetName" : "UITextFieldPropertySet",
-                    "propertyName" : "secureTextEntry",
+                    "propertyName" : "isSecureTextEntry",
                     "propertyType" : "Bool",
                     "propertyValue" : true
                     },

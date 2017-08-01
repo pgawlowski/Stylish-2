@@ -54,8 +54,4 @@ import UIKit
             parseAndApplyStyles()
         }
     }
-    
-    override public func prepareForInterfaceBuilder() {
-        showErrorIfInvalidStyles()
-    }
 }

@@ -52,6 +52,7 @@ extension Styleable {
 extension Styleable where Self:UIView {
     func parseAndApplyStyles() {
         self.layoutIfNeeded()
+        
         parseAndApply(styles: styles)
     }
     
@@ -60,7 +61,7 @@ extension Styleable where Self:UIView {
         let components = styles.replacingOccurrences(of: ", ", with: ",").replacingOccurrences(of: " ,", with: ",").components(separatedBy:",")
         
         for string in components {
-            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
             
             if let style = stylish.stylesheet.filter({ $0.name == trimmed }).first {
                 if style.styles.count > 0 {
@@ -69,79 +70,37 @@ extension Styleable where Self:UIView {
                     self.apply(style: style)
                 }
             } else {
-                print("!!!! Missing style named `\(trimmed)` !!!!")
+                print("!!!!StylishError!!!! Missing style named `\(trimmed)` !!!!")
+                #if TARGET_INTERFACE_BUILDER
+                    self.showErrorIfInvalid()
+                #endif
             }
         }
     }
     
     func parseMultipleStyles(style: StyleClassMap, map: [StyleClassMap]) {
         for styleType in style.styles {
-            if let styleToApply = map.filter({ $0.name == styleType }).first {
+            if let styleToApply = map.filter({ $0.name == styleType.lowercased() }).first {
                 self.apply(style: styleToApply)
             } else {
-                print("!!!! Missing style named `\(styleType)` !!!!")
+                print("!!!!StylishError!!!! Missing style named `\(styleType)` !!!!")
+                #if TARGET_INTERFACE_BUILDER
+                    self.showErrorIfInvalid()
+                #endif
                 break
             }
         }
     }
     
-    func showErrorIfInvalidStyles() {
-        showErrorIfInvalid(styles: styles)
-    }
-    
-    func showErrorIfInvalid(styles:String) {
-        let components = styles.replacingOccurrences(of:", ", with: ",").replacingOccurrences(of:" ,", with: ",").components(separatedBy:",")
-        
-        var invalidStyle = false
+    func showErrorIfInvalid() {
         for subview in subviews {
             if subview.tag == Stylish.ErrorViewTag {
                 subview.removeFromSuperview()
             }
         }
-        
-        let stylesheet = JSONStylesheet.cachedJson
-        for string in components where string != "" {
-//            if stylesheet[string] == nil {
-//                invalidStyle = true
-//            }
-        }
-        
-        
-        
-//        if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-////            let stylesheet = stylesheetType.init()
-////            for string in components where string != "" {
-////                if stylesheet[string] == nil {
-////                    invalidStyle = true
-////                }
-////            }
-//        }
-//        else if let stylesheetType = Stylish.GlobalStylesheet {
-////            let stylesheet = stylesheetType.init()
-////            for string in components where string != "" {
-////                if stylesheet[string] == nil {
-////                    invalidStyle = true
-////                }
-////            }
-//        }
-//        else {
-//            let stylesheetName = "StylishJSONStylesheet"
-//            if let moduleName = String(describing:BundleMarker()).components(separatedBy:".").first, let stylesheetType = NSClassFromString("\(moduleName).\(stylesheetName)") as? Stylesheet.Type {
-////                let stylesheet = stylesheetType.init()
-////                for string in components where string != "" {
-////                    if stylesheet[string] == nil {
-////                        invalidStyle = true
-////                    }
-////                }
-//            }
-//            else {
-//                invalidStyle = true
-//            }
-//        }
-        if invalidStyle {
-            let errorView = Stylish.ErrorView(frame: bounds)
-            errorView.tag = Stylish.ErrorViewTag
-            addSubview(errorView)
-        }
+
+        let errorView = Stylish.ErrorView(frame: bounds)
+        errorView.tag = Stylish.ErrorViewTag
+        addSubview(errorView)
     }
 }

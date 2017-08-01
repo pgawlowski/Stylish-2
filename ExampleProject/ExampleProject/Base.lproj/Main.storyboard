@@ -67,18 +67,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UILabel.StandardLabelBlue"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Styles merging exmaple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-UW-uzw" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="266.5" width="359" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Styles overriding example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-rH-Q7w" customClass="StyleableUILabel" customModule="Stylish_2">
-                                <rect key="frame" x="8" y="295" width="359" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-yK-mLS" customClass="StyleableUIButton" customModule="Stylish_2">
                                 <rect key="frame" x="8" y="28" width="359" height="50"/>
                                 <constraints>
@@ -95,20 +83,15 @@
                         <constraints>
                             <constraint firstItem="JUh-Go-vKC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="52F-MO-Rbf"/>
                             <constraint firstItem="lEZ-yK-mLS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="68n-qD-6FK"/>
-                            <constraint firstAttribute="trailing" secondItem="dEK-UW-uzw" secondAttribute="trailing" constant="8" id="6tH-6z-3jp"/>
-                            <constraint firstItem="gDa-rH-Q7w" firstAttribute="top" secondItem="dEK-UW-uzw" secondAttribute="bottom" constant="8" id="7sZ-0R-DF6"/>
                             <constraint firstItem="tXI-ch-AZS" firstAttribute="top" secondItem="X8R-hZ-Gf8" secondAttribute="bottom" constant="8" id="A9D-et-STK"/>
                             <constraint firstItem="CBO-hN-ygC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C0s-pj-ALv"/>
-                            <constraint firstAttribute="trailing" secondItem="gDa-rH-Q7w" secondAttribute="trailing" constant="8" id="Ctz-4N-TGD"/>
                             <constraint firstItem="tXI-ch-AZS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="DW5-8A-TTD"/>
                             <constraint firstAttribute="trailing" secondItem="JUh-Go-vKC" secondAttribute="trailing" constant="8" id="EWX-gc-G6s"/>
                             <constraint firstAttribute="trailing" secondItem="tXI-ch-AZS" secondAttribute="trailing" constant="8" id="EyU-iI-fol"/>
                             <constraint firstAttribute="trailing" secondItem="H3D-3F-Ckk" secondAttribute="trailing" constant="8" id="Mir-IY-BTn"/>
                             <constraint firstItem="lEZ-yK-mLS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Oe1-fH-Rij"/>
                             <constraint firstItem="H3D-3F-Ckk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="P8X-6L-a2Y"/>
-                            <constraint firstItem="dEK-UW-uzw" firstAttribute="top" secondItem="tXI-ch-AZS" secondAttribute="bottom" constant="8" id="Qq8-Hi-OX1"/>
                             <constraint firstAttribute="trailing" secondItem="X8R-hZ-Gf8" secondAttribute="trailing" constant="8" id="RvY-k4-v3M"/>
-                            <constraint firstItem="dEK-UW-uzw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="USy-19-oE2"/>
                             <constraint firstItem="lEZ-yK-mLS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VW2-et-fk2"/>
                             <constraint firstItem="JUh-Go-vKC" firstAttribute="top" secondItem="H3D-3F-Ckk" secondAttribute="bottom" constant="8" id="Yo8-0a-ahl"/>
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eVX-w7-MFL"/>
@@ -119,14 +102,12 @@
                             <constraint firstItem="JUh-Go-vKC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="iEJ-H4-3Mp"/>
                             <constraint firstItem="CBO-hN-ygC" firstAttribute="top" secondItem="lEZ-yK-mLS" secondAttribute="bottom" constant="8" id="kJ7-KP-ctO"/>
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="lgh-GZ-Hfd"/>
-                            <constraint firstItem="gDa-rH-Q7w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="qAq-iS-Gfd"/>
                             <constraint firstAttribute="trailing" secondItem="CBO-hN-ygC" secondAttribute="trailing" constant="8" id="rdA-9f-uU6"/>
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="top" secondItem="JUh-Go-vKC" secondAttribute="bottom" constant="8" id="t5Z-VR-f04"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="Tp6-qh-yyS" customClass="StylishJSONStylesheet" customModule="Stylish_2"/>
             </objects>
             <point key="canvasLocation" x="-506.39999999999998" y="89.505247376311857"/>
         </scene>

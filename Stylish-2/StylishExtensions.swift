@@ -121,7 +121,7 @@ extension UIFont {
             if let font = UIFont(name: fontName!, size: fontSize!) {
                 return font
             } else {
-                print("Invalid font name \(String(describing: fontName))")
+                print("!!!!StylishError!!!! Invalid font name \(String(describing: fontName))")
                 return UIFont(name: "HelveticaNeue", size: 12)!
             }
         }
@@ -171,11 +171,7 @@ extension NSObject {
             if key.range(of:".") != nil {
                 self.setValue(value, forKeyPath: key)
             } else {
-                if self.responds(to: NSSelectorFromString(key)) {
-                    self.setValue(value, forKey: key)
-                } else {
-                    print("Unable to set value \"\(value)\" for key \"\(key)\"")
-                }
+                self.setValue(value, forKey: key)
             }
         }
     }
