@@ -78,12 +78,33 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIButton.StandardButtonWithBG"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emperor_chicks" translatesAutoresizingMaskIntoConstraints="NO" id="1fs-Ne-Cxc" customClass="StyleableUIImageView" customModule="Stylish_2">
+                                <rect key="frame" x="67" y="266.5" width="240" height="134"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="e8U-bG-PKy"/>
+                                    <constraint firstAttribute="height" constant="134" id="m9b-cH-0di"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIImage.SmapleImage"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MissingImage" translatesAutoresizingMaskIntoConstraints="NO" id="TxO-Nm-5Uq" customClass="StyleableUIImageView" customModule="Stylish_2">
+                                <rect key="frame" x="67" y="408.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="oEk-A0-tAr"/>
+                                    <constraint firstAttribute="width" constant="240" id="tff-gK-zId"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIImage.TintImage"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JUh-Go-vKC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="52F-MO-Rbf"/>
                             <constraint firstItem="lEZ-yK-mLS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="68n-qD-6FK"/>
                             <constraint firstItem="tXI-ch-AZS" firstAttribute="top" secondItem="X8R-hZ-Gf8" secondAttribute="bottom" constant="8" id="A9D-et-STK"/>
+                            <constraint firstItem="TxO-Nm-5Uq" firstAttribute="top" secondItem="1fs-Ne-Cxc" secondAttribute="bottom" constant="8" id="BdV-cZ-4Ov"/>
                             <constraint firstItem="CBO-hN-ygC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C0s-pj-ALv"/>
                             <constraint firstItem="tXI-ch-AZS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="DW5-8A-TTD"/>
                             <constraint firstAttribute="trailing" secondItem="JUh-Go-vKC" secondAttribute="trailing" constant="8" id="EWX-gc-G6s"/>
@@ -91,7 +112,9 @@
                             <constraint firstAttribute="trailing" secondItem="H3D-3F-Ckk" secondAttribute="trailing" constant="8" id="Mir-IY-BTn"/>
                             <constraint firstItem="lEZ-yK-mLS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Oe1-fH-Rij"/>
                             <constraint firstItem="H3D-3F-Ckk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="P8X-6L-a2Y"/>
+                            <constraint firstItem="1fs-Ne-Cxc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PQw-Cd-Qeg"/>
                             <constraint firstAttribute="trailing" secondItem="X8R-hZ-Gf8" secondAttribute="trailing" constant="8" id="RvY-k4-v3M"/>
+                            <constraint firstItem="1fs-Ne-Cxc" firstAttribute="top" secondItem="tXI-ch-AZS" secondAttribute="bottom" constant="8" id="VQf-jb-8IS"/>
                             <constraint firstItem="lEZ-yK-mLS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VW2-et-fk2"/>
                             <constraint firstItem="JUh-Go-vKC" firstAttribute="top" secondItem="H3D-3F-Ckk" secondAttribute="bottom" constant="8" id="Yo8-0a-ahl"/>
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eVX-w7-MFL"/>
@@ -101,6 +124,7 @@
                             <constraint firstItem="CBO-hN-ygC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="fuK-kq-vdH"/>
                             <constraint firstItem="JUh-Go-vKC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="iEJ-H4-3Mp"/>
                             <constraint firstItem="CBO-hN-ygC" firstAttribute="top" secondItem="lEZ-yK-mLS" secondAttribute="bottom" constant="8" id="kJ7-KP-ctO"/>
+                            <constraint firstItem="TxO-Nm-5Uq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l6z-QJ-lJN"/>
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="lgh-GZ-Hfd"/>
                             <constraint firstAttribute="trailing" secondItem="CBO-hN-ygC" secondAttribute="trailing" constant="8" id="rdA-9f-uU6"/>
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="top" secondItem="JUh-Go-vKC" secondAttribute="bottom" constant="8" id="t5Z-VR-f04"/>
@@ -112,4 +136,8 @@
             <point key="canvasLocation" x="-506.39999999999998" y="89.505247376311857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MissingImage" width="142" height="142"/>
+        <image name="emperor_chicks" width="400" height="300"/>
+    </resources>
 </document>

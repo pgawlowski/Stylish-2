@@ -1,0 +1,64 @@
+{
+    "styleClass" : "UIImage.SmapleImage",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.cornerRadius",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 20.0
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "clipsToBounds",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderWidth",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 2.0
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FF0000"
+                    },
+    ]
+},
+{
+    "styleClass" : "UIImage.TintImage",
+    "properties" : [
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.cornerRadius",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 20.0
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "clipsToBounds",
+                    "propertyType" : "Bool",
+                    "propertyValue" : true
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderWidth",
+                    "propertyType" : "CGFloat",
+                    "propertyValue" : 2.0
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.borderColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#00FF00"
+                    },
+                    {
+                    "propertySetName" : "UIViewPropertySet",
+                    "propertyName" : "layer.tintColor",
+                    "propertyType" : "CGColor",
+                    "propertyValue" : "#FF0000"
+                    },
+                    ]
+},

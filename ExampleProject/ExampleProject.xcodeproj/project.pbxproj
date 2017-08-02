@@ -23,6 +23,7 @@
 		7659CC981EE036D90029B803 /* UIImageView.json in Resources */ = {isa = PBXBuildFile; fileRef = 7659CC971EE036D90029B803 /* UIImageView.json */; };
 		7659CC9A1EE036FA0029B803 /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 7659CC991EE036FA0029B803 /* Theme.json */; };
 		7659CC9C1EE037070029B803 /* UIColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 7659CC9B1EE037070029B803 /* UIColor.json */; };
+		766710D91F31C62700302A14 /* UIImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 766710D81F31C62700302A14 /* UIImage.json */; };
 		947BEE4AA786CED012714996 /* Pods_ExampleProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B42CF37E2B4DF5D44438C2 /* Pods_ExampleProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		7659CC971EE036D90029B803 /* UIImageView.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UIImageView.json; sourceTree = "<group>"; };
 		7659CC991EE036FA0029B803 /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
 		7659CC9B1EE037070029B803 /* UIColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UIColor.json; sourceTree = "<group>"; };
+		766710D81F31C62700302A14 /* UIImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UIImage.json; sourceTree = "<group>"; };
 		76F399671F20C3F500C7819B /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ExampleProject-aeometrkabqnveetsmhiqmemmojm/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		7730560E7A9C963C2859A13E /* Pods-ExampleProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleProject/Pods-ExampleProject.debug.xcconfig"; sourceTree = "<group>"; };
 		BA327C7C14F2B1681D894A55 /* Pods_ExampleProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 				764BE2D11EE03666006C8B18 /* UILabel.json */,
 				764BE2D71EE03695006C8B18 /* UITextField.json */,
 				764BE2D91EE0369F006C8B18 /* UIView.json */,
+				766710D81F31C62700302A14 /* UIImage.json */,
 			);
 			name = BasicStyles;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				7659CC9A1EE036FA0029B803 /* Theme.json in Resources */,
 				764BE2CE1EE0360C006C8B18 /* stylesheet.json in Resources */,
 				764BE2B51EE03589006C8B18 /* Assets.xcassets in Resources */,
+				766710D91F31C62700302A14 /* UIImage.json in Resources */,
 				764BE2B31EE03589006C8B18 /* Main.storyboard in Resources */,
 				764BE2D61EE03682006C8B18 /* UIButton.json in Resources */,
 				764BE2D81EE03695006C8B18 /* UITextField.json in Resources */,

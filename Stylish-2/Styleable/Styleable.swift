@@ -30,7 +30,7 @@ protocol Styleable {
 
 extension Styleable {
     static var StyleApplicators:[StyleApplicatorType : StyleApplicator] {
-        return StyleableUIButton.StyleApplicator + StyleableUIFont.StyleApplicator + StyleableUIImageView.StyleApplicator + StyleableUILabel.StyleApplicator + StyleableUITextField.StyleApplicator + StyleableUIView.StyleApplicator
+        return StyleableUIButton.StyleApplicator + StyleableUIFont.StyleApplicator + StyleableUIImageView.StyleApplicator + StyleableUILabel.StyleApplicator + StyleableUITextField.StyleApplicator + StyleableUIView.StyleApplicator + StyleableUIImageView.StyleApplicator
     }
     
     func apply(style:StyleClassMap) {

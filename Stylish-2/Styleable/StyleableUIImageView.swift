@@ -9,39 +9,23 @@
 import Foundation
 import UIKit
 
-//struct UIImageViewPropertySet : DynamicStylePropertySet {
-////    var propertySet: Dictionary<String, Any> = UIImageView().retriveDynamicPropertySet()
-//
-//    var image:UIImage?
-//    var customUIImageViewStyleBlock:((UIImageView)->())?
-//    mutating func setStyleProperty<T>(named name: String, toValue value: T) {
-//        switch name {
-//        case _ where name.isVariant(of: "Image"):
-//            image = value as? UIImage
-//        case _ where name.isVariant(of: "Template"):
-//            image = (value as? UIImage)?.withRenderingMode(.alwaysTemplate)
-//        default :
-//            return
-//        }
-//    }
-//}
-
- public class StyleableUIImageView : UIImageView, Styleable {
+@IBDesignable public class StyleableUIImageView : UIImageView, Styleable {
     
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UIImageViewPropertySet : {
-            (style:Property, target:Any) in
+            (property:Property, target:Any) in
+            
+            if let key = property.propertyName, let propertyValue = property.propertyValue  {
+                switch target {
+                case let imageView as UIImageView:
+                    imageView.setStyleProperties(value: propertyValue.value, key: key)
+                    break
+                default:
+                    break
+                }
+            }
         }]
     }
-
-    //        return StyleableUIView.StyleApplicators + [{
-    //            (style:StyleClass, target:Any) in
-    //            if let imageView = target as? UIImageView {
-    //                imageView.image =? style.UIImageView.image
-    //                if let customStyleBlock = style.UIImageView.customUIImageViewStyleBlock { customStyleBlock(imageView) }
-    //            }
-    //            }]
-
     
     @IBInspectable var styles:String = "" {
         didSet {
