@@ -55,10 +55,10 @@
                     "propertyValue" : "#00FF00"
                     },
                     {
-                    "propertySetName" : "UIViewPropertySet",
-                    "propertyName" : "layer.tintColor",
-                    "propertyType" : "CGColor",
-                    "propertyValue" : "#FF0000"
+                    "propertySetName" : "UIImageViewPropertySet",
+                    "propertyName" : "tintColor",
+                    "propertyType" : "UIColor",
+                    "propertyValue" : "#00FF00"
                     },
                     ]
 },

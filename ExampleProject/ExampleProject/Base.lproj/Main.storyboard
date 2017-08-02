@@ -88,11 +88,12 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIImage.SmapleImage"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MissingImage" translatesAutoresizingMaskIntoConstraints="NO" id="TxO-Nm-5Uq" customClass="StyleableUIImageView" customModule="Stylish_2">
-                                <rect key="frame" x="67" y="408.5" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cart" translatesAutoresizingMaskIntoConstraints="NO" id="TxO-Nm-5Uq" customClass="StyleableUIImageView" customModule="Stylish_2">
+                                <rect key="frame" x="157" y="408.5" width="60" height="60"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.51936848960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="oEk-A0-tAr"/>
-                                    <constraint firstAttribute="width" constant="240" id="tff-gK-zId"/>
+                                    <constraint firstAttribute="height" constant="60" id="Jic-gR-YDh"/>
+                                    <constraint firstAttribute="width" constant="60" id="VbL-tV-2Sr"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIImage.TintImage"/>
@@ -130,6 +131,9 @@
                             <constraint firstItem="X8R-hZ-Gf8" firstAttribute="top" secondItem="JUh-Go-vKC" secondAttribute="bottom" constant="8" id="t5Z-VR-f04"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="TxO-Nm-5Uq" id="x7P-g6-hQe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +141,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MissingImage" width="142" height="142"/>
         <image name="emperor_chicks" width="400" height="300"/>
+        <image name="ic_cart" width="24" height="24"/>
     </resources>
 </document>
