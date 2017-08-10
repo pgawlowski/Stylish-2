@@ -484,8 +484,8 @@
                     },
                     {
                     "propertySetName" : "UIViewPropertySet",
-                    "propertyName" : "backgroundColor",
-                    "propertyType" : "UIColor",
+                    "propertyName" : "layer.backgroundColor",
+                    "propertyType" : "CGColor",
                     "propertyValue" : "#FF00FF"
                     },
                     ]
