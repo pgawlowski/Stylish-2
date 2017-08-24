@@ -61,9 +61,9 @@ extension Styleable where Self:UIView {
         let components = styles.replacingOccurrences(of: ", ", with: ",").replacingOccurrences(of: " ,", with: ",").components(separatedBy:",")
         
         for string in components {
-            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            if let style = stylish.stylesheet.filter({ $0.name == trimmed }).first {
+            if let style = stylish.stylesheet.filter({ $0.name?.lowercased() == trimmed.lowercased() }).first {
                 if style.styles.count > 0 {
                     self.parseMultipleStyles(style: style, map: stylish.stylesheet)
                 } else {
@@ -80,7 +80,7 @@ extension Styleable where Self:UIView {
     
     func parseMultipleStyles(style: StyleClassMap, map: [StyleClassMap]) {
         for styleType in style.styles {
-            if let styleToApply = map.filter({ $0.name == styleType.lowercased() }).first {
+            if let styleToApply = map.filter({ $0.name?.lowercased() == styleType.lowercased() }).first {
                 self.apply(style: styleToApply)
             } else {
                 print("!!!!StylishError!!!! Missing style named `\(styleType)` !!!!")

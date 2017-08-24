@@ -9,13 +9,13 @@
 import UIKit
 
 public class StyleClassMap {
-    var name : String?
-    var propertyToModifie : String?
-    var properties = [Property]()
-    var styles = [String]()
+    public var name : String?
+    public var propertyToModifie : String?
+    public var properties = [Property]()
+    public var styles = [String]()
     
     required public init(map: [String: Any]) {
-        self.name = (map["styleClass"] as? String)?.lowercased()
+        self.name = (map["styleClass"] as? String)
         
         if let propertiesArray = map["properties"] as? [NSDictionary] {
             for element in propertiesArray {
@@ -29,19 +29,15 @@ public class StyleClassMap {
             self.styles = styles
         }
     }
-    
-    func getProperty() -> String {
-        return ""
-    }
 }
 
-class Property {
-    var propertyName : String?
-    var propertySetName : String?
-    var propertyType: String?
-    var propertyValue : JSONStyleProperty?
-    
-    required init(map: [String : Any]) {
+public class Property {
+    public var propertyName : String?
+    public var propertySetName : String?
+    public var propertyType: String?
+    public var propertyValue : JSONStyleProperty?
+
+    required public init(map: [String : Any]) {
         self.propertyValue = JSONStyleProperty(map: map)
         
         propertyName = map["propertyName"] as? String

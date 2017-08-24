@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum JSONStyleProperty {
+public enum JSONStyleProperty {
     case CGFloatProperty(value:CGFloat)
     case FloatProperty(value:Float)
     case DoubleProperty(value:Double)

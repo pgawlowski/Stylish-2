@@ -33,7 +33,7 @@ import Foundation
 public class StylishJSONStylesheet: JSONStylesheet {
     public static let sharedInstance = StylishJSONStylesheet()
         
-    public func setup(filePath: String) {
+    public func setup(filePath: URL) {
         self.filePath = filePath
         self.loadData()
     }

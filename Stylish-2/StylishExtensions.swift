@@ -92,7 +92,7 @@ extension UIColor {
     }
 }
 
-extension UIFont {
+public extension UIFont {
     struct SimplifiedFont {
         var fontName: String?
         var fontWeight: String?

@@ -13,10 +13,9 @@ let STYLE_FILE = "stylesheet"
 let STYLE_EXTENSION = "json"
 
 public class JSONStylesheet: NSObject {
-    var stylesheet = [StyleClassMap]()
-    static var cachedJson = [[String : AnyObject]]()
+    public var stylesheet = [StyleClassMap]()
 
-    var filePath: String?
+    var filePath: URL?
     
     override init() {
         super.init()
@@ -27,12 +26,8 @@ public class JSONStylesheet: NSObject {
     
     public func loadData() {
         var jsonPath: String?
-        let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
-        let savedDirectory = paths[0]
-        let filename = savedDirectory.appending("/stylesheet.json")
-        
         let bundle = Bundle.main
-        let fileManager = FileManager.default
+
         #if TARGET_INTERFACE_BUILDER
             let processInfo = ProcessInfo.processInfo
             let environment = processInfo.environment
@@ -46,49 +41,15 @@ public class JSONStylesheet: NSObject {
             }
         #else
             if let path = self.filePath {
-                jsonPath = path
+                jsonPath = path.absoluteString
             } else {
                 jsonPath = bundle.path(forResource: "stylesheet", ofType: "json")
             }
         #endif
         
-        // Compare the file modification date of the downloaded / copied version of stylesheet.json in the Documents directory, and the original version of stylesheet.json included in the app bundle. If the Documents version is more recent, load and parse that version.  Otherwise, use the bundle version and then copy it to the Documents directory.
-        if let savedAttributes = try? fileManager.attributesOfItem(atPath: filename),
-            let savedDate = savedAttributes[FileAttributeKey.modificationDate] as? NSDate, let path = jsonPath,
-            let bundledAttributes = try? fileManager.attributesOfItem(atPath: path),
-            let bundledDate = bundledAttributes[FileAttributeKey.modificationDate] as? NSDate  {
-            
-            if let data = NSData(contentsOfFile:filename), let json = (try? JSONSerialization.jsonObject(with: data as Data, options:[])) as? [[String : AnyObject]], savedDate.timeIntervalSinceReferenceDate >= bundledDate.timeIntervalSinceReferenceDate {
-                
-                JSONStylesheet.cachedJson = json
-                if isValid(json) {
-                    parseJsonArrayToModel(json)
-                }
-            } else if let path = jsonPath, let data = NSData(contentsOfFile:path), let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
-                if let stringJSON = String(data:data as Data, encoding: String.Encoding.utf8) {
-                    do {
-                        try stringJSON.write(toFile: filename, atomically: true, encoding: String.Encoding.utf8)
-                    }
-                    catch {}
-                }
-                
-                JSONStylesheet.cachedJson = json
-                if isValid(json) {
-                    parseJsonArrayToModel(json)
-                }
-            }
-        }
-        else if let path = URL.init(string: jsonPath!),
+        if let path = URL.init(string: jsonPath!),
             let data = NSData(contentsOf: path),
             let json = (try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? [[String : AnyObject]] {
-            if let stringJSON = String(data:data as Data, encoding: String.Encoding.utf8) {
-                do {
-                    try stringJSON.write(toFile: filename, atomically: true, encoding: String.Encoding.utf8)
-                }
-                catch {}
-            }
-            
-            JSONStylesheet.cachedJson = json
             if isValid(json) {
                 parseJsonArrayToModel(json)
             }
