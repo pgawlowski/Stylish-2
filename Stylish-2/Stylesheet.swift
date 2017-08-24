@@ -52,8 +52,8 @@ public class JSONStylesheet: NSObject {
         
             do {
                 let json = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [[String : AnyObject]]
-                if isValid(json) {
-                    parseJsonArrayToModel(json)
+                if isValid(json!) {
+                    parseJsonArrayToModel(json!)
                 }
             } catch let error {
                 assert(false, error.localizedDescription)
