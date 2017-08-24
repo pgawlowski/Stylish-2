@@ -47,11 +47,10 @@ public class JSONStylesheet: NSObject {
             }
         #endif
         
-        if let path = URL.init(string: jsonPath!),
-            let data = NSData(contentsOf: path) {
-        
+        let path = URL(fileURLWithPath: jsonPath!)
+        if let data = try? Data(contentsOf: path) {
             do {
-                let json = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [[String : AnyObject]]
+                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [[String : AnyObject]]
                 if isValid(json!) {
                     parseJsonArrayToModel(json!)
                 }
