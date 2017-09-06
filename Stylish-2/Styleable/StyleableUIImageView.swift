@@ -15,15 +15,15 @@ import UIKit
         return [.UIImageViewPropertySet : {
             (property:Property, target:Any) in
             
-            if let key = property.propertyName, let propertyValue = property.propertyValue  {
-                switch target {
-                case let imageView as UIImageView:
-                    imageView.setStyleProperties(value: propertyValue.value, key: key)
-                    break
-                default:
-                    break
-                }
-            }
+//            if let key = property.propertyName, let propertyValue = property.value {
+//                switch target {
+//                case let imageView as UIImageView:
+//                    imageView.setStyleProperties(value: propertyValue.value, key: key)
+//                    break
+//                default:
+//                    break
+//                }
+//            }
         }]
     }
     

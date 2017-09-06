@@ -35,16 +35,16 @@ extension Styleable {
     
     func apply(style:StyleClassMap) {
         for property in style.properties {
-            if let propertySetName = property.propertySetName, let applicator = Self.StyleApplicators[StyleApplicatorType(rawValue:propertySetName)!], let propertyValue = property.propertyValue {
-                switch propertyValue {
-                case .InvalidProperty:
-                    assert(false, "The '\(String(describing: property.propertyName))' property in '\(String(describing: property.propertySetName))' for the style class '\(String(describing: style.name))' has the following error: \(String(describing: property.propertyValue?.value))")
-                    break
-                default:
-                    applicator(property, self)
-                    break
-                }
-            }
+//            if let propertySetName = property.propertySetName, let applicator = Self.StyleApplicators[StyleApplicatorType(rawValue:propertySetName)!], let propertyValue = property.value {
+//                switch propertyValue {
+//                case .InvalidProperty:
+//                    assert(false, "The '\(String(describing: property.propertyName))' property in '\(String(describing: property.propertySetName))' for the style class '\(String(describing: style.styleClass))' has the following error: \(String(describing: property.value?.value))")
+//                    break
+//                default:
+//                    applicator(property, self)
+//                    break
+//                }
+//            }
         }
     }
 }
@@ -63,7 +63,7 @@ extension Styleable where Self:UIView {
         for string in components {
             let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            if let style = stylish.stylesheet.filter({ $0.name?.lowercased() == trimmed.lowercased() }).first {
+            if let style = stylish.stylesheet.filter({ $0.styleClass?.lowercased() == trimmed.lowercased() }).first {
                 if style.styles.count > 0 {
                     self.parseMultipleStyles(style: style, map: stylish.stylesheet)
                 } else {
@@ -80,7 +80,7 @@ extension Styleable where Self:UIView {
     
     func parseMultipleStyles(style: StyleClassMap, map: [StyleClassMap]) {
         for styleType in style.styles {
-            if let styleToApply = map.filter({ $0.name?.lowercased() == styleType.lowercased() }).first {
+            if let styleToApply = map.filter({ $0.styleClass?.lowercased() == styleType.lowercased() }).first {
                 self.apply(style: styleToApply)
             } else {
                 print("!!!!StylishError!!!! Missing style named `\(styleType)` !!!!")

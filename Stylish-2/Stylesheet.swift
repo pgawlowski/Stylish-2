@@ -63,7 +63,17 @@ public class JSONStylesheet: NSObject {
     private func parseJsonArrayToModel(_ array: [[String:Any]]){
         self.stylesheet = [StyleClassMap]()
         for element in array {
-            self.stylesheet.append(StyleClassMap(map: element))
+            
+            if let theJSONData = try? JSONSerialization.data(
+                withJSONObject: element,
+                options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .ascii)
+  
+                self.stylesheet.append(StyleClassMap(json:theJSONText))
+            }
+            
+//            self.stylesheet.append(StyleClassMap.init(dictionary: element as NSDictionary))
         }
     }
     

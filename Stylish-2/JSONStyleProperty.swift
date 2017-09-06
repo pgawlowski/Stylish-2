@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 public enum JSONStyleProperty {
     case CGFloatProperty(value:CGFloat)
@@ -243,7 +242,7 @@ public enum JSONStyleProperty {
         return true
     }
 
-    var value:Any {
+    public var value:Any {
         switch self {
         case .CGFloatProperty(let value):
             return value

@@ -1,15 +1,20 @@
 PODS:
-  - Stylish-2 (0.1.0)
+  - EVReflection (4.17.2):
+    - EVReflection/Core (= 4.17.2)
+  - EVReflection/Core (4.17.2)
+  - Stylish-2 (0.1.1):
+    - EVReflection (> 4.17)
 
 DEPENDENCIES:
   - Stylish-2 (from `/Users/pgawlowski/Documents/Projects/Stylish-2`)
 
 EXTERNAL SOURCES:
   Stylish-2:
-    :path: /Users/pgawlowski/Documents/Projects/Stylish-2
+    :path: "/Users/pgawlowski/Documents/Projects/Stylish-2"
 
 SPEC CHECKSUMS:
-  Stylish-2: 272b6f2d101c73402f0692059bbc0d333e87484f
+  EVReflection: e01af7fff66f12a4223595cf2f3cab393c3575a1
+  Stylish-2: 04d9de013f1ea187eddefd08262f196c85c5b3ab
 
 PODFILE CHECKSUM: cbc8b8e04fea60dae950bbfe857cb5f140ce8c5b
 

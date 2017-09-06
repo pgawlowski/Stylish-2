@@ -16,9 +16,9 @@ import UIKit
         return [.UIViewPropertySet : {
             (property:Property, target:Any) in
             
-            if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.propertyValue {
-                view.setStyleProperties(value: propertyValue.value, key: key)
-            }
+//            if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.value {
+//                view.setStyleProperties(value: propertyValue.value, key: key)
+//            }
         }]
     }
     

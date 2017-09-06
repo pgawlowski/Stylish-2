@@ -14,18 +14,18 @@ import UIKit
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UILabelPropertySet : {
             (property:Property, target:Any) in
-            if let key = property.propertyName, let propertyValue = property.propertyValue  {
-                switch target {
-                case let label as UILabel:
-                    label.setStyleProperties(value: propertyValue.value, key: key)
-                    break
-                case let button as UIButton:
-                    self.setProperties(target: button, propertyValue, key)
-                    break
-                default:
-                    break
-                }
-            }
+//            if let key = property.propertyName, let propertyValue = property.value {
+//                switch target {
+//                case let label as UILabel:
+//                    label.setStyleProperties(value: propertyValue.value, key: key)
+//                    break
+//                case let button as UIButton:
+//                    self.setProperties(target: button, propertyValue, key)
+//                    break
+//                default:
+//                    break
+//                }
+//            }
         }]
     }
 

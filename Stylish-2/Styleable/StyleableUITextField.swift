@@ -13,9 +13,9 @@ import UIKit
     class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
         return [.UITextFieldPropertySet : {
             (property:Property, target:Any) in
-            if let textField = target as? UITextField, let key = property.propertyName, let propertyValue = property.propertyValue {
-                textField.setStyleProperties(value: propertyValue.value, key: key)
-            }
+//            if let textField = target as? UITextField, let key = property.propertyName, let propertyValue = property.value {
+//                textField.setStyleProperties(value: propertyValue.value, key: key)
+//            }
         }]
     }
 
