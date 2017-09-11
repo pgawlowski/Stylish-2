@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import EVReflection
 
 let STYLE_FILE = "stylesheet"
 let STYLE_EXTENSION = "json"
@@ -62,18 +63,14 @@ public class JSONStylesheet: NSObject {
     
     private func parseJsonArrayToModel(_ array: [[String:Any]]){
         self.stylesheet = [StyleClassMap]()
-        for element in array {
+        if let theJSONData = try? JSONSerialization.data(
+            withJSONObject: array,
+            options: []) {
+            let theJSONText = String(data: theJSONData,
+                                     encoding: .utf8)
             
-            if let theJSONData = try? JSONSerialization.data(
-                withJSONObject: element,
-                options: []) {
-                let theJSONText = String(data: theJSONData,
-                                         encoding: .ascii)
-  
-                self.stylesheet.append(StyleClassMap(json:theJSONText))
-            }
-            
-//            self.stylesheet.append(StyleClassMap.init(dictionary: element as NSDictionary))
+            EVReflection.setBundleIdentifier(Property.self)
+            self.stylesheet = EVReflection.arrayFromJson(type: StyleClassMap(), json: theJSONText) as [StyleClassMap]
         }
     }
     

@@ -6,27 +6,20 @@
 //  Copyright © 2017 Hybris. All rights reserved.
 //
 
-import Foundation
 import EVReflection
 
 public class StyleClassMap: EVObject {
-    var styleClass : String?
+    var styleClass : String = ""
     var styles = [String]()
-    var properties = [Property]()
+    var properties = [JSONStyleProperty]()
+    
+//    override public func setValue(_ value: Any?, forKey key: String) {
+//        
+//    }
+
 }
 
-public class Property: EVObject {
-    var propertyName : String?
-    var propertySetName : String?
-    var propertyType: String?
-    private var propertyValue : Any?
 
-    var value: JSONStyleProperty? {
-        get {
-            return JSONStyleProperty.init(map: (self.propertyValue as? [String : Any])!)
-        }
-    }
-}
 
 //    override public func setValue(_ value: Any?, forKey key: String) {
 //        if "propertyValue" == key {

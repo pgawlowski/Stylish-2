@@ -373,7 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "> ${SRCROOT}/stylesheet.json\necho [ >> ${SRCROOT}/stylesheet.json\ncat ${SRCROOT}/ExampleProject/StylesheetStyles/*json > ${SRCROOT}/stylesheet.json\nsed -i -e '1s/^/[/' ${SRCROOT}/stylesheet.json\necho ] >> ${SRCROOT}/stylesheet.json\nrm -rf ${SRCROOT}/stylesheet.json-e";
+			shellScript = "";
 		};
 		7F76F7B9477875B8C25F1127 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
