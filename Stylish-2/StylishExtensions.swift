@@ -92,41 +92,41 @@ extension UIColor {
     }
 }
 
-public extension UIFont {
-    struct SimplifiedFont {
-        var fontName: String?
-        var fontWeight: String?
-        var fontSize: CGFloat?
-        
-        init(name:String?, weight: String?, size: Float?) {
-            self.fontName = name
-            self.fontWeight = weight
-            
-            self.fontSize = size != nil ? CGFloat(size!) : 0
-        }
-        
-        func createFont(_ baseFont: UIFont) -> UIFont {
-            let currentFont = baseFont
-            
-            var fontName = ((self.fontName) != nil) ? self.fontName : currentFont.fontName
-            if let _ = self.fontWeight {
-                if let dashRange = fontName?.range(of: "-") {
-                    fontName?.removeSubrange(dashRange.lowerBound..<(fontName?.endIndex)!)
-                }
-            }
-            
-            fontName = (self.fontWeight != nil && fontName?.range(of: fontWeight!) == nil) ? fontName! + "-" + self.fontWeight! : fontName
-            let fontSize = (self.fontSize != 0) ? self.fontSize : currentFont.pointSize
-            
-            if let font = UIFont(name: fontName!, size: fontSize!) {
-                return font
-            } else {
-                print("!!!!StylishError!!!! Invalid font name \(String(describing: fontName))")
-                return UIFont(name: "HelveticaNeue", size: 12)!
-            }
-        }
-    }
-}
+//public extension UIFont {
+//    struct SimplifiedFont {
+//        var fontName: String?
+//        var fontWeight: String?
+//        var fontSize: CGFloat?
+//        
+//        init(name:String?, weight: String?, size: Float?) {
+//            self.fontName = name
+//            self.fontWeight = weight
+//            
+//            self.fontSize = size != nil ? CGFloat(size!) : 0
+//        }
+//        
+//        func createFont(_ baseFont: UIFont) -> UIFont {
+//            let currentFont = baseFont
+//            
+//            var fontName = ((self.fontName) != nil) ? self.fontName : currentFont.fontName
+//            if let _ = self.fontWeight {
+//                if let dashRange = fontName?.range(of: "-") {
+//                    fontName?.removeSubrange(dashRange.lowerBound..<(fontName?.endIndex)!)
+//                }
+//            }
+//            
+//            fontName = (self.fontWeight != nil && fontName?.range(of: fontWeight!) == nil) ? fontName! + "-" + self.fontWeight! : fontName
+//            let fontSize = (self.fontSize != 0) ? self.fontSize : currentFont.pointSize
+//            
+//            if let font = UIFont(name: fontName!, size: fontSize!) {
+//                return font
+//            } else {
+//                print("!!!!StylishError!!!! Invalid font name \(String(describing: fontName))")
+//                return UIFont(name: "HelveticaNeue", size: 12)!
+//            }
+//        }
+//    }
+//}
 
 extension NSObject {
     func getTypeOfProperty (_ name: String) -> String? {

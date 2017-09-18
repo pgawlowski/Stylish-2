@@ -11,55 +11,61 @@ import EVReflection
 public class StyleClassMap: EVObject {
     var styleClass : String = ""
     var styles = [String]()
-    var properties = [JSONStyleProperty]()
+    var properties = [Property]()
     
-//    override public func setValue(_ value: Any?, forKey key: String) {
-//        
-//    }
-
+    public override func setValue(_ value: Any!, forUndefinedKey key: String) {
+        print(key, " " ,value)
+    }
 }
 
-
-
-//    override public func setValue(_ value: Any?, forKey key: String) {
-//        if "propertyValue" == key {
-//            self.propertyValue = JSONStyleProperty.init(map: value as! [String : Any])
-//        } else {
-//            super.setValue(value, forKey: key)
-//        }
-//    }
-
-//    init(dictionary: NSDictionary) {
-//        self = JSONStyleProperty(map: dictionary as! [String : Any])
-//    }
+public class Property: EVObject {
+    var propertyName : String?
+    var propertySetName : String?
+    var propertyType: String?
+    var propertyValue : JSONStyleProperty?
     
-//    public required init(dictionary:Dictionary<String, AnyObject?>) {
-//        print("testt")
-//    }
-//    
-//    required public init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    required public init() {
-//        fatalError("init() has not been implemented")
-//    }
+    public override func setValue(_ value: Any!, forUndefinedKey key: String) {
+        if key == "propertyValue" {
+            self.propertyValue = JSONStyleProperty.init(propertyType: self.propertyType, value: value)
+        } else {
+            print(key, " ", value)
+        }
+    }
     
-//    required public init(map: [String : Any]) {
-//        self.propertyValue = JSONStyleProperty(map: map)
-//
-//        propertyName = map["propertyName"] as? String
-//        propertySetName = map["propertySetName"] as? String
-//        propertyType = map["propertyType"] as? String
-//    }
+    override public func initValidation(_ dict: NSDictionary) {
+        self.propertyName = dict.value(forKey: "propertyName") as? String
+        self.propertySetName = dict.value(forKey: "propertySetName") as? String
+        self.propertyType = dict.value(forKey: "propertyType") as? String
+    }
+}
+
+public class SimplifiedFont: EVObject {
+    var fontName: String?
+    var weight: String?
+    var pointSize: CGFloat?
     
-//    func toDictionary() -> Dictionary<String, String> {
-//        var dict = [String:String]()
-//
-//        dict["propertyName"] = self.propertyName
-//        dict["propertySetName"] = self.propertySetName
-//        dict["propertyType"] = self.propertyType
-//        dict["propertyValue"] =
-//
-//        return dict
-//    }
+    func createFont(_ baseFont: UIFont) -> UIFont {
+        let currentFont = baseFont
+        
+        var fontName = ((self.fontName) != nil) ? self.fontName : currentFont.fontName
+        if let _ = self.weight {
+            if let dashRange = fontName?.range(of: "-") {
+                fontName?.removeSubrange(dashRange.lowerBound..<(fontName?.endIndex)!)
+            }
+        }
+        
+        fontName = (self.weight != nil && fontName?.range(of: weight!) == nil) ? fontName! + "-" + self.weight! : fontName
+        let fontSize = (self.pointSize != 0) ? self.pointSize : currentFont.pointSize
+        
+        if let font = UIFont(name: fontName!, size: fontSize!) {
+            return font
+        } else {
+            print("!!!!StylishError!!!! Invalid font name \(String(describing: fontName))")
+            return UIFont(name: "HelveticaNeue", size: 12)!
+        }
+    }
+    
+    public override func setValue(_ value: Any!, forUndefinedKey key: String) {
+        print(key, " " ,value)
+    }
+}

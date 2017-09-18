@@ -24,13 +24,7 @@ import UIKit
     
     @IBInspectable var styles:String = "" {
         didSet {
-            parseAndApplyStyles()
-        }
-    }
-    
-    @IBInspectable var stylesheet:String = "" {
-        didSet {
-            parseAndApplyStyles()
+            parseAndApply(styles: self.styles)
         }
     }
 }

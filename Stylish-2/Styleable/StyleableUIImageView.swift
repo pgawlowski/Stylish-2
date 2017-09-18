@@ -29,13 +29,7 @@ import UIKit
     
     @IBInspectable var styles:String = "" {
         didSet {
-            parseAndApplyStyles()
+            parseAndApply(styles: self.styles)
         }
-    }
-    
-    @IBInspectable var stylesheet:String = "" {
-        didSet {
-            parseAndApplyStyles()
-        }
-    }
+    }    
 }

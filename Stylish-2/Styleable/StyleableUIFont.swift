@@ -14,20 +14,20 @@ public class StyleableUIFont : UIFont, Styleable {
         return [.UIFontPropertySet : {
             (property:Property, target:Any) in
             
-            var targetFont: UIFont?
-            switch target {
-            case let target as UITextField:
-                targetFont = target.font
-                break
-            case let target as UILabel:
-                targetFont = target.font
-                break
-            case let target as UIButton:
-                targetFont = target.titleLabel?.font
-                break
-            default:
-                break
-            }
+//            var targetFont: UIFont?
+//            switch target {
+//            case let target as UITextField:
+//                targetFont = target.font
+//                break
+//            case let target as UILabel:
+//                targetFont = target.font
+//                break
+//            case let target as UIButton:
+//                targetFont = target.titleLabel?.font
+//                break
+//            default:
+//                break
+//            }
             
 //            if let targetFont = targetFont, let propertySet = property.value, let font = propertySet.value as? SimplifiedFont {
 //                var fontName: String = (font.fontName != nil) ? font.fontName! : targetFont.fontName
@@ -56,12 +56,12 @@ public class StyleableUIFont : UIFont, Styleable {
         }]
     }
 
-    class func fontStyleApplicator(font: UIFont, value: UIFont.SimplifiedFont?) -> UIFont {
-        if let fontValue = value {
-            return fontValue.createFont(font)
-        }
-        return font
-    }
+//    class func fontStyleApplicator(font: UIFont, value: SimplifiedFont?) -> UIFont {
+//        if let fontValue = value {
+//            return fontValue.createFont(font)
+//        }
+//        return font
+//    }
     
     @IBInspectable var styles:String = "" {
         didSet {

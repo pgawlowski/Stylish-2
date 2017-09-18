@@ -22,7 +22,7 @@ public enum JSONStyleProperty {
     case CGColorProperty(value:CGColor)
     case UIImageProperty(value:UIImage)
     case UIViewContentModeProperty(value:UIViewContentMode)
-    case UIFontProperty(value: UIFont.SimplifiedFont)
+    case UIFontProperty(value: SimplifiedFont)
     case InvalidProperty(errorMessage:String)
     case PropertyType(value:String)
     
@@ -30,18 +30,17 @@ public enum JSONStyleProperty {
         self = .InvalidProperty(errorMessage: "Empty 'propertyValue'")
     }
     
-    init(map: [String: Any]) {
-        guard let type = map["propertyType"] else {
+    init(propertyType: String?, value: Any?) {
+        guard let type = propertyType else {
             self = .InvalidProperty(errorMessage: "Missing value for 'propertyType' in JSON")
             return
         }
-
-        self = .PropertyType(value: type as! String)
-        self.mutate(map: map)
+        
+        self = .PropertyType(value: type)
+        self.mutate(value: value)
     }
     
-    
-    public mutating func mutate(map: [String: Any]) {
+    public mutating func mutate(value: Any?) {
         let check:(Any?, String) -> (Any?, JSONStyleProperty?) = {testValue, type in
             guard testValue != nil else {
                 return (nil, .InvalidProperty(errorMessage: String(format:"'propertyValue' in JSON was missing or could not be converted to %@", type)))
@@ -49,7 +48,7 @@ public enum JSONStyleProperty {
             return (testValue, nil)
         }
         
-        if let value = map["propertyValue"] {
+        if let value = value {
             if self.mapPrimitives(value: value as AnyObject, checkClosure: check) { return }
             if self.mapEnums(value: value as AnyObject, checkClosure: check) { return }
             if self.mapObjects(value: value as AnyObject, checkClosure: check) { return }
@@ -140,12 +139,8 @@ public enum JSONStyleProperty {
             }
             break
         case is UIFont.Type:
-            if let dict = value as? NSDictionary {
-                let fontName: String? = dict.value(forKey: "fontName") as? String
-                let fontWeight: String? = dict["weight"] as? String
-                let fontSize: Float? = dict.value(forKey: "pointSize") as? Float
-                let font = UIFont.SimplifiedFont(name: fontName, weight: fontWeight, size: fontSize)
-                
+            if value is NSDictionary {
+                let font = SimplifiedFont.init(dictionary: value as! NSDictionary)
                 self = .UIFontProperty(value: font)
             }
             break
