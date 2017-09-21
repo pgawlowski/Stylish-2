@@ -9,20 +9,27 @@
 import Foundation
 import UIKit
 
-@IBDesignable public class StyleableUIButton : UIButton, Styleable {
+private var _styles: String = ""
+@IBDesignable public class StyleableUIButton : UIButton {}
+
+extension UIButton: Styleable {
     
-    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
-        return [.UIButtonPropertySet : {
-            (property:Property, target:Any) in
-//            if let button = target as? UIButton, let key = property.propertyName, let propertyValue = property.value {
-//                    button.setStyleProperties(value: propertyValue.value, key: key)
-//            }
-        }]
+    @IBInspectable override var styles: String {
+        set (key) {
+            _styles = key
+            parseAndApply(styles: key)
+        }
+        get {
+            return _styles
+        }
     }
     
-    @IBInspectable public var styles:String = "" {
-        didSet {
-            parseAndApply(styles: self.styles)
-        }
-    }    
+    var styleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UIButtonPropertySet : {
+            (property:Property, target:Any) in
+            if let button = target as? UIButton, let key = property.propertyName, let propertyValue = property.propertyValue {
+                    button.setStyleProperties(value: propertyValue.rawValue, key: key)
+            }
+        }]
+    }
 }

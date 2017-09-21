@@ -6,25 +6,20 @@
 //  Copyright © 2017 Piotr Gawlowski. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
+private var _styles: String = ""
+@IBDesignable public class StyleableUIView : UIView {}
 
-@IBDesignable public class StyleableUIView : UIView, Styleable {
-    
-    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
-        return [.UIViewPropertySet : {
-            (property:Property, target:Any) in
-            
-//            if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.value {
-//                view.setStyleProperties(value: propertyValue.value, key: key)
-//            }
-        }]
-    }
-    
-    @IBInspectable var styles:String = "" {
-        didSet {
-            parseAndApply(styles: self.styles)
+extension UIView : Styleable {
+
+    @IBInspectable var styles: String {
+        set (key) {
+            _styles = key
+            parseAndApply(styles: key)
+        }
+        get {
+            return _styles
         }
     }
 }

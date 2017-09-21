@@ -24,24 +24,27 @@ enum StyleApplicatorType: String {
 typealias StyleApplicator = (Property, Any)->()
 
 protocol Styleable {
-    static var StyleApplicator:[StyleApplicatorType : StyleApplicator] { get }
+    var styleApplicator:[StyleApplicatorType : StyleApplicator] { get }
     var styles:String { get }
-
-//    func setProperties(target: Any, _ property: JSONStyleProperty, _ key: String)
 }
 
 extension Styleable {
-    static var StyleApplicators:[StyleApplicatorType : StyleApplicator] {
-        return UILabel.StyleApplicator
-//        return StyleableUIButton.StyleApplicator + StyleableUIFont.StyleApplicator + StyleableUIImageView.StyleApplicator + StyleableUILabel.StyleApplicator + StyleableUITextField.StyleApplicator + StyleableUIView.StyleApplicator + StyleableUIImageView.StyleApplicator
+    var styleApplicator:[StyleApplicatorType : StyleApplicator] {
+        return UILabel().styleApplicator + UIButton().styleApplicator + UITextField().styleApplicator + UIImageView().styleApplicator +
+            [.UIViewPropertySet : {
+                (property:Property, target:Any) in
+                if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.propertyValue {
+                    view.setStyleProperties(value: propertyValue.rawValue, key: key)
+                }
+            }]
     }
     
     func apply(style:StyleClassMap) {
         for property in style.properties {
-            if let propertySetName = property.propertySetName, let applicator = Self.StyleApplicators[StyleApplicatorType(rawValue:propertySetName)!], let propertyValue = property.propertyValue {
+            if let propertySetName = property.propertySetName, let applicator = self.styleApplicator[StyleApplicatorType(rawValue:propertySetName)!], let propertyValue = property.propertyValue {
                 switch propertyValue {
                 case .InvalidProperty:
-                    assert(false, "The '\(String(describing: property.propertyName))' property in '\(String(describing: property.propertySetName))' for the style class '\(String(describing: style.styleClass))' has the following error: \(String(describing: property.propertyValue?.value))")
+                    assert(false, "The '\(String(describing: property.propertyName))' property in '\(String(describing: property.propertySetName))' for the style class '\(String(describing: style.styleClass))' has the following error: \(String(describing: property.propertyValue?.rawValue))")
                     break
                 default:
                     applicator(property, self)

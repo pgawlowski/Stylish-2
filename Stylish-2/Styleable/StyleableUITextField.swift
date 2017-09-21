@@ -8,20 +8,27 @@
 
 import UIKit
 
-@IBDesignable public class StyleableUITextField: UITextField, Styleable {
+private var _styles: String = ""
+@IBDesignable public class StyleableUITextField: UITextField {}
 
-    class var StyleApplicator: [StyleApplicatorType : StyleApplicator] {
-        return [.UITextFieldPropertySet : {
-            (property:Property, target:Any) in
-//            if let textField = target as? UITextField, let key = property.propertyName, let propertyValue = property.value {
-//                textField.setStyleProperties(value: propertyValue.value, key: key)
-//            }
-        }]
+extension UITextField : Styleable {
+
+    @IBInspectable override var styles: String {
+        set (key) {
+            _styles = key
+            parseAndApply(styles: key)
+        }
+        get {
+            return _styles
+        }
     }
 
-    @IBInspectable var styles:String = "" {
-        didSet {
-            parseAndApply(styles: self.styles)
-        }
+    var styleApplicator: [StyleApplicatorType : StyleApplicator] {
+        return [.UITextFieldPropertySet : {
+            (property:Property, target:Any) in
+            if let textField = target as? UITextField, let key = property.propertyName, let propertyValue = property.propertyValue {
+                textField.setStyleProperties(value: propertyValue.rawValue, key: key)
+            }
+        }]
     }
 }

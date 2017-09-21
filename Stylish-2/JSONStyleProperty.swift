@@ -57,7 +57,7 @@ public enum JSONStyleProperty {
     }
     
     private mutating func mapPrimitives(value: AnyObject, checkClosure:(Any?, String) -> (Any?, JSONStyleProperty?)) -> Bool {
-        if let type = self.value as? String {
+        if let type = self.rawValue as? String {
             switch type {
             case _ where type.isVariant(of: "CG Float") :
                 let tuple = checkClosure(value as? CGFloat, type)
@@ -112,7 +112,7 @@ public enum JSONStyleProperty {
     }
     
     private mutating func mapObjects(value: Any, checkClosure:(Any?, String) -> (Any?, JSONStyleProperty?)) -> Bool {
-        guard let type: AnyClass = NSClassFromString(self.value as! String) else {
+        guard let type: AnyClass = NSClassFromString(self.rawValue as! String) else {
             self = .InvalidProperty(errorMessage: "Invalid 'propertyType' in JSON - check NSObject types")
             return false
         }
@@ -152,7 +152,7 @@ public enum JSONStyleProperty {
     }
     
     private mutating func mapEnums(value: Any, checkClosure:(Any?, String) -> (Any?, JSONStyleProperty?)) -> Bool {
-        if let type = self.value as? String {
+        if let type = self.rawValue as? String {
             switch type {
             case _ where type.isVariant(of: "NSTextAlignment") || type.isVariant(of: "Text Alignment") :
                 let tuple = checkClosure(value as? String, type)
@@ -237,7 +237,7 @@ public enum JSONStyleProperty {
         return true
     }
 
-    public var value:Any {
+    public var rawValue:Any {
         switch self {
         case .CGFloatProperty(let value):
             return value

@@ -26,10 +26,14 @@ s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s
 # 7
 s.source_files = "Stylish-2/**/*.{swift}"
 
-
 s.subspec "Core" do |ss|
-ss.dependency 'EVReflection', '~> 4.17'
-ss.framework  = "Foundation"
+    ss.dependency 'EVReflection', '~> 4.17'
+    ss.framework  = 'Foundation'
+
+    ss.pod_target_xcconfig = {
+        'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/EVReflection',
+        'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
+    }
 end
 
 end

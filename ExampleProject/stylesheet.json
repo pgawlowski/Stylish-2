@@ -1,4 +1,49 @@
- [
+ [{
+  "styleClass" : "UIButton.StandardBackground",
+  "styles" : [
+              "UIButton.StandardButtonWithBG",
+              "UIFont.TitilliumWeb",
+              "UIFont.Normal",
+              "UIFont.Bold",
+              ]
+  },
+  {
+  "styleClass" : "UIButton.CancelButton",
+  "styles" : [
+              "UIButton.StandardButtonWithBG",
+              "UIFont.TitilliumWeb",
+              "UIFont.Normal",
+              "UIFont.Bold",
+              "BackgroundColor.Red",
+              ]
+  },
+  
+  {
+  "styleClass" : "UITextField.StandardInput",
+  "styles" : [
+              "UITextField.Input",
+              "UIFont.OpenSans",
+              "UIFont.Normal",
+              ]
+  },
+  {
+  "styleClass" : "UITextField.PasswordInput",
+  "properties" : [
+                  {
+                  "propertySetName" : "UITextFieldPropertySet",
+                  "propertyName" : "clearsOnBeginEditing",
+                  "propertyType" : "Bool",
+                  "propertyValue" : true
+                  },
+                  {
+                  "propertySetName" : "UITextFieldPropertySet",
+                  "propertyName" : "secureTextEntry",
+                  "propertyType" : "Bool",
+                  "propertyValue" : true
+                  },
+                  ]
+  },
+  
   {
   "styleClass" : "UILabel.StandardLabel",
   "styles" : [
@@ -99,6 +144,17 @@
                   "propertyName" : "textColor",
                   "propertyType" : "UIColor",
                   "propertyValue" : "#0000FF",
+                  },
+                  ]
+  },
+  {
+  "styleClass" : "UILabel.TextColor.Red",
+  "properties" : [
+                  {
+                  "propertySetName" : "UILabelPropertySet",
+                  "propertyName" : "textColor",
+                  "propertyType" : "UIColor",
+                  "propertyValue" : "#FF0000",
                   },
                   ]
   },
@@ -463,3 +519,4 @@
                   ]
   },
   ]
+
