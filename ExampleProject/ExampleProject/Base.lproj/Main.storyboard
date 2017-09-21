@@ -31,7 +31,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styles" value="UIButton.CancelButton"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UITextField.StandardInput" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3D-3F-Ckk" customClass="StyleableUITextField" customModule="Stylish_2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UITextField.StandardInput" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3D-3F-Ckk" customClass="StyleableUITextField" customModule="Stylish_2">
                                 <rect key="frame" x="8" y="138" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
