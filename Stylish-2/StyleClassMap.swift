@@ -26,8 +26,6 @@ public class Property: EVObject {
     
     public override func setValue(_ value: Any!, forUndefinedKey key: String) {
         if key == "propertyValue" {
-            self.propertyValue = JSONStyleProperty.init(propertyType: self.propertyType, value: value)
-            
             self.propertyValue = StyleProperty().jsonStyleProperty(value: value, type: self.propertyType!)
         } else {
             print(key, " ", value)

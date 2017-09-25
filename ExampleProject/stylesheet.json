@@ -376,7 +376,7 @@
                   {
                   "propertySetName" : "UILabelPropertySet",
                   "propertyName" : "textAlignment",
-                  "propertyType" : "textAlignment",
+                  "propertyType" : "NSTextAlignment",
                   "propertyValue" : "Left"
                   }
                   ]
@@ -388,7 +388,7 @@
                   {
                   "propertySetName" : "UILabelPropertySet",
                   "propertyName" : "textAlignment",
-                  "propertyType" : "textAlignment",
+                  "propertyType" : "NSTextAlignment",
                   "propertyValue" : "Right"
                   }
                   ]
@@ -400,7 +400,7 @@
                   {
                   "propertySetName" : "UILabelPropertySet",
                   "propertyName" : "textAlignment",
-                  "propertyType" : "textAlignment",
+                  "propertyType" : "NSTextAlignment",
                   "propertyValue" : "Center"
                   }
                   ]
@@ -413,7 +413,7 @@
                   {
                   "propertySetName" : "UITextFieldPropertySet",
                   "propertyName" : "textAlignment",
-                  "propertyType" : "textAlignment",
+                  "propertyType" : "NSTextAlignment",
                   "propertyValue" : "Left"
                   }
                   ]
@@ -425,7 +425,7 @@
                   {
                   "propertySetName" : "UITextFieldPropertySet",
                   "propertyName" : "textAlignment",
-                  "propertyType" : "textAlignment",
+                  "propertyType" : "NSTextAlignment",
                   "propertyValue" : "Right"
                   }
                   ]
@@ -437,7 +437,7 @@
                   {
                   "propertySetName" : "UITextFieldPropertySet",
                   "propertyName" : "textAlignment",
-                  "propertyType" : "textAlignment",
+                  "propertyType" : "NSTextAlignment",
                   "propertyValue" : "Center"
                   }
                   ]
