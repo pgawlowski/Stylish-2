@@ -35,15 +35,22 @@ public class Property: EVObject {
     override public func initValidation(_ dict: NSDictionary) {
         self.propertyName = dict.value(forKey: "propertyName") as? String
         self.propertySetName = dict.value(forKey: "propertySetName") as? String
-        self.propertyType = dict.value(forKey: "propertyType") as? String
+        self.propertyType = dict.value(forKey: "propertyType") as? String        
+    }
+    
+    public func toDictionary(_ conversionOptions: ConversionOptions) -> NSDictionary {
+        let dict = super.toDictionary()
+        dict.setValue(self.propertyValue!.dictionaryValue, forKey: "propertyValue")
+
+        return dict
     }
 }
 
 public class SimplifiedFont: EVObject {
     var fontName: String?
     var weight: String?
-    var pointSize: CGFloat?
-    
+    var pointSize: NSNumber?
+        
     func createFont(_ baseFont: UIFont) -> UIFont {
         let currentFont = baseFont
         
@@ -55,9 +62,9 @@ public class SimplifiedFont: EVObject {
         }
         
         fontName = (self.weight != nil && fontName?.range(of: weight!) == nil) ? fontName! + "-" + self.weight! : fontName
-        let fontSize = (self.pointSize != 0) ? self.pointSize : currentFont.pointSize
+        let fontSize = (self.pointSize != nil && self.pointSize != 0) ? CGFloat((self.pointSize?.floatValue)!) : currentFont.pointSize
         
-        if let font = UIFont(name: fontName!, size: fontSize!) {
+        if let font = UIFont(name: fontName!, size: fontSize) {
             return font
         } else {
             print("!!!!StylishError!!!! Invalid font name \(String(describing: fontName))")

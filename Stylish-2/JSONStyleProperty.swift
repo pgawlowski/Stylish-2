@@ -12,11 +12,11 @@ public class StyleProperty {
 
     //Primitives
     internal typealias funcCGFloat  = (CGFloat) -> JSONStyleProperty
-    internal typealias funcFloat    = (Float) -> JSONStyleProperty
-    internal typealias funcDouble   = (Double) -> JSONStyleProperty
-    internal typealias funcInt      = (Int) -> JSONStyleProperty
-    internal typealias funcBool     = (Bool) -> JSONStyleProperty
-    internal typealias funcCGColor  = (String) -> JSONStyleProperty
+    internal typealias funcFloat    = (Float)   -> JSONStyleProperty
+    internal typealias funcDouble   = (Double)  -> JSONStyleProperty
+    internal typealias funcInt      = (Int)     -> JSONStyleProperty
+    internal typealias funcBool     = (Bool)    -> JSONStyleProperty
+    internal typealias funcCGColor  = (String)  -> JSONStyleProperty
     internal typealias funcUIEdgeInsets = (Dictionary<String, NSNumber>) -> JSONStyleProperty
 
     internal static let toCGFloat   : funcCGFloat   = { return JSONStyleProperty.CGFloatProperty(value: $0) }
@@ -39,21 +39,16 @@ public class StyleProperty {
     internal typealias funcUITextBorderStyle    = (String) -> JSONStyleProperty
     internal typealias funcUIViewContentMode    = (String) -> JSONStyleProperty
 
+    
+    
     internal static let toNSTextAlignment   : funcNSTextAlignment =  {
         switch $0 {
-        case _ where $0.isVariant(of: "Scale To Fill"):     return JSONStyleProperty.UIViewContentModeProperty(value: .scaleToFill)
-        case _ where $0.isVariant(of: "Scale Aspect Fit"):  return JSONStyleProperty.UIViewContentModeProperty(value: .scaleAspectFit)
-        case _ where $0.isVariant(of: "Scale Aspect Fill"): return JSONStyleProperty.UIViewContentModeProperty(value: .scaleAspectFill)
-        case _ where $0.isVariant(of: "Redraw"):            return JSONStyleProperty.UIViewContentModeProperty(value: .redraw)
-        case _ where $0.isVariant(of: "Center"):            return JSONStyleProperty.UIViewContentModeProperty(value: .center)
-        case _ where $0.isVariant(of: "Top"):               return JSONStyleProperty.UIViewContentModeProperty(value: .top)
-        case _ where $0.isVariant(of: "Bottom"):            return JSONStyleProperty.UIViewContentModeProperty(value: .bottom)
-        case _ where $0.isVariant(of: "Left"):              return JSONStyleProperty.UIViewContentModeProperty(value: .left)
-        case _ where $0.isVariant(of: "Right"):             return JSONStyleProperty.UIViewContentModeProperty(value: .right)
-        case _ where $0.isVariant(of: "Top Left"):          return JSONStyleProperty.UIViewContentModeProperty(value: .topLeft)
-        case _ where $0.isVariant(of: "Top Right"):         return JSONStyleProperty.UIViewContentModeProperty(value: .topRight)
-        case _ where $0.isVariant(of: "Bottom Left"):       return JSONStyleProperty.UIViewContentModeProperty(value: .bottomLeft)
-        case _ where $0.isVariant(of: "Bottom Right"):      return JSONStyleProperty.UIViewContentModeProperty(value: .bottomRight)
+        case _ where $0.isVariant(of: "Left")       :   return JSONStyleProperty.NSTextAlignmentProperty(value: .left)
+        case _ where $0.isVariant(of: "Right")      :   return JSONStyleProperty.NSTextAlignmentProperty(value: .right)
+        case _ where $0.isVariant(of: "Center")     :   return JSONStyleProperty.NSTextAlignmentProperty(value: .center)
+        case _ where $0.isVariant(of: "Justified")  :   return JSONStyleProperty.NSTextAlignmentProperty(value: .justified)
+        case _ where $0.isVariant(of: "natural")    :   return JSONStyleProperty.NSTextAlignmentProperty(value: .natural)
+
         default:                                            return JSONStyleProperty.InvalidProperty(errorMessage: "'propertyValue' in JSON was not a String that matched valid values for an NSTextAlignment property, i.e. 'Left', 'Center', 'Right', 'Justified', 'Natural'")
         }
     }
@@ -91,12 +86,14 @@ public class StyleProperty {
     internal typealias funcString   = (String) -> JSONStyleProperty
     internal typealias funcUIColor  = (String) -> JSONStyleProperty
     internal typealias funcUIImage  = (String) -> JSONStyleProperty
-    internal typealias funcUIFont   = (Dictionary<String, String>) -> JSONStyleProperty
+    internal typealias funcUIFont   = (NSDictionary) -> JSONStyleProperty
     
-    internal static let toString    : funcString =  { return JSONStyleProperty.StringProperty(value: $0) }
-    internal static let toUIColor   : funcUIColor =  { return JSONStyleProperty.UIColorProperty(value: UIColor(hexString: $0)!) }
-    internal static let toUIImage   : funcUIImage =  { return JSONStyleProperty.UIImageProperty(value: UIImage(named: $0)!) }
-    internal static let toUIFont    : funcUIFont =  { return JSONStyleProperty.UIFontProperty(value: SimplifiedFont.init(dictionary: $0 as NSDictionary)) }
+    internal static let toString    : funcString    = { return JSONStyleProperty.StringProperty(value: $0) }
+    internal static let toUIColor   : funcUIColor   = { return JSONStyleProperty.UIColorProperty(value: UIColor(hexString: $0)!) }
+    internal static let toUIImage   : funcUIImage   = { return JSONStyleProperty.UIImageProperty(value: UIImage(named: $0)!) }
+    internal static let toUIFont    : funcUIFont    = {
+        return JSONStyleProperty.UIFontProperty(value: SimplifiedFont(dictionary: $0))
+    }
     
     internal let fromDictionary: Dictionary =
         [
@@ -185,8 +182,7 @@ public class StyleProperty {
             let tuple = checkClosure(value as? String, type)
             return (tuple.0 != nil) ? parseFunc(tuple.0 as! String) : tuple.1!
         case let parseFunc as funcUIFont where type == "UIFont":
-            let tuple = checkClosure(value as? String, type)
-            return (tuple.0 != nil) ? parseFunc(tuple.0 as! Dictionary<String, String>) : tuple.1!
+            return parseFunc(value as! NSDictionary)
         default:
             return nil
         }
@@ -233,6 +229,37 @@ public enum JSONStyleProperty {
         case .UIFontProperty(let value):    return value
         case .InvalidProperty(let value):   return value
         case .PropertyType(let value):      return value
+        }
+    }
+    
+    public var dictionaryValue: Any {
+        switch self {
+        case .CGFloatProperty(let value):   return value.description
+        case .FloatProperty(let value):     return value.description
+        case .DoubleProperty(let value):    return value.description
+        case .IntProperty(let value):       return value.description
+        case .BoolProperty(let value):      if (value) { return "true" } else { return "false" }
+        case .UIEdgeInsetsProperty(let value):
+            return [
+                "top" : value.top.description,
+                "bottom" : value.bottom.description,
+                "left" : value.left.description,
+                "right" : value.right.description,
+            ]
+        case .NSTextAlignmentProperty(let value): return String(describing: value)
+        case .UITextBorderStyleProperty(let value): return String(describing: value)
+        case .StringProperty(let value):    return value
+        case .UIColorProperty(let value):   return value.toHexString
+        case .CGColorProperty(let value):   return UIColor(cgColor: value).toHexString
+        case .UIImageProperty(let value):   return value
+        case .UIViewContentModeProperty(let value): return String(describing: value)
+        case .UIFontProperty(let value):
+            return [
+                "fontName" : value.fontName,
+                "weight" : value.weight,
+                "pointSize" : value.pointSize?.description
+            ]
+        default: return ""
         }
     }
 }

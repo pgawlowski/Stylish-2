@@ -69,7 +69,10 @@ public class JSONStylesheet: NSObject {
             let theJSONText = String(data: theJSONData,
                                      encoding: .utf8)
             
+            EVReflection.setBundleIdentifier(StyleClassMap.self)
             EVReflection.setBundleIdentifier(Property.self)
+            EVReflection.setBundleIdentifier(SimplifiedFont.self)
+
             self.stylesheet = EVReflection.arrayFromJson(type: StyleClassMap(), json: theJSONText) as [StyleClassMap]
         }
     }

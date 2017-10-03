@@ -30,7 +30,7 @@ protocol Styleable {
 
 extension Styleable {
     var styleApplicator:[StyleApplicatorType : StyleApplicator] {
-        return UILabel().styleApplicator + UIButton().styleApplicator + UITextField().styleApplicator + UIImageView().styleApplicator +
+        return UILabel().styleApplicator + UIButton().styleApplicator + UITextField().styleApplicator + UIImageView().styleApplicator + UIFont().styleApplicator +
             [.UIViewPropertySet : {
                 (property:Property, target:Any) in
                 if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.propertyValue {
@@ -41,7 +41,9 @@ extension Styleable {
     
     func apply(style:StyleClassMap) {
         for property in style.properties {
-            if let propertySetName = property.propertySetName, let applicator = self.styleApplicator[StyleApplicatorType(rawValue:propertySetName)!], let propertyValue = property.propertyValue {
+            if let propertySetName = property.propertySetName,
+                let applicator = self.styleApplicator[StyleApplicatorType(rawValue:propertySetName)!],
+                let propertyValue = property.propertyValue {
                 switch propertyValue {
                 case .InvalidProperty:
                     assert(false, "The '\(String(describing: property.propertyName))' property in '\(String(describing: property.propertySetName))' for the style class '\(String(describing: style.styleClass))' has the following error: \(String(describing: property.propertyValue?.rawValue))")
