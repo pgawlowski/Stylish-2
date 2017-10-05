@@ -248,18 +248,19 @@ public enum JSONStyleProperty {
             ]
         case .NSTextAlignmentProperty(let value):
             switch value {
-            case .left:
-                return "left"
-            case .right:
-                return "right"
-            case .center:
-                return "center"
-            case .justified:
-                return "justified"
-            case .natural:
-                return "natural"
+            case .left:         return "left"
+            case .right:        return "right"
+            case .center:       return "center"
+            case .justified:    return "justified"
+            case .natural:      return "natural"
             }
-        case .UITextBorderStyleProperty(let value): return String(describing: value)
+        case .UITextBorderStyleProperty(let value):
+            switch value {
+            case .bezel:        return "bezel"
+            case .none:         return "none"
+            case .roundedRect:  return "roundedRect"
+            case .line:         return "line"
+            }
         case .StringProperty(let value):    return value
         case .UIColorProperty(let value):   return value.toHexString()
         case .CGColorProperty(let value):   return UIColor(cgColor: value).toHexString()
