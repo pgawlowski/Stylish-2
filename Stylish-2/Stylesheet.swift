@@ -42,7 +42,7 @@ public class JSONStylesheet: NSObject {
             }
         #else
             if let path = self.filePath {
-                jsonPath = path.absoluteString
+                jsonPath = path.path
             } else {
                 jsonPath = bundle.path(forResource: "stylesheet", ofType: "json")
             }
