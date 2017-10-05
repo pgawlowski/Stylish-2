@@ -60,8 +60,8 @@ public class JSONStylesheet: NSObject {
             }
         }
     }
-    
-    private func parseJsonArrayToModel(_ array: [[String:Any]]){
+
+    private func parseJsonArrayToModel(_ array: [[String:Any]]) {
         self.stylesheet = [StyleClassMap]()
         if let theJSONData = try? JSONSerialization.data(
             withJSONObject: array,

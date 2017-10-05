@@ -9,9 +9,9 @@
 import EVReflection
 
 public class StyleClassMap: EVObject {
-    var styleClass : String = ""
-    var styles = [String]()
-    var properties = [Property]()
+    public var styleClass : String = ""
+    public var styles = [String]()
+    public var properties = [Property]()
     
     public override func setValue(_ value: Any!, forUndefinedKey key: String) {
         print(key, " " ,value)
@@ -19,10 +19,10 @@ public class StyleClassMap: EVObject {
 }
 
 public class Property: EVObject {
-    var propertyName : String?
-    var propertySetName : String?
-    var propertyType: String?
-    var propertyValue : JSONStyleProperty?
+    public var propertyName : String?
+    public var propertySetName : String?
+    public var propertyType: String?
+    public var propertyValue : JSONStyleProperty?
     
     public override func setValue(_ value: Any!, forUndefinedKey key: String) {
         if key == "propertyValue" {
@@ -38,26 +38,38 @@ public class Property: EVObject {
         self.propertyType = dict.value(forKey: "propertyType") as? String        
     }
     
-    public func toDictionary(_ conversionOptions: ConversionOptions) -> NSDictionary {
-        let dict = super.toDictionary()
-        dict.setValue(self.propertyValue!.dictionaryValue, forKey: "propertyValue")
-
-        return dict
+    public override func value(forKey key: String) -> Any? {
+        return super.value(forKey: key)
+    }
+    
+    override public func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+        return [
+            ( // We want a custom converter for the field isGreat
+                key: "propertyValue"
+                // isGreat will be true if the json says 'Sure'
+                , decodeConverter: {
+                    self.propertyValue = StyleProperty().jsonStyleProperty(value: $0, type: self.propertyType!)
+            }
+                // The json will say 'Sure  if isGreat is true, otherwise it will say 'Nah'
+                , encodeConverter: {
+                    return self.propertyValue!.dictionaryValue
+            })
+        ]
     }
 }
 
 public class SimplifiedFont: EVObject {
-    var fontName: String?
-    var weight: String?
-    var pointSize: NSNumber?
+    public var fontName: String?
+    public var weight: String?
+    public var pointSize: NSNumber?
         
     func createFont(_ baseFont: UIFont) -> UIFont {
         let currentFont = baseFont
         
         var fontName = ((self.fontName) != nil) ? self.fontName : currentFont.fontName
         if let _ = self.weight {
-            if let dashRange = fontName?.range(of: "-") {
-                fontName?.removeSubrange(dashRange.lowerBound..<(fontName?.endIndex)!)
+            if let dashRange = fontName?.range(of: "-"), let endIndex = fontName?.endIndex {
+                fontName?.removeSubrange(dashRange.lowerBound..<endIndex)
             }
         }
         
@@ -70,9 +82,5 @@ public class SimplifiedFont: EVObject {
             print("!!!!StylishError!!!! Invalid font name \(String(describing: fontName))")
             return UIFont(name: "HelveticaNeue", size: 12)!
         }
-    }
-    
-    public override func setValue(_ value: Any!, forUndefinedKey key: String) {
-        print(key, " " ,value)
     }
 }

@@ -234,11 +234,11 @@ public enum JSONStyleProperty {
     
     public var dictionaryValue: Any {
         switch self {
-        case .CGFloatProperty(let value):   return value.description
-        case .FloatProperty(let value):     return value.description
-        case .DoubleProperty(let value):    return value.description
-        case .IntProperty(let value):       return value.description
-        case .BoolProperty(let value):      if (value) { return "true" } else { return "false" }
+        case .CGFloatProperty(let value):   return value
+        case .FloatProperty(let value):     return value
+        case .DoubleProperty(let value):    return value
+        case .IntProperty(let value):       return value
+        case .BoolProperty(let value):      return value
         case .UIEdgeInsetsProperty(let value):
             return [
                 "top" : value.top.description,
@@ -246,11 +246,23 @@ public enum JSONStyleProperty {
                 "left" : value.left.description,
                 "right" : value.right.description,
             ]
-        case .NSTextAlignmentProperty(let value): return String(describing: value)
+        case .NSTextAlignmentProperty(let value):
+            switch value {
+            case .left:
+                return "left"
+            case .right:
+                return "right"
+            case .center:
+                return "center"
+            case .justified:
+                return "justified"
+            case .natural:
+                return "natural"
+            }
         case .UITextBorderStyleProperty(let value): return String(describing: value)
         case .StringProperty(let value):    return value
-        case .UIColorProperty(let value):   return value.toHexString
-        case .CGColorProperty(let value):   return UIColor(cgColor: value).toHexString
+        case .UIColorProperty(let value):   return value.toHexString()
+        case .CGColorProperty(let value):   return UIColor(cgColor: value).toHexString()
         case .UIImageProperty(let value):   return value
         case .UIViewContentModeProperty(let value): return String(describing: value)
         case .UIFontProperty(let value):

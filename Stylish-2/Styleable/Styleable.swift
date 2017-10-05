@@ -39,7 +39,7 @@ extension Styleable {
             }]
     }
     
-    func apply(style:StyleClassMap) {
+    public func apply(style:StyleClassMap) {
         for property in style.properties {
             if let propertySetName = property.propertySetName,
                 let applicator = self.styleApplicator[StyleApplicatorType(rawValue:propertySetName)!],
@@ -52,6 +52,20 @@ extension Styleable {
                     applicator(property, self)
                     break
                 }
+            }
+        }
+    }
+    
+    public func parseMultipleStyles(style: StyleClassMap, map: [StyleClassMap]) {
+        for styleType in style.styles {
+            if let styleToApply = map.filter({ $0.styleClass.lowercased() == styleType.lowercased() }).first {
+                self.apply(style: styleToApply)
+            } else {
+                print("!!!!StylishError!!!! Missing style named `\(styleType)` !!!!")
+                #if TARGET_INTERFACE_BUILDER
+                    self.showErrorIfInvalid()
+                #endif
+                break
             }
         }
     }
@@ -78,20 +92,6 @@ extension Styleable where Self:UIView {
                 #if TARGET_INTERFACE_BUILDER
                     self.showErrorIfInvalid()
                 #endif
-            }
-        }
-    }
-    
-    func parseMultipleStyles(style: StyleClassMap, map: [StyleClassMap]) {
-        for styleType in style.styles {
-            if let styleToApply = map.filter({ $0.styleClass.lowercased() == styleType.lowercased() }).first {
-                self.apply(style: styleToApply)
-            } else {
-                print("!!!!StylishError!!!! Missing style named `\(styleType)` !!!!")
-                #if TARGET_INTERFACE_BUILDER
-                    self.showErrorIfInvalid()
-                #endif
-                break
             }
         }
     }
