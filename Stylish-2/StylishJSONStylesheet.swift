@@ -41,4 +41,8 @@ public class StylishJSONStylesheet: JSONStylesheet {
     public func reload() {
         self.loadData()
     }
+    
+    public func getStyle(byName name: String) -> StyleClassMap? {
+        return self.stylesheet.first{ ($0.styleClass == name) }
+    }
 }

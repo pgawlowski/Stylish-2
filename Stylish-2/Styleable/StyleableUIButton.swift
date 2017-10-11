@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 private var _styles: String = ""
 @IBDesignable public class StyleableUIButton : UIButton {}

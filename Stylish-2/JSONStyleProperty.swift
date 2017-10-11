@@ -40,6 +40,7 @@ public class StyleProperty {
     internal typealias funcUIViewContentMode    = (String) -> JSONStyleProperty
 
     
+    public init() {}
     
     internal static let toNSTextAlignment   : funcNSTextAlignment =  {
         switch $0 {
@@ -114,7 +115,7 @@ public class StyleProperty {
             "UIFont" : toUIFont,
         ] as [String : Any]
     
-    func jsonStyleProperty(value: Any, type: String) -> JSONStyleProperty {
+    public func jsonStyleProperty(value: Any, type: String) -> JSONStyleProperty {
         let checkClosure:(Any?, String) -> (Any?, JSONStyleProperty?) = {testValue, type in
             guard testValue != nil else {
                 return (nil, .InvalidProperty(errorMessage: String(format:"'propertyValue' in JSON was missing or could not be converted to %@", type)))
