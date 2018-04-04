@@ -8,16 +8,16 @@ PODS:
     - EVReflection (~> 4.17)
 
 DEPENDENCIES:
-  - Stylish-2 (from `/Users/pgawlowski/Documents/Projects/Stylish-2`)
+  - Stylish-2 (from `../`)
 
 EXTERNAL SOURCES:
   Stylish-2:
-    :path: "/Users/pgawlowski/Documents/Projects/Stylish-2"
+    :path: ../
 
 SPEC CHECKSUMS:
   EVReflection: 93817c1981460105cd3b44c67ea87a5b6f5bb98e
   Stylish-2: a4c4d1e3ce2249a3cf4f2e68f2f1e717da099bbf
 
-PODFILE CHECKSUM: 40627dc811dc17d305520ef672701858f1cef297
+PODFILE CHECKSUM: c9d5da2ad03011024704dc52119e94a3075012df
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
