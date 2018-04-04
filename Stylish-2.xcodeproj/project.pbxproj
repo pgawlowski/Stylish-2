@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		569EEB362074EC6900646713 /* StyleClassMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EEB352074EC6900646713 /* StyleClassMap.swift */; };
 		762CA8991EC5BA3100F206EC /* Stylish2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762CA88F1EC5BA3100F206EC /* Stylish2.framework */; };
 		762CA89E1EC5BA3100F206EC /* Stylish_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA89D1EC5BA3100F206EC /* Stylish_2Tests.swift */; };
 		762CA8A01EC5BA3100F206EC /* Stylish-2.h in Headers */ = {isa = PBXBuildFile; fileRef = 762CA8921EC5BA3100F206EC /* Stylish-2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,7 +17,6 @@
 		762CA8B21EC5BA4A00F206EC /* StyleableUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AD1EC5BA4A00F206EC /* StyleableUILabel.swift */; };
 		762CA8B31EC5BA4A00F206EC /* StyleableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8AE1EC5BA4A00F206EC /* StyleableUIView.swift */; };
 		762CA8BA1EC5BA6000F206EC /* JSONStyleProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B41EC5BA6000F206EC /* JSONStyleProperty.swift */; };
-		762CA8BB1EC5BA6000F206EC /* StyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B51EC5BA6000F206EC /* StyleClass.swift */; };
 		762CA8BC1EC5BA6000F206EC /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B61EC5BA6000F206EC /* Styleable.swift */; };
 		762CA8BD1EC5BA6000F206EC /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B71EC5BA6000F206EC /* Stylesheet.swift */; };
 		762CA8BE1EC5BA6000F206EC /* Stylish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CA8B81EC5BA6000F206EC /* Stylish.swift */; };
@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		569EEB352074EC6900646713 /* StyleClassMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleClassMap.swift; sourceTree = "<group>"; };
 		762CA88F1EC5BA3100F206EC /* Stylish2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stylish2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762CA8921EC5BA3100F206EC /* Stylish-2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylish-2.h"; sourceTree = "<group>"; };
 		762CA8931EC5BA3100F206EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		762CA8AD1EC5BA4A00F206EC /* StyleableUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUILabel.swift; sourceTree = "<group>"; };
 		762CA8AE1EC5BA4A00F206EC /* StyleableUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleableUIView.swift; sourceTree = "<group>"; };
 		762CA8B41EC5BA6000F206EC /* JSONStyleProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStyleProperty.swift; sourceTree = "<group>"; };
-		762CA8B51EC5BA6000F206EC /* StyleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleClass.swift; sourceTree = "<group>"; };
 		762CA8B61EC5BA6000F206EC /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		762CA8B71EC5BA6000F206EC /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		762CA8B81EC5BA6000F206EC /* Stylish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylish.swift; sourceTree = "<group>"; };
@@ -99,8 +99,8 @@
 			children = (
 				762CA8A91EC5BA4A00F206EC /* Styleable */,
 				762CA8931EC5BA3100F206EC /* Info.plist */,
+				569EEB352074EC6900646713 /* StyleClassMap.swift */,
 				762CA8B41EC5BA6000F206EC /* JSONStyleProperty.swift */,
-				762CA8B51EC5BA6000F206EC /* StyleClass.swift */,
 				762CA8B71EC5BA6000F206EC /* Stylesheet.swift */,
 				762CA8921EC5BA3100F206EC /* Stylish-2.h */,
 				762CA8B81EC5BA6000F206EC /* Stylish.swift */,
@@ -247,9 +247,9 @@
 			files = (
 				762CA8AF1EC5BA4A00F206EC /* StylishExtensions.swift in Sources */,
 				768293501ED2C80E00542550 /* StyleableUITextField.swift in Sources */,
+				569EEB362074EC6900646713 /* StyleClassMap.swift in Sources */,
 				7669F1321ED7018800F334D5 /* StyleableUIFont.swift in Sources */,
 				762CA8B31EC5BA4A00F206EC /* StyleableUIView.swift in Sources */,
-				762CA8BB1EC5BA6000F206EC /* StyleClass.swift in Sources */,
 				762CA8BA1EC5BA6000F206EC /* JSONStyleProperty.swift in Sources */,
 				762CA8B01EC5BA4A00F206EC /* StyleableUIButton.swift in Sources */,
 				762CA8B21EC5BA4A00F206EC /* StyleableUILabel.swift in Sources */,

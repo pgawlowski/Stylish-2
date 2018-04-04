@@ -30,8 +30,13 @@ protocol Styleable {
 
 extension Styleable {
     var styleApplicator:[StyleApplicatorType : StyleApplicator] {
-        return UILabel().styleApplicator + UIButton().styleApplicator + UITextField().styleApplicator + UIImageView().styleApplicator + UIFont().styleApplicator +
-            [.UIViewPropertySet : {
+        
+        var aplicator =  UILabel().styleApplicator
+        aplicator = aplicator + UIButton().styleApplicator
+        aplicator = aplicator + UITextField().styleApplicator
+        aplicator = aplicator + UIImageView().styleApplicator
+        aplicator = aplicator + UIFont().styleApplicator
+        return aplicator + [.UIViewPropertySet : {
                 (property:Property, target:Any) in
                 if let view = target as? UIView, let key = property.propertyName, let propertyValue = property.propertyValue {
                     view.setStyleProperties(value: propertyValue.rawValue, key: key)
@@ -68,6 +73,7 @@ extension Styleable {
                 break
             }
         }
+        self.apply(style: style)
     }
 }
 
