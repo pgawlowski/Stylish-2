@@ -99,9 +99,9 @@ extension UIColor {
         
         getRed(&r, green: &g, blue: &b, alpha: &a)
         
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-        
-        return String(format:"#%06x", rgb)
+        let rgba:Int = (Int)(r*255)<<24 | (Int)(g*255)<<16 | (Int)(b*255)<<8 | (Int)(a*255)<<0
+
+        return String(format:"#%08x", rgba)
     }
 }
 
