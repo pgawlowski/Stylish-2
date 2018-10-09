@@ -27,11 +27,6 @@ func =?<T>( left:inout T!, right:@autoclosure () -> T?) {
     }
 }
 
-func =?<T>( left:inout T?, right:@autoclosure () -> T?) {
-    if let value = right() {
-        left = value
-    }
-}
 
 func + <K,V>(left: Dictionary<K,V>, right: Dictionary<K,V>)
     -> Dictionary<K,V>
