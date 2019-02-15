@@ -143,13 +143,13 @@ extension NSObject {
 
         for child in type.children {
             if child.label! == name {
-                return String(describing: type(of: child.value))
+                return String(describing: Swift.type(of: child.value))
             }
         }
         while let parent = type.superclassMirror {
             for child in parent.children {
                 if child.label! == name {
-                    return String(describing: type(of: child.value))
+                    return String(describing: Swift.type(of: child.value))
                 }
             }
             type = parent
@@ -167,7 +167,7 @@ extension NSObject {
         var propertySet: Dictionary<String, Any> = Dictionary()
         for index in 0...count - 1 {
             let property = property_getName(properties[Int(index)])
-            let result = String(cString: property!)
+            let result = String(cString: property)
             propertySet.updateValue(NSNull(), forKey: prefix + result)
         }
         

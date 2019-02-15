@@ -27,7 +27,7 @@ s.source = { :git => "https://github.com/pgawlowski/Stylish-2.git", :tag => "#{s
 s.source_files = "Stylish-2/**/*.{swift}"
 
 s.subspec "Core" do |ss|
-    ss.dependency 'EVReflection', '~> 4.17'
+    ss.dependency 'EVReflection', '~> 5.9.0'
     ss.framework  = 'Foundation'
 
     ss.pod_target_xcconfig = {

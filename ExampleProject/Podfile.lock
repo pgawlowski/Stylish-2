@@ -1,23 +1,27 @@
 PODS:
-  - EVReflection (4.19.1):
-    - EVReflection/Core (= 4.19.1)
-  - EVReflection/Core (4.19.1)
-  - Stylish-2 (0.1.1):
-    - Stylish-2/Core (= 0.1.1)
-  - Stylish-2/Core (0.1.1):
-    - EVReflection (~> 4.17)
+  - EVReflection (5.9.0):
+    - EVReflection/Core (= 5.9.0)
+  - EVReflection/Core (5.9.0)
+  - Stylish-2 (0.1.2):
+    - Stylish-2/Core (= 0.1.2)
+  - Stylish-2/Core (0.1.2):
+    - EVReflection
 
 DEPENDENCIES:
   - Stylish-2 (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EVReflection
+
 EXTERNAL SOURCES:
   Stylish-2:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  EVReflection: 93817c1981460105cd3b44c67ea87a5b6f5bb98e
-  Stylish-2: a4c4d1e3ce2249a3cf4f2e68f2f1e717da099bbf
+  EVReflection: 52aa00a9035145b1fcf99acae01b782ecc4adad7
+  Stylish-2: a5a41fb1bbcd75d0f20a97e96315c3ad59f61728
 
 PODFILE CHECKSUM: c9d5da2ad03011024704dc52119e94a3075012df
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.6.0
